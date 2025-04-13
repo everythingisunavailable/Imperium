@@ -18,6 +18,10 @@ else if ($query0 == 'product' && $query1 == 'productId'){
     
     echo 'one specific product to be displayed'; //TODO : remove this
 }
+else if (empty($query0) && empty($query1)){
+    
+    echo 'Home Page';
+}
 else {
     echo 'url is invalid';
 }

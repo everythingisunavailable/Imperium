@@ -4,7 +4,9 @@ what we need : product/productId
 what we going to turn it into : /server/routes.php?query0=product&query1=productId
 excpected to be called on every GET
 */
+
 const BASE_URL = "public/";
+
 function extract_link(){
     let url = window.location.pathname;
     let sub_url = url.substring(url.indexOf(BASE_URL) + BASE_URL.length);
@@ -22,8 +24,7 @@ function extract_link(){
             get_url = get_url + '&';
         }
     }
-
-    return get_url;
+    return get_url
 }
 
 
