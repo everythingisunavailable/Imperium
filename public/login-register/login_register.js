@@ -77,9 +77,6 @@ async function save_data(event, type) {
     let email_login = email_login_div.value.trim();
     let password_login = password_login_div.value.trim();
     
-    //TODO: EXTRACT THE VALUES OF THE INPUTS AND CHECK FOR VALIDATION
-    
-    //count errors
     
     if (type == 'login'){
         let count = check_login_errors(email_login, password_login);
