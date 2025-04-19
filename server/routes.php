@@ -2,7 +2,6 @@
 
 //include database here
 
-
 $query0 = $_GET['query0'] ?? '';
 $query1 = $_GET['query1'] ?? '';
 //add more vars if needed
