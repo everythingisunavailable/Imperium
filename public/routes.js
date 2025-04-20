@@ -51,10 +51,3 @@ async function getData() {
 window.onload = async function() {
     await getData();
 };
-
-function goTo(url){
-    history.pushState({tab: new URL(location).pathname}, "", url);
-    getData();
-}
-
-window.addEventListener("popstate", (event) => {getData()});
