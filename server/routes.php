@@ -34,13 +34,15 @@ else if ($query0 == 'product' && $query1) {
     
     echo 'one specific product to be displayed';
 }
-if ($_SERVER['REQUEST_METHOD'] == 'POST' &&  !empty($data)) {
+
+//NOTE(FRENKI) : functions that have to do with POST return to front end json data...others return strings.
+else if ($_SERVER['REQUEST_METHOD'] == 'POST' &&  !empty($data)) {
     if (isset($headers['Request-Type'])) {
         if ($headers['Request-Type'] == 'login') {
             loginUser($data['email'], $data['password']);
         }
-        else if ($headers['Request-Type'] == 'login') {
-            //register function here
+        else if ($headers['Request-Type'] == 'signup') {
+            registerUser($data['name'], $data['surname'], $data['email'], $data['password'], $data['password_again']);
         }
     }
     else{

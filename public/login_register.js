@@ -96,7 +96,7 @@ async function save_data(event, type) {
             display_errors();
         }
         else{
-            login_request(email_login, password_login);
+            await login_request(email_login, password_login);
         }
     }
     else if ( type == 'signup'){
@@ -106,7 +106,7 @@ async function save_data(event, type) {
             display_errors();
         }
         else{
-            //send request or subim or smth
+            await singup_request(name, surname, email_signup, password_signup, password_again);
         }
     }
 }
