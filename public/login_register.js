@@ -349,6 +349,27 @@ async function singup_request(name, surname, email, password, password_again){
         console.error(error.message);
     }
 }
+
+async function google_request(){
+    const url = "../server/routes.php";
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Request-Type': 'google',
+            },
+        });
+        if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+        }
+    
+        const json = await response.json();
+        console.log(json);
+        
+    } catch (error) {
+        console.error(error.message);
+    }
+}
 function login_server_errors(errors){
     if ('email' in errors){
         login_errors.email = errors.email;
