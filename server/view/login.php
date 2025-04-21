@@ -1,4 +1,15 @@
 <?php
+require_once '../vendor/autoload.php';
+require_once '../config/google.config.php';
+
+$client = new Google_Client();
+$client->setClientId(GOOGLE_CLIENT_ID);
+$client->setClientSecret(GOOGLE_CLIENT_SECRET);
+$client->setRedirectUri('http://localhost/imperium/server/callback.php');
+$client->addScope('email');
+$client->addScope('profile');
+
+$login_url = $client->createAuthUrl();
 
 echo <<<HTML
     <div class="container">
@@ -12,7 +23,7 @@ echo <<<HTML
                 <form action="#" method="post" id="login" onsubmit="save_data(event, 'login')">
                     <h2>SIGN IN</h2>
                     <label for="email_login">Email</label>
-                    <input type="text" name="email" placeholder="example@gmail.com" required id="email_login">
+                    <input type="email" name="email" placeholder="example@gmail.com" required id="email_login">
                     <label for="password_login">Password</label>
                     <input type="password" name="password" required id="password_login">
                     <div class="button-container">
@@ -21,7 +32,7 @@ echo <<<HTML
 
                     <div class="button-container">
                         <!--google button-->
-                        <button type="button" class="gsi-material-button">
+                        <button type="button" class="gsi-material-button" onclick="window.location.href = '$login_url'">
                             <div class="gsi-material-button-state"></div>
                             <div class="gsi-material-button-content-wrapper">
                                 <div class="gsi-material-button-icon">
@@ -53,7 +64,7 @@ echo <<<HTML
                     <label for="surname">Surname</label>
                     <input type="text" name="surname" placeholder="Doe" required id="surname">
                     <label for="email_signup">Email</label>
-                    <input type="text" name="email" placeholder="example@gmail.com" required id="email_signup">
+                    <input type="email" name="email" placeholder="example@gmail.com" required id="email_signup">
                     <label for="password_signup">Password</label>
                     <input type="password" name="password" required id="password_signup">
                     <label for="password_again">Retype Password</label>

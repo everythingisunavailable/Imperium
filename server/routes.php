@@ -1,7 +1,7 @@
 <?php
 
 //include database here 
-require_once 'control/authorController.php';
+require_once 'control/authorController.php';    
 
 # POST METHOD DATA
 $raw_data = file_get_contents("php://input");
@@ -17,7 +17,7 @@ $query1 = $_GET['query1'] ?? '';
 if ($query0 == 'login' && !$query1) {
     startSession();
     if(isset($_SESSION['user_id'])){
-        echo '<h1>Welcome <span style ="color: blue">'. $_SESSION['user_name'] . '</span> with id ' . $_SESSION['user_id'] . '</h1>';
+        echo '<h1>Welcome <span style ="color: blue">'. $_SESSION['user_name'].'</h1>';
     }
     else{
         include './view/login.php';
@@ -29,7 +29,7 @@ else if (!$query0 && !$query1 && !isset($headers['Request-Type'])) {
 else if($query0 == 'profile' && !$query1){
     startSession();
     if (isset($_SESSION['user_id'])){
-        echo '<h1>Welcome <span style ="color: blue">'. $_SESSION['user_name'] . '</span> with id ' . $_SESSION['user_id'] . '</h1>';
+        echo '<h1>Welcome <span style ="color: blue">'. $_SESSION['user_name']. '</h1>';
     }
     else{
         echo 'not logged in / sessino not started';
@@ -51,6 +51,9 @@ else if ($_SERVER['REQUEST_METHOD'] == 'POST' &&  isset($headers['Request-Type']
         }
         else if ($headers['Request-Type'] == 'signup') {
             registerUser($data['name'], $data['surname'], $data['email'], $data['password'], $data['password_again']);
+        }
+        else if ($headers['Request-Type'] == 'google') {
+            //call funtion here
         }
         // if($headers['Request-Type'] == 'logout'){
         //     destroySession();
