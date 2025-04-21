@@ -8,7 +8,7 @@ echo '
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../global.css">
-    <link rel="stylesheet" href="login_register.css">
+    <link rel="stylesheet" href="login-register/login_register.css">
 </head>
 <body>
     <div class="container">
@@ -81,7 +81,7 @@ echo '
 
     </div>
 
-    <script src="login_register.js"></script>
+    <script src="login-register/login_register.js"></script>
 
 </body>
 </html>';
