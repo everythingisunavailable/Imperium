@@ -32,7 +32,9 @@ function loginUser(string $email, string $password)
     $user = new User();
     $foundUser = $user->getUserByEmail($email);
     if (empty($foundUser)) {
-        $errors['email'] = 'User not found';
+        if (!isset($errors['email'])) {
+            $errors['email'] = 'User not found';
+        }
     }
     //testing
     else if (!password_verify($password, $foundUser['password'])) {
@@ -65,7 +67,7 @@ function registerUser($name, $surname, $email, $password, $password_again)
         $errors['name'] = "Name is required";
     } else {
         $name = test_input($name);
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $name) && !isset($errors['name'])) {
             $errors['name'] = 'Name should contain only letters and spaces.';
         }
     }
@@ -75,7 +77,7 @@ function registerUser($name, $surname, $email, $password, $password_again)
         $errors['surname'] = "Surname is required";
     } else {
         $surname = test_input($surname);
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $surname)) {
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $surname) && !isset($errors['surname'])) {
             $errors['surname'] = 'Surname should contain only letters and spaces.';
         }
     }
@@ -85,7 +87,7 @@ function registerUser($name, $surname, $email, $password, $password_again)
         $errors['email'] = "Email is required";
     } else {
         $email = test_input($email);
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !isset($errors['email'])) {
             $errors['email'] = "Invalid email format.";
         }
     }
@@ -113,7 +115,7 @@ function registerUser($name, $surname, $email, $password, $password_again)
     // Check if user exists
     $user = new User();
     $userExists = $user->checkEmail($email);
-    if ($userExists) {
+    if ($userExists && !isset($errors['email'])) {
         $errors['email'] = "User with this email already exists!";
     }
 
