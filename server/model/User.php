@@ -14,20 +14,28 @@ class User
         $stmt = $this->conn->prepare("SELECT * FROM 'users' WHERE 'email' = :email");
         $stmt->bindParam(':email', $email);
         $stmt->execute([$email]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function findByEmail($email)
+    public function checkEmail($email)
     {
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt->bindParam(':email', $email);
         $stmt->execute([$email]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function register($name, $email, $password)
+    public function register($name, $surname, $email, $password)
     {
         $hashed = password_hash($password, PASSWORD_BCRYPT);
-        $stmt = $this->conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-        return $stmt->execute([$name, $email, $hashed]);
+        $stmt = $this->conn->prepare("INSERT INTO users (name, surname, email, password) VALUES (?, ?, ?, ?)");
+        return $stmt->execute([$name, $surname, $email, $hashed]);
+    }
+    public function getUserById($id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
