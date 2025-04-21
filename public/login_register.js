@@ -1,12 +1,15 @@
-function flip(){
+let flipped = false;
+function flip(event){
+    event.preventDefault();
+
     let form = document.getElementById('form-container');
-    if (form.classList.contains('flip-form')) {
-        form.classList.remove('flip-form')
-        form.classList.add('flip-form-again')
+    if(flipped){
+        form.style.animation = 'form_reflip_anim 0.6s ease-in-out';
+        flipped = !flipped;
     }
     else{
-        form.classList.remove('flip-form-again')
-        form.classList.add('flip-form');
+        form.style.animation = 'form_flip_anim 0.6s ease-in-out forwards';
+        flipped = !flipped;
     }
 
     show();
@@ -67,6 +70,14 @@ let password_login_div = document.getElementById('password_login');
 async function save_data(event, type) {
     event.preventDefault();
     
+    name_div = document.getElementById('name');
+    surname_div = document.getElementById('surname');
+    email_signup_div = document.getElementById('email_signup');
+    password_signup_div = document.getElementById('password_signup');
+    password_again_div = document.getElementById('password_again');
+    email_login_div = document.getElementById('email_login');
+    password_login_div = document.getElementById('password_login');
+
     //get user input
     let name = name_div.value.trim();
     let surname = surname_div.value.trim();
@@ -85,7 +96,7 @@ async function save_data(event, type) {
             display_errors();
         }
         else{
-            //send request or subim or smth
+            login_request(email_login, password_login);
         }
     }
     else if ( type == 'signup'){
@@ -270,4 +281,59 @@ function clear_error(){
         signup_errors.displayed_password_again = false;
     }
     
+}
+
+async function login_request(email, password){
+    let data = {
+        'email': email,
+        'password': password,
+    }
+    const url = "../server/routes.php";
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Request-Type': 'login',
+            },
+            body: JSON.stringify(data),
+        });
+        if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+        }
+    
+        const json = await response.json();
+        console.log(json);
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+async function singup_request(name, surname, email, password, password_again){
+    let data = {
+        'name': name,
+        'surname': surname,
+        'email': email,
+        'password': password,
+        'password_again': password_again,
+    }
+
+    const url = "../server/routes.php";
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Request-Type': 'signup',
+            },
+            body: JSON.stringify(data),
+        });
+        if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+        }
+    
+        const json = await response.json();
+        console.log(json);
+    } catch (error) {
+        console.error(error.message);
+    }
 }

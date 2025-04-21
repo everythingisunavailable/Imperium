@@ -11,7 +11,7 @@ class User
 
     public function login($email)
     {
-        $stmt = $this->conn->prepare("SELECT * FROM 'users' WHERE 'email' = :email");
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->bindParam(':email', $email);
         $stmt->execute([$email]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -35,6 +35,13 @@ class User
     {
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
         $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function getUserByEmail($email)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt->bindParam(':email', $email);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
