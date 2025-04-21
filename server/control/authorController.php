@@ -1,7 +1,9 @@
 <?php
-require_once '../model/user.php';
+require_once 'model/User.php';
 include '../config/config_settings.php';
 
+
+// NOTE (FRENKI): KETO DUHEN HEQUR OSE KALUAR TE VIEW
 function showLoginForm()
 {
     include '../views/login.php';
@@ -18,54 +20,44 @@ function showLogoutForm()
 }
 
 // Handle login (POST /login)
-function loginUser()
+function loginUser(string $email, string $password)
 {
-    $email = "";
     $errors = [];
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
-
         // Email validation
-        $email = test_input($_POST['email']);
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors['email'] = "Invalid email format.";
-        }
-        // Password validation
-
-        $password = $_POST['password'];
-
-        // Stop if errors
-        if (!empty($errors)) {
-            echo json_encode($errors);
-            exit;
-        }
-
-        // Authenticate
-        $user = new User();
-        $foundUser = $user->checkEmail($email);
-
-        if (!$foundUser) {
-            echo json_encode(["error" => "User with this email does not exist."]);
-            exit;
-        }
-
-        // Verify password
-        if (!password_verify($password, $foundUser['password'])) {
-            echo json_encode(["error" => "Incorrect password."]);
-            exit;
-        }
-
-        // Start session
-        startSession();
-        $_SESSION['loggedin'] = true;
-        $_SESSION['user_id'] = $foundUser['id'];
-        $_SESSION['user_name'] = $foundUser['name'];
-
-        echo json_encode(["success" => "Logged in successfully."]);
+    $email = test_input($email);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "Invalid email format.";
     }
+    // Authenticate
+    $user = new User();
+    $foundUser = $user->getUserByEmail($email);
+    if (empty($foundUser)) {
+        $errors['email'] = 'User not found';
+    }
+    //testing
+    else if (!password_verify($password, $foundUser['password'])) {
+        $errors['password'] = 'Wrong password';
+    }
+
+
+    // Stop if errors
+    if (!empty($errors)) {
+        echo json_encode($errors);
+        exit;
+    }
+
+
+    // Start session
+    startSession();
+    $_SESSION['loggedin'] = true;
+    $_SESSION['user_id'] = $foundUser['id'];
+    $_SESSION['user_name'] = $foundUser['name'];
+
+    echo json_encode(["success" => "Logged in successfully."]);
 }
 
 
+//NOTE (FRENKI) : KJO DUHET NDRYSHUAR SI LOGINI NE MENYRE QE TE PRANOJE SI PARAMETRA TE DHENAT DHE JO TI MARRE NGA $_SERVER()
 function registerUser()
 {
     $name = $surname = $email = $password = $repassword = "";

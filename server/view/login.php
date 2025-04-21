@@ -1,25 +1,15 @@
 <?php
 
-echo '
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../global.css">
-    <link rel="stylesheet" href="login_register.css">
-</head>
-<body>
+echo <<<HTML
     <div class="container">
          
         <div class="left">
-            <img src="../assets/imperium.png" alt="Imperium">
+            <img src="assets/imperium.png" alt="Imperium">
         </div>
         
         <div class="right">
             <div class="form-container" id="form-container">
-                <form action="#" method="post" id="login" onsubmit="save_data(event, "login")">
+                <form action="#" method="post" id="login" onsubmit="save_data(event, 'login')">
                     <h2>SIGN IN</h2>
                     <label for="email_login">Email</label>
                     <input type="text" name="email" placeholder="example@gmail.com" required id="email_login">
@@ -52,14 +42,14 @@ echo '
 
                     <div class="link-container">
                         <a href="#">Forgot Password?</a>
-                        <a href="#" onclick="flip()">Dont have an account?</a>
+                        <a href="#" onclick="flip(event)">Dont have an account?</a>
                     </div>
                 </form>
 
-                <form action="#" method="post" class="hide" id="register" onsubmit="save_data(event, "signup")">
+                <form action="#" method="post" class="hide" id="register" onsubmit="save_data(event, 'signup')">
                     <h2>Sign Up</h2>
                     <label for="name">Name</label>
-                    <input type="text" name="name" placeholder="John" required id="name">
+                    <input type="text" name="name" placeholder="John" required id="name">  
                     <label for="surname">Surname</label>
                     <input type="text" name="surname" placeholder="Doe" required id="surname">
                     <label for="email_signup">Email</label>
@@ -72,7 +62,7 @@ echo '
                         <button>Sign Up</button>
                     </div>
                     <div class="link-container">
-                        <a href="#" onclick="flip()" id="sign-in-link">Sign in instead</a>
+                        <a href="#" onclick="flip(event)" id="sign-in-link">Sign in instead</a>
                     </div>
                 </form>
 
@@ -80,8 +70,4 @@ echo '
         </div>
 
     </div>
-
-    <script src="login_register.js"></script>
-
-</body>
-</html>';
+    HTML;
