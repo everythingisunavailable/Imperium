@@ -208,6 +208,7 @@ function check_signup_errors(name, surname, email, password, password_again){
 
 
 function display_errors() {
+
     if (login_errors.email != null && !login_errors.displayed_email) {
         create_error_message(login_errors.email, email_login_div);
         login_errors.displayed_email = true;
@@ -303,13 +304,12 @@ async function login_request(email, password){
         }
     
         const json = await response.json();
-        console.log(json);
         if ('success' in(json)) {
             alert('login successfull');
             goTo('profile');
         }
         else{
-            
+            login_server_errors(json);
         }
     } catch (error) {
         console.error(error.message);
@@ -339,14 +339,42 @@ async function singup_request(name, surname, email, password, password_again){
         }
     
         const json = await response.json();
-        console.log(json);
         if("success" in json){
-            alert("register successfully");
+            alert("Register successfully, you may log in");
         }
         else{
-            //handle errors
+            signup_server_errors(json);
         }
     } catch (error) {
         console.error(error.message);
     }
+}
+function login_server_errors(errors){
+    if ('email' in errors){
+        login_errors.email = errors.email;
+    }
+    if ('password' in errors) {
+        login_errors.password = errors.password;
+    }
+    display_errors();
+}
+
+function signup_server_errors(errors){
+    if ('name' in errors){
+        signup_errors.name = errors.name;
+    }
+    if ('surname' in errors){
+        signup_errors.surname = errors.surname;
+    }
+    if ('email' in errors){
+        signup_errors.email = errors.email;
+    }
+    if ('password' in errors){
+        signup_errors.password = errors.password;
+    }
+    if ('password_again' in errors){
+        signup_errors.password_again = errors.password_again;
+    }
+
+    display_errors();
 }
