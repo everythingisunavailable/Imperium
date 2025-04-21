@@ -304,6 +304,13 @@ async function login_request(email, password){
     
         const json = await response.json();
         console.log(json);
+        if ('success' in(json)) {
+            alert('login successfull');
+            goTo('profile');
+        }
+        else{
+            
+        }
     } catch (error) {
         console.error(error.message);
     }
@@ -333,6 +340,12 @@ async function singup_request(name, surname, email, password, password_again){
     
         const json = await response.json();
         console.log(json);
+        if("success" in json){
+            alert("register successfully");
+        }
+        else{
+            //handle errors
+        }
     } catch (error) {
         console.error(error.message);
     }
