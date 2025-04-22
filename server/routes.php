@@ -43,6 +43,9 @@ else if ($query0 == 'product' && $query1) {
     
     echo 'one specific product to be displayed';
 }
+else if ($query0 == 'forgot-password'){
+    include 'view/forgotPassword.php';
+}
     //NOTE(FRENKI) : functions that have to do with POST return to front end json data...others return strings
 else if ($_SERVER['REQUEST_METHOD'] == 'POST' &&  isset($headers['Request-Type'])) {
     if (isset($headers['Request-Type'])) {

@@ -52,7 +52,7 @@ echo <<<HTML
                     </div>
 
                     <div class="link-container">
-                        <a href="#">Forgot Password?</a>
+                        <a href="#" onclick="goTo('forgot-password')">Forgot Password?</a>
                         <a href="#" onclick="flip(event)">Dont have an account?</a>
                     </div>
                 </form>
