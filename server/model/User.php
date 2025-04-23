@@ -5,7 +5,7 @@ class User
 
     public function __construct()
     {
-        require '../config/db.php';
+        require '../../config/db.php';
         $this->conn = $conn;
     }
 
