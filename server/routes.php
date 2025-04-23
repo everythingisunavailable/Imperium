@@ -1,13 +1,7 @@
 <?php
 
-//include database here 
-require_once 'control/authorController.php';    
-
-# POST METHOD DATA
-$raw_data = file_get_contents("php://input");
-$data = json_decode($raw_data, true);
-$headers = getallheaders();
-
+require_once 'control/helper.control.php';
+require_once '../config/session.php';
 
 # GET METHOD DATA
 $query0 = $_GET['query0'] ?? '';
@@ -20,13 +14,14 @@ if ($query0 == 'login' && !$query1) {
         echo '<h1>Welcome <span style ="color: blue">'. $_SESSION['user_name'].'</h1>';
     }
     else{
-        include './view/login.php';
+        showLoginForm();
     }
 }
-else if (!$query0 && !$query1 && !isset($headers['Request-Type'])) {
+else if (!$query0 && !$query1) {
     echo 'home page';
 }
 else if($query0 == 'profile' && !$query1){
+    //TODO : make this page a profile view
     startSession();
     if (isset($_SESSION['user_id'])){
         echo '<h1>Welcome <span style ="color: blue">'. $_SESSION['user_name']. '</h1>';
@@ -40,28 +35,11 @@ else if ($query0 == 'product' && !$query1) {
     echo 'all products page';
 }
 else if ($query0 == 'product' && $query1) {
-    
+
     echo 'one specific product to be displayed';
 }
-    //NOTE(FRENKI) : functions that have to do with POST return to front end json data...others return strings
-else if ($_SERVER['REQUEST_METHOD'] == 'POST' &&  isset($headers['Request-Type'])) {
-    if (isset($headers['Request-Type'])) {
-        if ($headers['Request-Type'] == 'login') {
-            loginUser($data['email'], $data['password']);
-        }
-        else if ($headers['Request-Type'] == 'signup') {
-            registerUser($data['name'], $data['surname'], $data['email'], $data['password'], $data['password_again']);
-        }
-        else if ($headers['Request-Type'] == 'google') {
-            //call funtion here
-        }
-        // if($headers['Request-Type'] == 'logout'){
-        //     destroySession();
-        // }
-    }
-    else{
-        echo json_encode (["error" => 'there is no header in the request']); // TODO : MAKE STANDART KEYS TO HANDLE ERRORS BETTER
-    }
+else if ($query0 == 'forgot-password'){
+    showForgotPassword();
 }
 else {
     echo 'url is invalid';
