@@ -172,7 +172,7 @@
 .content .container .left .form-container form .link-container a:hover, .content .container .right .form-container form .link-container a:hover {
   opacity: 1;
 }
-.content .container .left .form-container form .link-container #sign-in-link, .content .container .right .form-container form .link-container #sign-in-link {
+.content .container .left .form-container form .link-container .align-link-middle, .content .container .right .form-container form .link-container .align-link-middle {
   width: 100%;
   text-align: center;
 }

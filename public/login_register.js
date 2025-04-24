@@ -1,5 +1,5 @@
 let flipped = false;
-function flip(event){
+function flip(event){   
     event.preventDefault();
 
     let form = document.getElementById('form-container');
@@ -13,6 +13,7 @@ function flip(event){
     }
 
     show();
+    return false;
 }
 let shown = false; 
 let delay = 250; //about half the delay of the rotation
@@ -32,7 +33,6 @@ function show(){
         shown = !shown;
     }
 }
-
 
 //form data validation 
 let signup_errors = {

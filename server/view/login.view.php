@@ -52,7 +52,7 @@ function display_login(){
                         </div>
 
                         <div class="link-container">
-                            <a href="#" onclick="goTo('forgot-password')">Forgot Password?</a>
+                            <a href="#" onclick="eventGoTo(event,'forgot-password')">Forgot Password?</a>
                             <a href="#" onclick="flip(event)">Dont have an account?</a>
                         </div>
                     </form>
@@ -73,7 +73,7 @@ function display_login(){
                             <button>Sign Up</button>
                         </div>
                         <div class="link-container">
-                            <a href="#" onclick="flip(event)" id="sign-in-link">Sign in instead</a>
+                            <a href="#" onclick="flip(event)" class="align-link-middle">Sign in instead</a>
                         </div>
                     </form>
 

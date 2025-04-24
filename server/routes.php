@@ -41,6 +41,9 @@ else if ($query0 == 'product' && $query1) {
 else if ($query0 == 'forgot-password'){
     showForgotPassword();
 }
+else if ($query0 == 'change-password'){
+    showChangePassword();
+}
 else {
     echo 'url is invalid';
 }

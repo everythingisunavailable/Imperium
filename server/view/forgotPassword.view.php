@@ -1,4 +1,44 @@
 <?php
 function display_forgot(){
-    echo 'some html data for forgotten password';
+    echo <<<HTML
+        <div class="container">
+            
+            <div class="left">
+                <img src="assets/imperium.png" alt="Imperium">
+            </div>
+            
+            <div class="right">
+                <div class="form-container" id="form-container">
+                    <form method="post" id="login" onsubmit="flip(event)">
+                        <h2>PASSWORD RECOVERY</h2>
+                        <p>A 6 digit code will be sent to your email address. If it is not there check your spam folder.</p>
+                        <label for="email_forgot">Email</label>
+                        
+                        <input type="email" name="email" placeholder="example@gmail.com" required id="email_forgot">
+                        <div class="button-container">
+                            <button>Send Code</button>
+                        </div>
+                        <div class="link-container">
+                            <a href="#" onclick="flip(event)" class="align-link-middle">already got the code?</a>
+                        </div>
+                    </form>
+
+                    <form method="post" class="hide" id="register">
+                        <h2>PASSWORD RECOVERY</h2>
+                        <p id="message">waiting for response...</p>
+                        <label for="code">Input your code here</label>
+                        <input type="text" name="name" placeholder="x.x.x.x.x.x" required id="code" disabled>
+                        <div class="button-container">
+                            <button disabled>Verify</button>
+                        </div>
+                        <div class="link-container">
+                            <a href="#" onclick="flip(event)" class="align-link-middle">Input email again</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    HTML;
 }

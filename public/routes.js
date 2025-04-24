@@ -57,3 +57,7 @@ function goTo(url){
     history.pushState({tab: new URL(location).pathname}, "", url);
     getData();
 }
+function eventGoTo(event, url){
+    event.preventDefault();
+    goTo(url);
+}
