@@ -7,6 +7,11 @@ function showForgotPassword(){
     require_once 'view/forgotPassword.view.php';
     display_forgot();
 }
+function showChangePassword(){
+    //NOTE (FRENKI) : check for sessions
+    require_once 'view/changePassword.view.php';
+    display_change_password();   
+}
 function logoutUser()
 {
     destroySession();
