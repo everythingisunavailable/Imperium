@@ -27,7 +27,7 @@ else if($query0 == 'profile' && !$query1){
         echo '<h1>Welcome <span style ="color: blue">'. $_SESSION['user_name']. '</h1>';
     }
     else{
-        echo 'not logged in / sessino not started';
+        showLoginForm();
     }
 }
 else if ($query0 == 'product' && !$query1) {
