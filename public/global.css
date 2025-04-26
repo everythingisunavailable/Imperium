@@ -1,12 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-:root{
-    --text-blue: rgb(9 43 66);
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --text-blue: rgb(9, 43, 66);
+  --nav-background: rgb(176, 223, 230, 0.3);
+  --nav-border: rgba(233, 232, 232, 0.258);
+  --nav-button-shadow: rgb(126, 173, 180, 0.7);
 }
 
-body{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  background-color: #F5FAFC;
 }
+
+ul, li, a, button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+a {
+  cursor: pointer;
+}
+
+.content {
+  margin-top: 4rem;
+}
+
+.button-link {
+  height: 70%;
+  padding: 20px;
+  border-radius: 5rem;
+  border: 1px solid var(--nav-border);
+  box-shadow: inset 0 0 8px 1px var(--nav-button-shadow);
+  background-color: var(--nav-background);
+  transition: box-shadow 0.2s ease-out;
+}
+.button-link:hover, .button-link:focus {
+  box-shadow: inset 0 0 15px 2px var(--nav-button-shadow);
+}
+
+nav {
+  width: 96%;
+  margin-left: 2%;
+  box-sizing: border-box;
+  height: 3.5rem;
+  border: 2px solid var(--nav-border);
+  background-color: var(--nav-background);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 2%;
+  border-radius: 5rem;
+  z-index: 100;
+}
+nav ul {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+nav ul li {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav ul li input {
+  all: unset;
+  box-sizing: border-box;
+  height: 70%;
+  border: 2px solid black;
+  border-right: none;
+  border-top-left-radius: 5rem;
+  border-bottom-left-radius: 5rem;
+  padding-left: 10px;
+  background-color: var(--nav-border);
+}
+nav ul li #search-button {
+  height: 70%;
+  padding-inline: 5px;
+  border: 2px solid black;
+  border-top-right-radius: 5rem;
+  border-bottom-right-radius: 5rem;
+  cursor: pointer;
+}
+nav ul a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+nav ul a .icon-name {
+  margin-left: 0.2rem;
+}
+nav ul .spacer {
+  margin-inline: 1rem;
+  font-size: x-large;
+}
+nav .left-button-group {
+  margin-left: 2rem;
+}
+nav .right-button-group {
+  margin-right: 2rem;
+}/*# sourceMappingURL=global.css.map */
