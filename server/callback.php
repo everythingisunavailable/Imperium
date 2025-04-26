@@ -24,4 +24,6 @@ if (isset($_GET['code'])) {
     // Redirect to a protected page
     header('Location: ../public/profile');
     exit;
-}
+};
+
+?>
