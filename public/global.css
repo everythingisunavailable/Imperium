@@ -20,25 +20,36 @@ ul, li, a, button {
   box-sizing: border-box;
 }
 
-a {
+a, button {
   cursor: pointer;
-}
-
-.content {
-  margin-top: 4rem;
 }
 
 .button-link {
   height: 70%;
   padding: 20px;
-  border-radius: 5rem;
+  border-radius: 10rem;
   border: 1px solid var(--nav-border);
   box-shadow: inset 0 0 8px 1px var(--nav-button-shadow);
   background-color: var(--nav-background);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
   transition: box-shadow 0.2s ease-out;
 }
 .button-link:hover, .button-link:focus {
   box-shadow: inset 0 0 15px 2px var(--nav-button-shadow);
+}
+
+.floating-button {
+  height: -moz-fit-content;
+  height: fit-content;
+  position: fixed;
+  z-index: 1000;
+  bottom: 2%;
+  right: 2%;
+  padding: 10px;
+  padding-left: 12px;
+  transform: translateY(0);
+  transition: transform 0.5s ease;
 }
 
 nav {
@@ -50,6 +61,8 @@ nav {
   background-color: var(--nav-background);
   -webkit-backdrop-filter: blur(20px);
           backdrop-filter: blur(20px);
+  transform: translateY(0);
+  transition: transform 0.5s ease;
   display: flex;
   justify-content: space-between;
   position: fixed;
