@@ -92,16 +92,25 @@ function show_object(hideable){
     hide_object(hideable, hideable.hide_delay);
 }
 
-// EVENT LISTENERS
-window.addEventListener('scroll', ()=>{
-    SCROLLABLE.update();
-    if (SCROLLABLE.y > SCROLLABLE.prev_y && !NAV.hidden) {
-        hide_object(NAV, 0);
-        hide_object(GO_TOP_BUTTON, 0);
-    }
-    else if (SCROLLABLE.y < SCROLLABLE.prev_y && NAV.hidden){
-        show_object(NAV);
-        show_object(GO_TOP_BUTTON);
-    }
-});
+// EVENT LISTENERS (desktop-only)
+if (window.innerWidth > 975) {
+    window.addEventListener('scroll', ()=>{
+        SCROLLABLE.update();
+        if (SCROLLABLE.y > SCROLLABLE.prev_y && !NAV.hidden) {
+            hide_object(NAV, 0);
+            hide_object(GO_TOP_BUTTON, 0);
+        }
+        else if (SCROLLABLE.y < SCROLLABLE.prev_y && NAV.hidden){
+            show_object(NAV);
+            show_object(GO_TOP_BUTTON);
+        }
+    });
+}
 
+
+
+
+
+function toggle_ham_menu(){
+    document.querySelector('.hamburger').classList.toggle('hide-nav');
+}
