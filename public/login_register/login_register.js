@@ -1,5 +1,5 @@
 let flipped = false;
-function flip(event){
+function flip(event){   
     event.preventDefault();
 
     let form = document.getElementById('form-container');
@@ -13,6 +13,7 @@ function flip(event){
     }
 
     show();
+    return false;
 }
 let shown = false; 
 let delay = 250; //about half the delay of the rotation
@@ -32,7 +33,6 @@ function show(){
         shown = !shown;
     }
 }
-
 
 //form data validation 
 let signup_errors = {
@@ -284,71 +284,6 @@ function clear_error(){
     
 }
 
-async function login_request(email, password){
-    let data = {
-        'email': email,
-        'password': password,
-    }
-    const url = "../server/routes.php";
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Request-Type': 'login',
-            },
-            body: JSON.stringify(data),
-        });
-        if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-        }
-    
-        const json = await response.json();
-        if ('success' in(json)) {
-            alert('login successfull');
-            goTo('profile');
-        }
-        else{
-            login_server_errors(json);
-        }
-    } catch (error) {
-        console.error(error.message);
-    }
-}
-async function singup_request(name, surname, email, password, password_again){
-    let data = {
-        'name': name,
-        'surname': surname,
-        'email': email,
-        'password': password,
-        'password_again': password_again,
-    }
-
-    const url = "../server/routes.php";
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Request-Type': 'signup',
-            },
-            body: JSON.stringify(data),
-        });
-        if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-        }
-    
-        const json = await response.json();
-        if("success" in json){
-            alert("Register successfully, you may log in");
-        }
-        else{
-            signup_server_errors(json);
-        }
-    } catch (error) {
-        console.error(error.message);
-    }
-}
 function login_server_errors(errors){
     if ('email' in errors){
         login_errors.email = errors.email;
@@ -377,4 +312,67 @@ function signup_server_errors(errors){
     }
 
     display_errors();
+}
+
+async function send_request(data, request_type, url){
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Request-Type': request_type,
+            },
+            body: JSON.stringify(data),
+        });
+        if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+        }
+    
+        const json = await response.json();
+        return json;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+async function login_request(email, password){
+    let data = {
+        'email': email,
+        'password': password,
+    }
+    const json = await send_request(data, 'login', '../server/control/login.control.php');
+
+    if ('success' in(json)) {
+        alert('login successfull');
+        goTo('profile');
+    }
+    else{
+        login_server_errors(json);
+    }
+}
+async function singup_request(name, surname, email, password, password_again){
+    let data = {
+        'name': name,
+        'surname': surname,
+        'email': email,
+        'password': password,
+        'password_again': password_again,
+    }
+
+    const json = await send_request(data, 'signup', '../server/control/register.control.php');
+    if ('success' in(json)) {
+        alert('Account created successfully!');
+    }
+    else{
+        signup_server_errors(json);
+    }
+}
+async function logout_request(){
+    const json = await send_request({}, 'signout', '../server/control/logout.control.php');
+    if ('success' in(json)) {
+        goTo('/Imperium/public/');
+    }
+    else{
+        console.log(json);
+    }
 }

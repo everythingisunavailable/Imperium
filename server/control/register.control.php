@@ -1,63 +1,14 @@
 <?php
-require_once 'model/User.php';
-include '../config/config_settings.php';
+if ($_SERVER['REQUEST_METHOD'] != 'POST') die();
 
+include 'helper.control.php';
+require_once '../model/User.php';
 
-// NOTE (FRENKI): KETO DUHEN HEQUR OSE KALUAR TE VIEW
-function showLoginForm()
-{
-    include '../views/login.php';
-}
+$raw_data = file_get_contents("php://input");
+$data = json_decode($raw_data, true);
+$headers = getallheaders();
 
-function showRegisterForm()
-{
-    include '../views/register.php';
-}
-
-function showLogoutForm()
-{
-    include '../views/Login.php';
-}
-
-// Handle login (POST /login)
-function loginUser(string $email, string $password)
-{
-    $errors = [];
-        // Email validation
-    $email = test_input($email);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors['email'] = "Invalid email format.";
-    }
-    // Authenticate
-    $user = new User();
-    $foundUser = $user->getUserByEmail($email);
-    if (empty($foundUser)) {
-        if (!isset($errors['email'])) {
-            $errors['email'] = 'User not found';
-        }
-    }
-    //testing
-    else if (!password_verify($password, $foundUser['password'])) {
-        $errors['password'] = 'Wrong password';
-    }
-
-
-    // Stop if errors
-    if (!empty($errors)) {
-        echo json_encode($errors);
-        exit;
-    }
-
-
-    // Start session
-    startSession();
-    $_SESSION['loggedin'] = true;
-    $_SESSION['user_id'] = $foundUser['id'];
-    $_SESSION['user_name'] = $foundUser['name'];
-
-    echo json_encode(["success" => "Logged in successfully."]);
-}
-
+registerUser($data['name'], $data['surname'], $data['email'], $data['password'], $data['password_again']);
 
 function registerUser($name, $surname, $email, $password, $password_again)
 {
@@ -137,18 +88,4 @@ function registerUser($name, $surname, $email, $password, $password_again)
 
     exit;
 
-}
-
-function logoutUser()
-{
-    destroySession();
-}
-
-
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
 }

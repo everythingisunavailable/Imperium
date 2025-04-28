@@ -1,1 +1,4 @@
-config/database.config.php 
+config/database.config.php
+/vendor
+config/google.config.php
+TODO.txt
