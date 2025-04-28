@@ -5,6 +5,10 @@
     --nav-background: rgb(176, 223, 230, 0.3);
     --nav-border: rgba(233, 232, 232, 0.258);
     --nav-button-shadow: rgb(126, 173, 180, 0.7);
+    --banner-background: #efe1f9;
+
+    --purple-accent: #9a37d1;
+    --purple-highlight: #d17cff;
 }
 body{
     width: 100%;
@@ -29,7 +33,28 @@ a, button{
 .content{
     margin-top: 5rem;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
 }
+
+
+h1{
+    font-size: 5vw;
+    color: var(--text-blue);
+}
+.cto-button{
+    padding-block: 15px;
+    padding-inline: 20px;
+    box-sizing: border-box;
+    background-color: var(--purple-accent);
+    border: 2px solid var(--purple-highlight);
+    color: var(--banner-background);
+    font-weight: bold;
+    border-radius: 1rem;
+}
+
 .button-link{
     height: 70%;
     padding-inline: 20px;
@@ -119,6 +144,7 @@ nav, .hamburger{
 
                 @media only screen and (max-width: 975px){
                     width: 10rem;
+                    border: 1px solid black;
                 }
                 
             }
@@ -129,6 +155,10 @@ nav, .hamburger{
                 border-top-right-radius: 5rem;
                 border-bottom-right-radius: 5rem;
                 cursor: pointer;
+                
+                @media only screen and (max-width: 975px){
+                    border: 1px solid black;
+                }
             }
 
         }
@@ -158,6 +188,7 @@ nav, .hamburger{
 
 .hamburger{
     top: 10%;
+    left: 2%;
     height: fit-content;
     width: fit-content;
     flex-direction: column;
@@ -195,4 +226,49 @@ nav, .hamburger{
     &.hide-nav{
         display: none;
     }
+}
+
+.hero{
+    width: 96%;
+    max-height: 90vh;
+    height: fit-content;
+    display: flex;
+    background-color: var(--banner-background);
+    border-radius: 20px;
+
+    .left, .right{
+        width: 50%;
+    }
+    .left{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+
+        .cto{
+            margin-left: 10rem;
+        }
+    }
+
+    .right{
+        .carousel-wrapper{
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            justify-content: end;
+            align-items: start;
+            .carousel{
+                width: 18.5%;
+                display: flex;
+                flex-direction: column;
+                .carousel-item{
+                    width: 100%;
+                    transition: transform 1s ease !important;
+                    img{
+                        width: 90%;
+                    }
+                }
+            }
+        }
+    }
+
 }

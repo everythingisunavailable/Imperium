@@ -18,7 +18,7 @@ if ($query0 == 'login' && !$query1) {
     }
 }
 else if (!$query0 && !$query1) {
-    echo 'home page';
+    showHome();
 }
 else if($query0 == 'profile' && !$query1){
     //TODO : make this page a profile view
