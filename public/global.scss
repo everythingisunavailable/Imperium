@@ -5,6 +5,13 @@
     --nav-background: rgb(176, 223, 230, 0.3);
     --nav-border: rgba(233, 232, 232, 0.258);
     --nav-button-shadow: rgb(126, 173, 180, 0.7);
+    --banner-background: #efe1f9;
+
+    --purple-accent: #9a37d1;
+    --purple-highlight: #d17cff;
+}
+* {
+    -webkit-tap-highlight-color: transparent;
 }
 body{
     width: 100%;
@@ -19,17 +26,99 @@ body{
     align-items: center;
     justify-content: start;
 }
-ul, li, a, button{
+ul, li, a{
     all: unset;
     box-sizing: border-box;
 }
 a, button{
     cursor: pointer;
 }
+button{
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+}
 .content{
     margin-top: 5rem;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
 }
+
+
+h1{
+    font-size: clamp(3rem ,5vw, 20rem);
+    color: var(--text-blue);
+}
+h3{
+    font-weight: bold;
+    font-size: large;
+    color: var(--text-blue);
+}
+.cto-button{
+    padding-block: 15px;
+    padding-inline: 20px;
+    box-sizing: border-box;
+    background-color: var(--purple-accent);
+    border: 2px solid var(--purple-highlight);
+    color: var(--banner-background);
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    position: relative;
+    transition: scale 0.2s ease-out;
+    &:hover{
+        scale: 1.05;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        height: 100%;
+        width: 20px;
+        background: rgba(248, 234, 255, 0.5);
+        animation: button_highlight 3s ease infinite;
+        transform: skew(-10deg);
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        height: 100%;
+        width: 10px;
+        background: rgba(234, 195, 255, 0.5);
+        animation: button_highlight 3s ease 0.1s infinite;
+        transform: skew(-10deg);
+
+    }
+
+    @keyframes button_highlight{
+        0%{
+            opacity: 0;
+            left: 0;
+        }
+        10%{
+            opacity: 1;
+        }
+        20%{
+            opacity: 0;
+            left: 90%;
+        }
+        100%{
+            opacity: 0;
+            left: 90%;
+        }
+    }
+}
+
 .button-link{
     height: 70%;
     padding-inline: 20px;
@@ -119,6 +208,7 @@ nav, .hamburger{
 
                 @media only screen and (max-width: 975px){
                     width: 10rem;
+                    border: 1px solid black;
                 }
                 
             }
@@ -129,6 +219,10 @@ nav, .hamburger{
                 border-top-right-radius: 5rem;
                 border-bottom-right-radius: 5rem;
                 cursor: pointer;
+                
+                @media only screen and (max-width: 975px){
+                    border: 1px solid black;
+                }
             }
 
         }
@@ -158,6 +252,7 @@ nav, .hamburger{
 
 .hamburger{
     top: 10%;
+    left: 2%;
     height: fit-content;
     width: fit-content;
     flex-direction: column;
@@ -194,5 +289,103 @@ nav, .hamburger{
 
     &.hide-nav{
         display: none;
+    }   
+}
+
+.hero{
+    width: 96%;
+    min-height: 90vh;
+    height: fit-content;
+    display: flex;
+    background-color: var(--banner-background);
+    border-radius: 20px;
+    margin-bottom: 3rem;
+
+    .left, .right{
+        width: 50%;
     }
+    .left{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+
+        .cto{
+            margin-left: 10rem;
+            padding-bottom: 5rem;
+        }
+    }
+
+    .right{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .carousel-wrapper{
+            width: 100%;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            .carousel{
+                width: 18.5%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                gap: 1rem;
+                .carousel-item-wrapper{
+                    width: 70%;
+                    min-width: 3rem;
+                    border: 2px solid var(--purple-highlight);
+                    border-radius: 20px;
+                    background-color: rgba(0, 0, 0, 0.1);
+                    transition: background 0.2s ease-out;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: rgba(0, 0, 0, 0.05);
+                    }
+
+                    .carousel-item{
+                        width: 100%;
+                        transition: transform 1s ease !important;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        img{
+                            width: 90%;
+                        }
+                    }
+                    .first-selected{
+                        transform: scale(7) translate(-70%, 40%);
+                        @media only screen and (max-width: 975px){    
+                            transform: scale(7) translate(-60%, 40%);
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+
+    @media only screen and (max-width: 975px){
+        flex-direction: column;
+        min-height: fit-content;
+        height: fit-content;
+        padding-bottom: 2rem;
+        .left, .right{
+            width: 100%;
+        }
+        .left{
+            justify-content: center;
+            align-items: center;
+
+            .cto{
+                margin-inline: 3rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    }
+
 }
