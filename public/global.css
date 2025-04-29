@@ -58,10 +58,27 @@ h1 {
   color: var(--text-blue);
 }
 
+h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-blue);
+}
+@media only screen and (max-width: 650px) {
+  h2 {
+    font-size: 2rem;
+  }
+}
+
 h3 {
   font-weight: bold;
   font-size: large;
   color: var(--text-blue);
+}
+
+.upper-bold {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: whitesmoke;
 }
 
 .cto-button {
@@ -385,4 +402,60 @@ nav .right-button-group, .hamburger .right-button-group {
     align-items: center;
     text-align: center;
   }
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.categories h2 {
+  margin-top: 0;
+}
+.categories .category-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 15rem);
+  grid-template-rows: repeat(2, 11rem);
+  gap: 1rem;
+}
+@media only screen and (max-width: 650px) {
+  .categories .category-wrapper {
+    grid-template-columns: repeat(1, 20rem);
+    grid-template-rows: repeat(4, 11rem);
+  }
+}
+.categories .category-wrapper .category-item {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.categories .category-wrapper .category-item .background {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(1);
+  scale: 1;
+  transition: filter, scale 0.2s ease-out;
+  cursor: pointer;
+}
+.categories .category-wrapper .category-item .background:hover {
+  filter: grayscale(0);
+  scale: 1.05;
+}
+.categories .category-wrapper .category-item .foreground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 10;
 }/*# sourceMappingURL=global.css.map */
