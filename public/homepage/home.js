@@ -32,3 +32,94 @@ function pop_into_view(index){
         }
     }
 }
+
+
+//carousel controller
+class Carousel{
+    car_wrapper;
+    slides;
+    index;
+
+    button_wrapper;
+    buttons;
+
+    interval_id;
+    constructor(carousel_id, buttons_id){
+        this.car_wrapper = document.getElementById(carousel_id);
+        this.slides = this.car_wrapper.children;
+        this.index = 0;
+
+        this.button_wrapper = document.getElementById(buttons_id);
+        let lists = this.button_wrapper.children;
+        this.buttons = [];
+        for (let list of lists){
+            this.buttons.push(list.lastChild);
+        }
+        this.reset_interval();
+    }
+    move(){
+        let amount = this.slides[0].clientWidth;
+        this.car_wrapper.style.transform = `translateX(-${amount * this.index}px)`;
+
+        this.change_button_class();
+        this.reset_interval();
+    }
+    move_to(index){
+        this.index = index;
+        this.move();
+    }
+    move_left(){
+        this.index = (this.index + 1) % this.slides.length;
+        this.move();
+    }
+    move_right(){
+        if(this.index > 0) this.index = (this.index - 1) % this.slides.length;
+        this.move();
+    }
+
+    change_button_class(){
+        for(let i = 0; i < this.buttons.length; i++){
+            if (i == this.index) {
+                this.buttons[i].classList.add('expand-button');
+            }
+            else{
+                this.buttons[i].classList.remove('expand-button');
+            }
+        }
+    }
+    reset_interval(){
+        clearInterval(this.interval_id);
+        this.interval_id = setInterval(()=>{
+            this.move_left();
+        }, 3000);
+    }
+}
+
+let CAROUSEL_ONE;
+//string and integer
+function carousel_one(param, index){
+    console.log('called');
+    
+    if (CAROUSEL_ONE == null) {
+        CAROUSEL_ONE = new Carousel('first-carousel', 'first-carousel-buttons');
+    }
+
+    if (param == 'move_to' && !isNaN(index)) {
+        CAROUSEL_ONE.move_to(index);
+    }
+    else if(param == 'left'){
+        CAROUSEL_ONE.move_left();
+    }
+    else if(param == 'right'){
+        CAROUSEL_ONE.move_right();
+    }
+}
+
+//checks to find the element with that id
+let INTERVAL_ID = setInterval(()=>{
+    const el = document.getElementById('first-carousel');
+    if(el){
+        clearInterval(INTERVAL_ID);
+        carousel_one('nomatter', 0);
+    }
+},500);

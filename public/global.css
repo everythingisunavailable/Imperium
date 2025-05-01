@@ -232,6 +232,7 @@ nav ul li input, .hamburger ul li input {
   nav ul li input, .hamburger ul li input {
     width: 10rem;
     border: 1px solid black;
+    border-right: none;
   }
 }
 nav ul li #search-button, .hamburger ul li #search-button {
@@ -311,7 +312,8 @@ nav .right-button-group, .hamburger .right-button-group {
 
 .carousel-wrapper-basic {
   width: 96%;
-  height: 95vh;
+  height: -moz-fit-content;
+  height: fit-content;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -321,25 +323,29 @@ nav .right-button-group, .hamburger .right-button-group {
   position: relative;
   border-radius: 20px;
   background-color: var(--pink-blue-background);
+  margin-bottom: 3rem;
 }
 .carousel-wrapper-basic .carousel {
   width: 500%;
-  height: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
   box-sizing: border-box;
   display: flex;
   justify-content: start;
-  justify-content: start;
+  transform: translateX(0);
+  transition: transform 0.5s ease-out;
 }
 .carousel-wrapper-basic .carousel .carousel-item {
   width: 20%;
-  height: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .carousel-wrapper-basic .carousel .carousel-item img {
-  height: 90%;
+  width: 60vw;
 }
 .carousel-wrapper-basic .left, .carousel-wrapper-basic .right {
   position: absolute;
@@ -350,6 +356,11 @@ nav .right-button-group, .hamburger .right-button-group {
   width: fit-content;
   height: -moz-fit-content;
   height: fit-content;
+}
+@media only screen and (max-width: 750px) {
+  .carousel-wrapper-basic .left, .carousel-wrapper-basic .right {
+    scale: 0.7;
+  }
 }
 .carousel-wrapper-basic .left {
   left: 1%;
@@ -364,6 +375,11 @@ nav .right-button-group, .hamburger .right-button-group {
   bottom: 2%;
   display: flex;
   justify-content: center;
+}
+@media only screen and (max-width: 750px) {
+  .carousel-wrapper-basic .carousel-button-group {
+    scale: 0.7;
+  }
 }
 .carousel-wrapper-basic .carousel-button-group ul {
   height: 100%;
@@ -386,7 +402,7 @@ nav .right-button-group, .hamburger .right-button-group {
   border: 1px solid black;
   border-radius: 5px;
   background-color: transparent;
-  transition: width, background-color 0.5s ease;
+  transition: width 0.5s ease, background-color 0.5s ease;
 }
 .carousel-wrapper-basic .carousel-button-group ul button:hover {
   background-color: rgba(0, 0, 0, 0.3);

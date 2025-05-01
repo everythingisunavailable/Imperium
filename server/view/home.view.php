@@ -82,39 +82,39 @@ function display_home(){
         
         <h2>BEST SELLING PRODUCTS</h2>
         <div class="carousel-wrapper-basic">
-            <div class="carousel">
+            <div class="carousel" id="first-carousel">
                 
                 <div class="carousel-item">
                     <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/setup-no-background.png" alt="pc">
+                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
                 </div>
                 <div class="carousel-item">
                     <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/setup-no-background.png" alt="pc">
+                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
                 </div>
                 <div class="carousel-item">
                     <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/setup-no-background.png" alt="pc">
+                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
                 </div>
                 <div class="carousel-item">
                     <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/setup-no-background.png" alt="pc">
+                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
                 </div>
                 <div class="carousel-item">
                     <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/setup-no-background.png" alt="pc">
+                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
                 </div>
 
             </div>
-            <button class="left button-link"><img src="assets/icons/left-2-svgrepo-com.svg" width="30px" alt="left"></button>
-            <button class="right button-link"><img src="assets/icons/right-2-svgrepo-com.svg" width="30px" alt="right"></button>
+            <button class="left button-link" onclick="carousel_one('right',0)"><img src="assets/icons/left-2-svgrepo-com.svg" width="30px" alt="left"></button>
+            <button class="right button-link" onclick="carousel_one('left',0)"><img src="assets/icons/right-2-svgrepo-com.svg" width="30px" alt="right"></button>
             <div class="carousel-button-group">
-                <ul>
-                    <li><button class="expand-button"><div class="fill-button"></div></button></li>
-                    <li><button><div class="fill-button"></div></button></li>
-                    <li><button><div class="fill-button"></div></button></li>
-                    <li><button><div class="fill-button"></div></button></li>
-                    <li><button><div class="fill-button"></div></button></li>
+                <ul id="first-carousel-buttons">
+                    <li><button onclick="carousel_one('move_to',0)" class="expand-button"><div class="fill-button"></div></button></li>
+                    <li><button onclick="carousel_one('move_to',1)"><div class="fill-button"></div></button></li>
+                    <li><button onclick="carousel_one('move_to',2)"><div class="fill-button"></div></button></li>
+                    <li><button onclick="carousel_one('move_to',3)"><div class="fill-button"></div></button></li>
+                    <li><button onclick="carousel_one('move_to',4)"><div class="fill-button"></div></button></li>
                 </ul>
             </div>
         </div>

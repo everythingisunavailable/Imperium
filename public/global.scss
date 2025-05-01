@@ -224,6 +224,7 @@ nav, .hamburger{
                 @media only screen and (max-width: 975px){
                     width: 10rem;
                     border: 1px solid black;
+                    border-right: none;
                 }
                 
             }
@@ -309,7 +310,7 @@ nav, .hamburger{
 
 .carousel-wrapper-basic{
     width: 96%;
-    height: 95vh;
+    height: fit-content;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -319,27 +320,28 @@ nav, .hamburger{
     position: relative;
     border-radius: 20px;
     background-color: var(--pink-blue-background);
+    margin-bottom: 3rem;
 
     .carousel{
         width: 500%;
-        height: 100%;
+        height: fit-content;
         box-sizing: border-box;
         display: flex;
         justify-content: start;
 
-        justify-content: start;
+        transform: translateX(0);
+        transition: transform 0.5s ease-out;
 
         .carousel-item{
             width: 20%;
-            height: 100%;
+            height: fit-content;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
 
-
             img{
-                height: 90%;
+                width: 60vw;
             }
         }
     }
@@ -351,6 +353,10 @@ nav, .hamburger{
         padding-block: 10px;
         width: fit-content;
         height: fit-content;
+        
+        @media only screen and (max-width: 750px){
+            scale: 0.7;
+        }
     }
     .left{
         left: 1%;
@@ -367,6 +373,10 @@ nav, .hamburger{
         display: flex;
         justify-content: center;
 
+        @media only screen and (max-width: 750px){
+            scale: 0.7;
+        }
+
         ul{
             height: 100%;
             width: fit-content;
@@ -381,7 +391,6 @@ nav, .hamburger{
             background-color: var(--nav-background);
             backdrop-filter: blur(10px);
             
-
             button{
                 height: 50%;
                 width: 10px;
@@ -389,7 +398,7 @@ nav, .hamburger{
                 border: 1px solid black;
                 border-radius: 5px;
                 background-color: transparent;
-                transition: width, background-color 0.5s ease;
+                transition: width 0.5s ease, background-color 0.5s ease;
                 
                 &:hover{
                     background-color: rgba(0, 0, 0, 0.3);
