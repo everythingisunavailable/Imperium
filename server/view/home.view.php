@@ -77,5 +77,46 @@ function display_home(){
 
             </div>
         </div>
+
+
+        
+        <h2>BEST SELLING PRODUCTS</h2>
+        <div class="carousel-wrapper-basic">
+            <div class="carousel">
+                
+                <div class="carousel-item">
+                    <h3>CARBON X1 BUNDLE</h3>
+                    <img src="assets/pictures/setup-no-background.png" alt="pc">
+                </div>
+                <div class="carousel-item">
+                    <h3>CARBON X1 BUNDLE</h3>
+                    <img src="assets/pictures/setup-no-background.png" alt="pc">
+                </div>
+                <div class="carousel-item">
+                    <h3>CARBON X1 BUNDLE</h3>
+                    <img src="assets/pictures/setup-no-background.png" alt="pc">
+                </div>
+                <div class="carousel-item">
+                    <h3>CARBON X1 BUNDLE</h3>
+                    <img src="assets/pictures/setup-no-background.png" alt="pc">
+                </div>
+                <div class="carousel-item">
+                    <h3>CARBON X1 BUNDLE</h3>
+                    <img src="assets/pictures/setup-no-background.png" alt="pc">
+                </div>
+
+            </div>
+            <button class="left button-link"><img src="assets/icons/left-2-svgrepo-com.svg" width="30px" alt="left"></button>
+            <button class="right button-link"><img src="assets/icons/right-2-svgrepo-com.svg" width="30px" alt="right"></button>
+            <div class="carousel-button-group">
+                <ul>
+                    <li><button class="expand-button"><div class="fill-button"></div></button></li>
+                    <li><button><div class="fill-button"></div></button></li>
+                    <li><button><div class="fill-button"></div></button></li>
+                    <li><button><div class="fill-button"></div></button></li>
+                    <li><button><div class="fill-button"></div></button></li>
+                </ul>
+            </div>
+        </div>
     HTML;
 }
