@@ -6,6 +6,8 @@
   --nav-button-shadow: rgb(126, 173, 180, 0.7);
   --lavander-background: #efe1f9;
   --pink-blue-background: #f9e1f4;
+  --blue-mist-background: #e1f0f9;
+  --peach-cream-background: #f9f1e1;
   --purple-accent: #9a37d1;
   --purple-highlight: #d17cff;
 }
@@ -322,7 +324,7 @@ nav .right-button-group, .hamburger .right-button-group {
   overflow: hidden;
   position: relative;
   border-radius: 20px;
-  background-color: var(--pink-blue-background);
+  background-color: var(--peach-cream-background);
   margin-bottom: 3rem;
 }
 .carousel-wrapper-basic .carousel {
@@ -333,7 +335,7 @@ nav .right-button-group, .hamburger .right-button-group {
   display: flex;
   justify-content: start;
   transform: translateX(0);
-  transition: transform 0.5s ease-out;
+  transition: transform 1s ease-out;
 }
 .carousel-wrapper-basic .carousel .carousel-item {
   width: 20%;
@@ -415,7 +417,7 @@ nav .right-button-group, .hamburger .right-button-group {
   width: 0%;
   background-color: black;
   border-radius: 5px;
-  animation: fill_btn_animation 3s linear forwards;
+  animation: fill_btn_animation 5s linear forwards;
 }
 @keyframes fill_btn_animation {
   0% {

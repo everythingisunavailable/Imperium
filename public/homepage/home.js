@@ -91,15 +91,13 @@ class Carousel{
         clearInterval(this.interval_id);
         this.interval_id = setInterval(()=>{
             this.move_left();
-        }, 3000);
+        }, 5000);
     }
 }
 
 let CAROUSEL_ONE;
 //string and integer
-function carousel_one(param, index){
-    console.log('called');
-    
+function carousel_one(param, index){    
     if (CAROUSEL_ONE == null) {
         CAROUSEL_ONE = new Carousel('first-carousel', 'first-carousel-buttons');
     }
@@ -115,11 +113,52 @@ function carousel_one(param, index){
     }
 }
 
+let CAROUSEL_TWO;
+//string and integer
+function carousel_two(param, index){
+    if (CAROUSEL_TWO == null) {
+        CAROUSEL_TWO = new Carousel('second-carousel', 'second-carousel-buttons');
+    }
+
+    if (param == 'move_to' && !isNaN(index)) {
+        CAROUSEL_TWO.move_to(index);
+    }
+    else if(param == 'left'){
+        CAROUSEL_TWO.move_left();
+    }
+    else if(param == 'right'){
+        CAROUSEL_TWO.move_right();
+    }
+}
+
+let CAROUSEL_THREE;
+//string and integer
+function carousel_three(param, index){
+    if (CAROUSEL_THREE == null) {
+        CAROUSEL_THREE = new Carousel('third-carousel', 'third-carousel-buttons');
+    }
+
+    if (param == 'move_to' && !isNaN(index)) {
+        CAROUSEL_THREE.move_to(index);
+    }
+    else if(param == 'left'){
+        CAROUSEL_THREE.move_left();
+    }
+    else if(param == 'right'){
+        CAROUSEL_THREE.move_right();
+    }
+}
+
 //checks to find the element with that id
 let INTERVAL_ID = setInterval(()=>{
-    const el = document.getElementById('first-carousel');
-    if(el){
+    const el1 = document.getElementById('first-carousel');
+    const el2 = document.getElementById('second-carousel');
+    const el3 = document.getElementById('third-carousel');
+    
+    if(el1 && el2){
         clearInterval(INTERVAL_ID);
         carousel_one('nomatter', 0);
+        carousel_two('nomatter', 0);
+        carousel_three('nomatter', 0);
     }
 },500);
