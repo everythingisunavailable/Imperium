@@ -58,12 +58,13 @@ h1{
     color: var(--text-blue);
 }
 h2{
+    width: 100%;
     font-size: 3rem;
     font-weight: 800;
     color: var(--text-blue);
-
+    text-align: center;
     @media only screen and (max-width: 650px){
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 }
 h3{
@@ -332,7 +333,7 @@ nav, .hamburger{
         justify-content: start;
 
         transform: translateX(0);
-        transition: transform 1s ease-out;
+        transition: transform 0.5s ease-out;
 
         .carousel-item{
             width: 20%;
@@ -390,8 +391,8 @@ nav, .hamburger{
             align-items: center;
             gap: 0.5rem;
             
-            background-color: var(--nav-background);
             backdrop-filter: blur(10px);
+            background-color: var(--nav-background);
             
             button{
                 height: 50%;

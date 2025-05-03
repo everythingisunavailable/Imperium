@@ -62,13 +62,15 @@ h1 {
 }
 
 h2 {
+  width: 100%;
   font-size: 3rem;
   font-weight: 800;
   color: var(--text-blue);
+  text-align: center;
 }
 @media only screen and (max-width: 650px) {
   h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -335,7 +337,7 @@ nav .right-button-group, .hamburger .right-button-group {
   display: flex;
   justify-content: start;
   transform: translateX(0);
-  transition: transform 1s ease-out;
+  transition: transform 0.5s ease-out;
 }
 .carousel-wrapper-basic .carousel .carousel-item {
   width: 20%;
@@ -393,9 +395,9 @@ nav .right-button-group, .hamburger .right-button-group {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--nav-background);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
+  background-color: var(--nav-background);
 }
 .carousel-wrapper-basic .carousel-button-group ul button {
   height: 50%;
