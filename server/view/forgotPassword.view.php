@@ -9,7 +9,7 @@ function display_forgot(){
             
             <div class="right">
                 <div class="form-container" id="form-container">
-                    <form method="post" id="login" onsubmit="flip(event)">
+                    <form method="post" id="login" onsubmit="request_Recovery(event, 'requestCode')">
                         <h2>PASSWORD RECOVERY</h2>
                         <p>A 6 digit code will be sent to your email address. If it is not there check your spam folder.</p>
                         <label for="email_forgot">Email</label>
@@ -23,13 +23,13 @@ function display_forgot(){
                         </div>
                     </form>
 
-                    <form method="post" class="hide" id="register">
+                    <form method="post" class="hide" id="register" onsubmit="request_Recovery(event, 'verifyCode')">
                         <h2>PASSWORD RECOVERY</h2>
-                        <p id="message">waiting for response...</p>
+                        <p id="message">For a new code or change of email, click on the link below verify button.</p>
                         <label for="code">Input your code here</label>
-                        <input type="text" name="name" placeholder="x.x.x.x.x.x" required id="code" disabled>
+                        <input type="text" name="name" placeholder="x.x.x.x.x.x" required id="code">
                         <div class="button-container">
-                            <button disabled>Verify</button>
+                            <button>Verify</button>
                         </div>
                         <div class="link-container">
                             <a href="#" onclick="flip(event)" class="align-link-middle">Input email again</a>

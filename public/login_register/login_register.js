@@ -1,6 +1,6 @@
 let flipped = false;
 function flip(event){   
-    event.preventDefault();
+    if (event) event.preventDefault();
 
     let form = document.getElementById('form-container');
     if(flipped){
