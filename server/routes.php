@@ -24,7 +24,7 @@ else if($query0 == 'profile' && !$query1){
     //TODO : make this page a profile view
     startSession();
     if (isset($_SESSION['user_id'])){
-        echo '<h1>Welcome <span style ="color: blue">'. $_SESSION['user_name']. '</h1>';
+        showProfile();
     }
     else{
         showLoginForm();
