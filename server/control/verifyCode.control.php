@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') die();
 require_once '../../config/session.php';
 startSession();
 if (!isset($_SESSION['recoveryEmail'])) {
-    echo json_encode(['error' => 'You have not started a password recovery session, unable to continue.']);
+    echo json_encode(['code' => 'You have not started a password recovery session, unable to continue.']);
     die();
 }
 
@@ -23,20 +23,20 @@ function verifyCode($code) {
     $foundUser = $user->getUserByEmail($email);
     
     if (empty($foundUser)) {
-        echo json_encode(['error' => 'Failed to retrieve user data for this email.']);
+        echo json_encode(['code' => 'Failed to retrieve user data for this email.']);
         die();
     } else if ($foundUser['resetCode'] == null) {
-        echo json_encode(['error' => 'Database has no record of a recovery code for this email.']);
+        echo json_encode(['code' => 'Database has no record of a recovery code for this email.']);
         die();
     }
 
     if (!doesCodeMatch($code, $foundUser['resetCode'])) {
-        echo json_encode(['error' => 'Code entered does not match the recovery code.']);
+        echo json_encode(['code' => 'Code entered does not match the recovery code.']);
         die();
     }
 
     if (isCodeValid($foundUser['resetCodeExpiry'])) {
-        echo json_encode(['error' => 'Recovery code has expired, please request a new one.']);
+        echo json_encode(['code' => 'Recovery code has expired, please request a new one.']);
         //Remove session since code expired
         session_unset();
         session_destroy();
@@ -47,7 +47,7 @@ function verifyCode($code) {
     if ($codeApproved) {
         echo json_encode(['success' => 'Recovery code verified successfully.']);
     } else {
-        echo json_encode(['error' => 'Failed to approve code in database.']);
+        echo json_encode(['code' => 'Failed to approve code in database.']);
     }
 }
 

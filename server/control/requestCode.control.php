@@ -13,14 +13,14 @@ function requestCode($email) {
     $user = new User();
     $foundUser = $user->getUserByEmail($email);
     if (empty($foundUser)) {
-        echo json_encode(['error' => 'Email not found.']);
+        echo json_encode(['recovery_email' => 'Email not found.']);
         die();
     }
 
     $code = random_int(100000, 999999);
     $tokenGenerated = $user->generateRecoveryToken($email, $code);
     if (!$tokenGenerated) {
-        echo json_encode(['error' => 'Failed to generate recovery token.']);
+        echo json_encode(['recovery_email' => 'Failed to generate recovery token.']);
         die();
     }
 
@@ -31,7 +31,7 @@ function requestCode($email) {
 
         echo json_encode(['success' => 'Recovery email send successfully.']);
     } else {
-        echo json_encode(['error' => 'Failed to send mail.']);
+        echo json_encode(['recovery_email' => 'Failed to send mail.']);
     }
 }
 

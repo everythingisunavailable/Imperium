@@ -137,7 +137,7 @@ function check_login_errors(email, password){
     return count;
 }
 
-// TODO: CONTINUE WITH THE OTHER SIGNUP FUNCTION HERE
+
 function check_signup_errors(name, surname, email, password, password_again){
     let count = 0;
 
@@ -208,7 +208,7 @@ function check_signup_errors(name, surname, email, password, password_again){
 
 
 function display_errors() {
-
+    //login errors
     if (login_errors.email != null && !login_errors.displayed_email) {
         create_error_message(login_errors.email, email_login_div);
         login_errors.displayed_email = true;
@@ -218,6 +218,7 @@ function display_errors() {
         login_errors.displayed_password = true;
     }
 
+    //signup errors
     if (signup_errors.email != null && !signup_errors.displayed_email){
         create_error_message(signup_errors.email, email_signup_div);
         signup_errors.displayed_email = true;
@@ -236,6 +237,28 @@ function display_errors() {
     if (signup_errors.password_again != null && !signup_errors.displayed_password_again){
         create_error_message(signup_errors.password_again, password_again_div);
         signup_errors.displayed_password_again = true;
+    }
+
+    //forgot password email errors
+    if (forgot_password_errors.email != null && !forgot_password_errors.displayed_email) {
+        create_error_message(forgot_password_errors.email, document.getElementById('email_forgot'));
+        forgot_password_errors.displayed_email = true;
+    }
+
+    //code errors
+    if (code_errors.code != null && !code_errors.displayed_code) {
+        create_error_message(code_errors.code, document.getElementById('code'));
+        code_errors.displayed_code = true;
+    }
+
+    //new password errors
+    if (new_password_errors.new_password != null && !new_password_errors.displayed_new_password) {
+        create_error_message(new_password_errors.new_password, document.getElementById('password_change'));
+        new_password_errors.displayed_new_password = true;
+    }
+    if (new_password_errors.repeat_password != null && !new_password_errors.displayed_repeat_password) {
+        create_error_message(new_password_errors.repeat_password, document.getElementById('password_again_change'));
+        new_password_errors.displayed_repeat_password = true;
     }
 }
 

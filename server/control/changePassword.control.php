@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') die();
 require_once '../../config/session.php';
 startSession();
 if (!isset($_SESSION['recoveryEmail'])) {
-    echo json_encode(['error' => 'You have not started a password recovery session, unable to continue.']);
+    echo json_encode(['password_again' => 'You have not started a password recovery session, unable to continue.']);
     die();
 }
 
@@ -22,15 +22,15 @@ function resetPassword($newPass, $confirmPass) {
     $user = new User();
     $foundUser = $user->getUserByEmail($email);
     if (empty($foundUser)) {
-        echo json_encode(["error" => "Failed to retrieve user data for this email."]);
+        echo json_encode(["password_again" => "Failed to retrieve user data for this email."]);
         die();
     } else if ($foundUser['newPasswordExpiry'] == null) {
-        echo json_encode(["error" => "This email in not approved yet to make a password change."]);
+        echo json_encode(["password_again" => "This email in not approved yet to make a password change."]);
         die();
     }
 
     if (hasNewPasswordExpired($foundUser['newPasswordExpiry'])) {
-        echo json_encode(['error' => 'Your reset password time has expired.']);
+        echo json_encode(['password_again' => 'Your reset password time has expired.']);
         die();
     }
 
@@ -43,7 +43,7 @@ function resetPassword($newPass, $confirmPass) {
         session_destroy();
         echo json_encode(["success" => "Password changed successfully."]);
     } else {
-        echo json_encode(["error" => "Failed to change password in the database."]);
+        echo json_encode(["password_again" => "Failed to change password in the database."]);
     }
 }
 
@@ -65,7 +65,7 @@ function validateNewPassword($newPass, $confirmPass) {
     }
 
     if (empty($confirmPass)) {
-        $errors['repassword'] = "Repeated password is required";
+        $errors['password_again'] = "Repeated password is required";
     } else {
         if ($newPass !== $confirmPass) {
             $errors['password_again'] = "Passwords do not match.";
