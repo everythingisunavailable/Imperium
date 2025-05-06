@@ -21,20 +21,21 @@ function verifyCode($code) {
 
     $user = new User();
     $foundUser = $user->getUserByEmail($email);
+    
     if (empty($foundUser)) {
         echo json_encode(['error' => 'Failed to retrieve user data for this email.']);
         die();
-    } else if ($foundUser[0]['resetCode'] == null) {
+    } else if ($foundUser['resetCode'] == null) {
         echo json_encode(['error' => 'Database has no record of a recovery code for this email.']);
         die();
     }
 
-    if (!doesCodeMatch($code, $foundUser[0]['resetCode'])) {
+    if (!doesCodeMatch($code, $foundUser['resetCode'])) {
         echo json_encode(['error' => 'Code entered does not match the recovery code.']);
         die();
     }
 
-    if (isCodeValid($foundUser[0]['resetCodeExpiry'])) {
+    if (isCodeValid($foundUser['resetCodeExpiry'])) {
         echo json_encode(['error' => 'Recovery code has expired, please request a new one.']);
         //Remove session since code expired
         session_unset();

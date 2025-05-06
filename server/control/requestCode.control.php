@@ -36,33 +36,29 @@ function requestCode($email) {
 }
 
 function sendMail($receiver, $code) {
-    //Xampp version
-    $subject = 'Password Reset Code';
-    $body = 'Your password reset code is '.$code.'. This code will expire in 5 minutes.';
-    $sender = 'noreply@Imperium.com';
-
-    $emailConfirmed = mail($receiver, $subject, $body, $sender);
-    return $emailConfirmed;
-
     //PHP Mailer Version
-    /*
-    require 'vendor/autoload.php';
+    require '../../vendor/autoload.php';
+    require '../../config/mailer.config.php';
 
-    $mail = new PHPMailer\PHPMailer\PHPMailer();
-    $mail->isSMTP();
-    $mail->SMTPAuth = true;
-    $mail->Host = 'localhost';
-    $mail->SMTPSecure = 'tls';
-    $mail->Username = 'notifications.imperium@gmail.com';
-    $mail->Password = 'wxgsuywslymywyce';
-    $mail->Port = 587;
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+    
+    try {
+        $mail->isSMTP();
+        $mail->SMTPAuth = true;
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPSecure = 'tls';
+        $mail->Username = 'notifications.imperium@gmail.com';
+        $mail->Password =  MAILER_PASSWORD;
+        $mail->Port = 587;
 
-    $mail->isHTML(true);
-    $mail->setFrom('no-reply@Imperium.com', 'Imperium');
-    $mail->addAddress($receiver);
-    $mail->Subject = 'Password Reset Code';
-    $mail->Body = 'Your password reset code is '.$code.'. This code will expire in 5 minutes.';
+        $mail->isHTML(true);
+        $mail->setFrom('no-reply@Imperium.com', 'Imperium');
+        $mail->addAddress($receiver);
+        $mail->Subject = 'Password Reset Code';
+        $mail->Body = 'Your password reset code is '.$code.'. This code will expire in 5 minutes.';
 
-    return $mail->send();
-    */
+        return $mail->send();
+    } catch (Exception $e) {
+        echo json_encode(['error'=> $mail->ErrorInfo]);
+    }
 }
