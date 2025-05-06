@@ -4,7 +4,7 @@
   height: -moz-fit-content;
   height: fit-content;
   display: flex;
-  background-color: var(--banner-background);
+  background-color: var(--lavander-background);
   border-radius: 20px;
   margin-bottom: 3rem;
 }
@@ -148,4 +148,12 @@
   pointer-events: none;
   background-color: rgba(255, 255, 255, 0.1);
   z-index: 10;
+}
+
+.second-carousel-wrapper-basic {
+  background-color: var(--blue-mist-background);
+}
+
+.third-carousel-wrapper-basic {
+  background-color: var(--pink-blue-background);
 }/*# sourceMappingURL=homepage.css.map */
