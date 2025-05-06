@@ -5,9 +5,8 @@ async function request_Recovery(event, type) {
         let forgottenEmail = document.getElementById('email_forgot').value.trim();
         await code_request(forgottenEmail);
     } else if (type == "verifyCode") {
-        let forgottenEmail = document.getElementById('email_forgot').value.trim();
         let code = document.getElementById('code').value.trim();
-        await code_verify(forgottenEmail, code);
+        await code_verify(code);
     } else if (type == "changePassword") {
         let newPass = document.getElementById('password_change').value.trim();
         let confirmPass = document.getElementById('password_again_change').value.trim();
