@@ -24,12 +24,12 @@ function resetPassword($newPass, $confirmPass) {
     if (empty($foundUser)) {
         echo json_encode(["error" => "Failed to retrieve user data for this email."]);
         die();
-    } else if ($foundUser[0]['newPasswordExpiry'] == null) {
+    } else if ($foundUser['newPasswordExpiry'] == null) {
         echo json_encode(["error" => "This email in not approved yet to make a password change."]);
         die();
     }
 
-    if (hasNewPasswordExpired($foundUser[0]['newPasswordExpiry'])) {
+    if (hasNewPasswordExpired($foundUser['newPasswordExpiry'])) {
         echo json_encode(['error' => 'Your reset password time has expired.']);
         die();
     }

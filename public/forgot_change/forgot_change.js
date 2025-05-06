@@ -69,5 +69,5 @@ async function change_password(newPass, confirmPass){
         alert(json['error']);
     } else {
         alert('Handle error messages related to new password/confirm password');
-    }
+    }   
 }
