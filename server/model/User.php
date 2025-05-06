@@ -45,4 +45,19 @@ class User
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public function generateRecoveryToken($email, $code) {
+        $expiry = date("Y-m-d H-i-s", time() + 60 * 3); //current time plus 3 minutes
+        $stmt = $this->conn->prepare("UPDATE users SET resetCode = ?, resetCodeExpiry = ?, newPasswordExpiry = ? WHERE email = ?");
+        return $stmt->execute([$code, $expiry, null, $email]);
+    }
+    public function approveResetCode($email) {
+        $expiry = date("Y-m-d H-i-s", time() + 60 * 3); //current time plus 3 minutes
+        $stmt = $this->conn->prepare("UPDATE users SET resetCode = ?, resetCodeExpiry = ?, newPasswordExpiry = ? WHERE email = ?");
+        return $stmt->execute([null, null, $expiry, $email]);
+    }
+    public function updatePassword($email, $password) {
+        $hashed = password_hash($password, PASSWORD_BCRYPT);
+        $stmt = $this->conn->prepare("UPDATE users SET password = ?, newPasswordExpiry = ? WHERE email = ?");
+        return $stmt->execute([$hashed, null, $email]);
+    }
 }
