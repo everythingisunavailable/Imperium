@@ -18,16 +18,16 @@ if ($query0 == 'login' && !$query1) {
     }
 }
 else if (!$query0 && !$query1) {
-    echo 'home page';
+    showHome();
 }
 else if($query0 == 'profile' && !$query1){
     //TODO : make this page a profile view
     startSession();
     if (isset($_SESSION['user_id'])){
-        echo '<h1>Welcome <span style ="color: blue">'. $_SESSION['user_name']. '</h1>';
+        showProfile();
     }
     else{
-        echo 'not logged in / sessino not started';
+        showLoginForm();
     }
 }
 else if ($query0 == 'product' && !$query1) {

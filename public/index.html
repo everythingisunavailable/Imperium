@@ -3,21 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title> Home</title>
     <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="login_register.css">
+    <link rel="stylesheet" href="login_register/login_register.css">
+    <link rel="stylesheet" href="homepage/homepage.css">
+    <link rel="stylesheet" href="profileFolder/profile.css">
+
 </head>
 <body>
+    <nav id="nav">
+        <ul class="left-button-group">
+            <li id="logo"><a href="/imperium/public/" onclick="eventGoTo(event, '/imperium/public/')"><img src="assets/imperium_logo_yellow_transparent.png" alt="home" width="70px"></a></li>
+            <li><button class="button-link ham-button" onclick="toggle_ham_menu()"><img src="assets/icons/hamburger-menu-svgrepo-com.svg" alt="shop" width="40px"><span class="icon-name"></span></button></li>
+            <li><span class="spacer hide-navbar-item" id="first-spacer">|</span></li>
+            <li><a class="button-link hide-navbar-item" href="/imperium/public/product" onclick="eventGoTo(event, '/imperium/public/product')"><img src="assets/icons/shop-svgrepo-com.svg" alt="shop" width="25px"><span class="icon-name">Shop</span></a></li>
+            <li><a class="button-link hide-navbar-item" href="/imperium/public/deales" onclick="eventGoTo(event, '/imperium/public/deals')"><img src="assets/icons/dollar-svgrepo-com.svg" alt="offers" width="25px"><span class="icon-name">Deals</span></a></li>
+            <li><a class="button-link hide-navbar-item" href="/imperium/public/about" onclick="eventGoTo(event, '/imperium/public/about')"><img src="assets/icons/info-circle-svgrepo-com.svg" alt="about" width="25px"><span class="icon-name">About</span></a></li>
+        </ul>
+
+        <ul class="right-button-group">
+            <li id="search-section"><input type="text" placeholder="search..."><button id="search-button"><img src="assets/icons/search-svgrepo-com.svg" alt="search" width="30px"></button></li>   
+            <li><span class="spacer hide-navbar-item">|</span></li>
+            <li><a class="button-link hide-navbar-item" href="/imperium/public/cart" onclick="eventGoTo(event, '/imperium/public/cart')"><img src="assets/icons/cart-large-minimalistic-svgrepo-com.svg" alt="cart" width="30px"></a></li>
+            <li><a class="button-link hide-navbar-item" href="/imperium/public/profile" onclick="eventGoTo(event, '/imperium/public/profile')"><img src="assets/icons/user-svgrepo-com.svg" alt="profile" width="30px"></a></li>
+        </ul>
+    </nav>
+
+    <div class="hamburger hide-nav">
+        <ul class="left-button-group">
+            <li><a class="button-link" href="/imperium/public/product" onclick="eventGoTo(event, '/imperium/public/product')"><img src="assets/icons/shop-svgrepo-com.svg" alt="shop" width="25px"><span class="icon-name">Shop</span></a></li>
+            <li><a class="button-link" href="/imperium/public/deales" onclick="eventGoTo(event, '/imperium/public/deals')"><img src="assets/icons/dollar-svgrepo-com.svg" alt="offers" width="25px"><span class="icon-name">Deals</span></a></li>
+            <li><a class="button-link" href="/imperium/public/about" onclick="eventGoTo(event, '/imperium/public/about')"><img src="assets/icons/info-circle-svgrepo-com.svg" alt="about" width="25px"><span class="icon-name">About</span></a></li>
+        </ul>
+
+        <ul class="right-button-group">
+            <li><a class="button-link" href="/imperium/public/cart" onclick="eventGoTo(event, '/imperium/public/cart')"><img src="assets/icons/cart-large-minimalistic-svgrepo-com.svg" alt="cart" width="25px"><span class="icon-name">Cart</span></a></li>
+            <li><a class="button-link" href="/imperium/public/profile" onclick="eventGoTo(event, '/imperium/public/profile')"><img src="assets/icons/user-svgrepo-com.svg" alt="profile" width="25px"><span class="icon-name">Profile</span></a></li>
+        </ul>
+    </div>
+
     
-    <!--duke testuar navigimet e faqes (linket per tu ndryshuar)-->
-    <button onclick="goTo('product')">products</button>
-    <button onclick="goTo('/imperium/public/')">home</button>
-    <button onclick="goTo('profile')">Profile</button>
-    <button onclick="goTo('login')">login</button>
+    <button class="button-link floating-button" id="go_top_button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"><img src="assets/icons/up-2-svgrepo-com.svg" width="30px" height="30px" alt="top"></button>
+
+    <div class="content">
+    </div>
     
-    <div class="content"></div>
-    
+    <script src="/imperium/public/main.js"></script>
     <script src="/imperium/public/routes.js"></script>
-    <script src="/imperium/public/login_register.js"></script>
+    <script src="/imperium/public/login_register/login_register.js"></script>
+    <script src="/imperium/public/forgot_change/forgot_change.js"></script>
+    <script src="/imperium/public/homepage/home.js"></script>
+    
 </body> 
-</html>
+</html.

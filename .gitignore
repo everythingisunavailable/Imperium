@@ -1,3 +1,5 @@
 config/database.config.php
 /vendor
 config/google.config.php
+config/mailer.config.php
+TODO.txt

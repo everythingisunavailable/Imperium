@@ -1,4 +1,12 @@
 <?php
+function showHome(){
+    require_once 'view/home.view.php';
+    display_home();
+}
+function showProfile(){
+    require_once 'view/profile.view.php';
+    display_profile();
+}
 function showLoginForm(){
     require_once 'view/login.view.php';
     display_login();
