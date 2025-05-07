@@ -158,42 +158,23 @@ function display_home(){
             </div>
         </div>
 
-        <h2>SAVE ON THESE BOUNDLES</h2>
-        <div class="carousel-wrapper-basic third-carousel-wrapper-basic">
-            <div class="carousel" id="third-carousel">
-                
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
+        <div class="selling-points-section">
+            <div class="left">
+                <div class="left-wrapper">
+                    <h1>WHAT WE OFFER</h1>
                 </div>
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-
             </div>
-            <button class="left button-link" onclick="carousel_three('right',0)"><img src="assets/icons/left-2-svgrepo-com.svg" width="30px" alt="left"></button>
-            <button class="right button-link" onclick="carousel_three('left',0)"><img src="assets/icons/right-2-svgrepo-com.svg" width="30px" alt="right"></button>
-            <div class="carousel-button-group">
-                <ul id="third-carousel-buttons">
-                    <li><button onclick="carousel_three('move_to',0)" class="expand-button"><div class="fill-button"></div></button></li>
-                    <li><button onclick="carousel_three('move_to',1)"><div class="fill-button"></div></button></li>
-                    <li><button onclick="carousel_three('move_to',2)"><div class="fill-button"></div></button></li>
-                    <li><button onclick="carousel_three('move_to',3)"><div class="fill-button"></div></button></li>
-                    <li><button onclick="carousel_three('move_to',4)"><div class="fill-button"></div></button></li>
-                </ul>
+
+            <div class="right">
+                <div class="right-wrapper">
+                    <ul>
+                        <li><img src="assets/icons/diamond-bullet-point.png" alt="bullet point">Unmatched Perfomance</li>
+                        <li><img src="assets/icons/diamond-bullet-point.png" alt="bullet point">Transparent Pricing</li>
+                        <li><img src="assets/icons/diamond-bullet-point.png" alt="bullet point">Expernt Support</li>
+                        <li><img src="assets/icons/diamond-bullet-point.png" alt="bullet point">Rock-Solid Security</li>
+                        <li><img src="assets/icons/diamond-bullet-point.png" alt="bullet point">Future-Proof Technology</li>
+                    </ul>
+                </div>
             </div>
         </div>
     HTML;

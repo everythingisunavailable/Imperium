@@ -36,7 +36,7 @@ async function getData() {
         if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
         }
-    
+        //TODO : add loading animation here
         const data = await response.text();
 
         //testing
