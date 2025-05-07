@@ -230,4 +230,50 @@
   .selling-points-section .left .left-wrapper, .selling-points-section .right .left-wrapper {
     padding: 0;
   }
+}
+
+.testimonials {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 5rem;
+}
+.testimonials .testimonial-item {
+  position: relative;
+  max-width: 500px;
+  padding-top: 32px;
+  display: flex;
+  align-items: end;
+}
+.testimonials .testimonial-item .user-image {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+}
+.testimonials .testimonial-item .user-image img {
+  width: 64px;
+  border-radius: 50%;
+}
+.testimonials .testimonial-item .text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.6);
+}
+.testimonials .testimonial-item .text .name {
+  font-weight: 800;
+  text-align: center;
+}
+.testimonials .testimonial-item .text .title {
+  opacity: 0.8;
+}
+.testimonials .testimonial-item .text p {
+  text-align: center;
+  padding-inline: 1rem;
 }/*# sourceMappingURL=homepage.css.map */

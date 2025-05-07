@@ -247,3 +247,52 @@
         }
     }
 }
+
+.testimonials{
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 5rem;
+    .testimonial-item{
+        position: relative;
+        max-width: 500px;
+        padding-top: 32px;
+        display: flex;
+        align-items: end;
+        
+        .user-image{
+            position: absolute;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: center;
+
+            img{
+                width: 64px;
+                border-radius: 50%;
+            }
+        }
+
+        .text{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.6);
+            .name{
+                font-weight: 800;
+                text-align: center;
+            }
+            .title{
+                opacity: 0.8;
+            }
+            p{
+                text-align: center;
+                padding-inline: 1rem;
+            }
+        }
+    }
+}
