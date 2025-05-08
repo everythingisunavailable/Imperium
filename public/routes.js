@@ -36,12 +36,11 @@ async function getData() {
         if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
         }
-    
+
+        document.querySelector('.content').innerHTML = create_page_loader();
         const data = await response.text();
 
-        //testing
         document.querySelector('.content').innerHTML = data;
-        //end testing
 
     } catch (error) {
         console.error(error.message);

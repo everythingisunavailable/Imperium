@@ -118,3 +118,7 @@ function close_ham_menu(event){
 window.addEventListener('click',  (event)=>{    
     close_ham_menu(event);
 });
+
+function create_page_loader(){
+    return '<div class="page-loader"></div>';
+}
