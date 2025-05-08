@@ -170,7 +170,7 @@ function display_home(){
                     <ul>
                         <li><img src="assets/icons/diamond-bullet-point.png" alt="bullet point">Unmatched Perfomance</li>
                         <li><img src="assets/icons/diamond-bullet-point.png" alt="bullet point">Transparent Pricing</li>
-                        <li><img src="assets/icons/diamond-bullet-point.png" alt="bullet point">Expernt Support</li>
+                        <li><img src="assets/icons/diamond-bullet-point.png" alt="bullet point">Expert Support</li>
                         <li><img src="assets/icons/diamond-bullet-point.png" alt="bullet point">Rock-Solid Security</li>
                         <li><img src="assets/icons/diamond-bullet-point.png" alt="bullet point">Future-Proof Technology</li>
                     </ul>

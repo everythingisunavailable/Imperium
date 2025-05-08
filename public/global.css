@@ -474,7 +474,8 @@ footer .links {
   gap: 2rem;
 }
 footer .links ul {
-  width: 7rem;
+  width: -moz-fit-content;
+  width: fit-content;
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -497,10 +498,12 @@ footer .links .contact {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  align-items: center;
 }
 footer .links .contact .social-media {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 0.5rem;
 }
 footer .links .contact .social-media a {
@@ -511,7 +514,26 @@ footer .policy {
   display: flex;
   justify-content: center;
   text-align: center;
-  padding-top: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   margin-top: 1rem;
   border-top: 3px solid grey;
+  opacity: 0.8;
+}
+
+.page-loader {
+  margin-top: 10rem;
+  animation: rotate 1s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }/*# sourceMappingURL=global.css.map */
