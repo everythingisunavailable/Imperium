@@ -293,7 +293,7 @@ function clear_error(){
         signup_errors.displayed_surname = false;
     }
     else if(signup_errors.displayed_name){
-        name_div.nextElementSibling(remove());
+        name_div.nextElementSibling.remove();
         signup_errors.displayed_name = false;
     }
     else if(signup_errors.displayed_password){
