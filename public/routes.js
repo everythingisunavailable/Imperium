@@ -55,6 +55,7 @@ window.addEventListener("popstate", (event) => {getData()});
 function goTo(url){
     history.pushState({tab: new URL(location).pathname}, "", url);
     getData();
+    window.scrollTo({top: "0", behavior: "smooth"});
 }
 function eventGoTo(event, url){
     event.preventDefault();

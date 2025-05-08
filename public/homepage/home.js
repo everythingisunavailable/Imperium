@@ -28,7 +28,9 @@ function pop_into_view(index){
         else{
             reset_element(pc_array[i]);
             //reset the buttons also
-            btn_array[i].disabled = false;
+            if (btn_array[i] && btn_array[i].disabled) {
+                btn_array[i].disabled = false;
+            }
         }
     }
 }
