@@ -39,8 +39,11 @@ async function getData() {
         }
 
         document.querySelector('.content').innerHTML = create_page_loader();
+        console.log('fetching data');
+        
         const data = await response.text();
 
+        //add data do main page
         document.querySelector('.content').innerHTML = data;
 
     } catch (error) {
