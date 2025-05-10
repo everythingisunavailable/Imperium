@@ -6,7 +6,6 @@ excpected to be called on every GET
 */
 
 const BASE_URL = "public/";
-
 function extract_link(){
     let url = window.location.pathname;
     let sub_url = url.substring(url.indexOf(BASE_URL) + BASE_URL.length);
@@ -27,7 +26,9 @@ function extract_link(){
     return get_url
 }
 
-
+function create_page_loader(){
+    return '<div class="page-loader"><img src="assets/icons/fan-circled-svgrepo-com.svg" alt="loader"></div>';
+}
 async function getData() {
     const url = extract_link();
 
