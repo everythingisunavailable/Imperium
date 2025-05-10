@@ -16,9 +16,12 @@ function showForgotPassword(){
     display_forgot();
 }
 function showChangePassword(){
-    //NOTE (FRENKI) : check for sessions
     require_once 'view/changePassword.view.php';
     display_change_password();   
+}
+function showProducts(){
+    require_once 'view/products.view.php';
+    display_products();
 }
 function logoutUser()
 {
