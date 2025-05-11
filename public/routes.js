@@ -38,8 +38,8 @@ async function getData() {
         throw new Error(`Response status: ${response.status}`);
         }
 
+        //add page loader animation
         document.querySelector('.content').innerHTML = create_page_loader();
-        console.log('fetching data');
         
         const data = await response.text();
 
