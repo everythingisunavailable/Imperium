@@ -9,8 +9,7 @@ if (!isset($_SESSION['recoveryEmail'])) {
 }
 
 include 'helper.control.php';
-require_once '../model/User.php';
-require_once './helper.control.php';
+require '../model/User.php';
 
 $raw_data = file_get_contents("php://input");
 $data = json_decode($raw_data, true);
