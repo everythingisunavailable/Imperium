@@ -103,8 +103,7 @@ function verifyCurrentPasword()
     }
 }
 
-function changePassword()
-{
+function changePassword(){
 
     startSession();
 
