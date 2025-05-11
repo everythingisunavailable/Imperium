@@ -7,17 +7,17 @@ echo <<<HTML
                 <h3>FILTER BY :</h3>
                 <!--Same for evry category-->
                 <fieldset class="price">
-                    <legend>Price</legend>
+                    <legend>Price (ALL)</legend>
                     <label for="min">Min Price</label>
                     <div class="price-item">
-                        <input type="number" id="min" value="0">
-                        <input type="range" id="min-range">
+                        <input type="number" id="min" value="0" onchange="update_value('number')">
+                        <input type="range" id="min-range" value="0" onchange="update_value('range')">
                     </div>
 
                     <label for="max">Max Price</label>
                     <div class="price-item">
-                        <input type="number" id="max" value="999999">
-                        <input type="range" id="max-range">
+                        <input type="number" id="max" value="200000" onchange="update_value('number')">
+                        <input type="range" id="max-range" value="100" onchange="update_value('range')">
                     </div>
                     <button class="filter-button">Filter</button>
                 </fieldset>
