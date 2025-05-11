@@ -8,7 +8,7 @@ function display_forgot(){
             </div>
             
             <div class="right">
-                <div class="form-container" id="form-container">
+                <div class="form-container displace-hide animate-in" id="form-container">
                     <form method="post" id="login" onsubmit="request_Recovery(event, 'requestCode')">
                         <h2>PASSWORD RECOVERY</h2>
                         <p>A 6 digit code will be sent to your email address. If it is not there check your spam folder.</p>

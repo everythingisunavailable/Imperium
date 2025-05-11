@@ -9,7 +9,7 @@ function display_change_password(){
             </div>
             
             <div class="right">
-                <div class="form-container" id="form-container">
+                <div class="form-container displace-hide animate-in" id="form-container">
                     <!-- send a request on submit -->
                     <form method="post" id="login" onsubmit="request_Recovery(event, 'changePassword')">
                         <h2>CHANGE PASSWORD</h2>

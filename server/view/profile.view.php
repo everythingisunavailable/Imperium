@@ -2,14 +2,14 @@
 function display_profile(){
     echo <<<HTML
     <div class="profile-page">
-  <aside class="profile-sidebar">
+  <aside class="profile-sidebar displace-hide animate-in">
     <img src="assets/pictures/profilepic.png" alt="Profile Picture" class="profile-picture" />
     <h2 class="profile-name">Imperium</h2>
     <p class="profile-email">nuk_e_di@gmail.com</p>
     <p class="profile-member-since">Member since: Jan 2023</p>
   </aside>
 
-  <main class="profile-main">
+  <main class="profile-main displace-hide animate-in">
     <section class="profile-section">
       <h3 class="section-title">Order History</h3>
       <ul class="item-list">
@@ -26,7 +26,7 @@ function display_profile(){
 
     <section class="profile-section">
       <h3 class="section-title">Saved Items</h3>
-      <div class="saved-items-grid">
+      <div class="saved-items-grid displace-hide animate-in">
         <div class="item-card">
           <h4 class="item-title">Razer Blade 16 (2024)</h4>
           <p class="item-subtext">Intel i9, RTX 4080, 32GB RAM</p>

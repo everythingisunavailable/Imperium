@@ -3,7 +3,7 @@ function display_home(){
     echo <<<HTML
         <div class="hero">
             <div class="left">
-                <div class="cto">
+                <div class="cto displace-hide animate-in">
                     <h1>Conquer Your Next Build</h1>
                     <h3>High-performance parts. Unmatched reliability. Built for victory.</h3>
                     <button class="cto-button">BUY NOW</button>
@@ -12,28 +12,28 @@ function display_home(){
 
             <div class="right" id="hero-right" >
                 <div class="carousel-wrapper">
-                    <div class="carousel">
+                    <div class="carousel displace-hide animate-in">
 
                         <button class="carousel-item-wrapper pc_btn" disabled onclick="btn_pop_into_view(this, 0)">
                             <div class="carousel-item first-selected">
                                 <img src="assets/pictures/pc-item.png" alt="prebuild pc">
                             </div>
-                        </button>                    
+                        </button>
                         <button class="carousel-item-wrapper pc_btn" onclick="btn_pop_into_view(this, 1)">
                             <div class="carousel-item">
                                 <img src="assets/pictures/pc-item.png" alt="prebuild pc">
                             </div>
-                        </button>                        
+                        </button>
                         <button class="carousel-item-wrapper pc_btn" onclick="btn_pop_into_view(this, 2)">
                             <div class="carousel-item">
                                 <img src="assets/pictures/pc-item.png" alt="prebuild pc">
                             </div>
-                        </button>                        
+                        </button>
                         <button class="carousel-item-wrapper pc_btn" onclick="btn_pop_into_view(this, 3)">
                             <div class="carousel-item">
                                 <img src="assets/pictures/pc-item.png" alt="prebuild pc">
                             </div>
-                        </button>                        
+                        </button>
                         <button class="carousel-item-wrapper pc_btn" onclick="btn_pop_into_view(this, 4)">
                             <div class="carousel-item">
                                 <img src="assets/pictures/pc-item.png" alt="prebuild pc">
@@ -46,7 +46,7 @@ function display_home(){
         </div>
 
         
-        <div class="categories">
+        <div class="categories displace-hide animate-in">
             <h2>Explore Categories</h2>
             <div class="category-wrapper">
 
@@ -81,7 +81,7 @@ function display_home(){
 
         
         <h2>BEST SELLING PRODUCTS</h2>
-        <div class="carousel-wrapper-basic">
+        <div class="carousel-wrapper-basic displace-hide animate-in">
             <div class="carousel" id="first-carousel">
                 
                 <div class="carousel-item">
@@ -120,7 +120,7 @@ function display_home(){
         </div>
 
         <h2>NEW PRODUCTS</h2>
-        <div class="carousel-wrapper-basic second-carousel-wrapper-basic">
+        <div class="carousel-wrapper-basic second-carousel-wrapper-basic displace-hide animate-in">
             <div class="carousel" id="second-carousel">
                 
                 <div class="carousel-item">
@@ -158,7 +158,7 @@ function display_home(){
             </div>
         </div>
 
-        <div class="selling-points-section">
+        <div class="selling-points-section displace-hide animate-in">
             <div class="left">
                 <div class="left-wrapper">
                     <h1>WHAT WE OFFER</h1>
@@ -179,7 +179,7 @@ function display_home(){
         </div>
 
         <h2>TESTIMONIALS</h2>
-        <div class="testimonials">
+        <div class="testimonials displace-hide animate-in">
             <div class="testimonial-item">
                 <div class="user-image">
                     <img src="assets/pictures/man_blue_shirt.png" alt="User">
