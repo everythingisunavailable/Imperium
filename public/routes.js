@@ -6,7 +6,6 @@ excpected to be called on every GET
 */
 
 const BASE_URL = "public/";
-
 function extract_link(){
     let url = window.location.pathname;
     let sub_url = url.substring(url.indexOf(BASE_URL) + BASE_URL.length);
@@ -27,7 +26,9 @@ function extract_link(){
     return get_url
 }
 
-
+function create_page_loader(){
+    return '<div class="page-loader"><img src="assets/icons/fan-circled-svgrepo-com.svg" alt="loader"></div>';
+}
 async function getData() {
     const url = extract_link();
 
@@ -36,12 +37,14 @@ async function getData() {
         if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
         }
-    
+
+        //add page loader animation
+        document.querySelector('.content').innerHTML = create_page_loader();
+        
         const data = await response.text();
 
-        //testing
+        //add data do main page
         document.querySelector('.content').innerHTML = data;
-        //end testing
 
     } catch (error) {
         console.error(error.message);
@@ -56,6 +59,7 @@ window.addEventListener("popstate", (event) => {getData()});
 function goTo(url){
     history.pushState({tab: new URL(location).pathname}, "", url);
     getData();
+    window.scrollTo({top: "0", behavior: "smooth"});
 }
 function eventGoTo(event, url){
     event.preventDefault();

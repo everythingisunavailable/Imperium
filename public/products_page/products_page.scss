@@ -1,0 +1,130 @@
+.main{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    .filter-panel{
+        width: 18rem;
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding-inline: 1rem;
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+        .price{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            label{
+                width: 100%;
+                padding-block: 0rem;
+                border: 0;
+                &:hover{
+                    background-color: inherit;
+                }
+            }
+            .price-item{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                #min, #max{
+                    width: 80px;
+                    height: 30px;
+                    border: 1px solid lightgrey;
+                    border-radius: 5px;
+                    font-size: 18px;
+                }
+            }
+
+            .filter-button{
+                margin-top: 1rem;
+            }
+        }
+
+        fieldset{
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid lightgrey;
+            border-inline: none;
+            border-bottom: none;
+            legend{
+                font-weight: bold;
+            }
+            label{
+                padding-block: 0.5rem;
+                border-radius: 10px;
+                transition: background-color 0.5s ease-out;
+                opacity: 0.9;
+                cursor: pointer;
+                &:hover{
+                    background-color: rgb(235, 235, 235);
+                }
+            }
+        }
+    }
+    .content-panel{
+        width: 83%;
+        margin-left: 1rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        
+        .sorting-header{
+            width: 100%;
+            padding-inline: 1rem;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 20px;
+            box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+            label{
+                opacity: 0.8;
+            }
+            .right{
+                select{
+                    box-sizing: border-box;
+                    padding: 5px;
+                    border-radius: 5px;
+                    border: 1px solid lightgrey;
+                    font-size: medium;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .cards{
+            margin-top: 1rem;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            .card-item{
+                width: 15rem;
+                height: 20rem;
+                background-color: var(--peach-cream-background);
+                border: 1px solid lightgrey;
+                border-radius: 10px;
+            }
+        }
+
+        .page-controls{
+            width: 100%;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+
+            .button-group{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+
+                #page_nr{
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}

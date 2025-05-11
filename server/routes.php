@@ -31,8 +31,7 @@ else if($query0 == 'profile' && !$query1){
     }
 }
 else if ($query0 == 'product' && !$query1) {
-
-    echo 'all products page';
+    showProducts();
 }
 else if ($query0 == 'product' && $query1) {
 
