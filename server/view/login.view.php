@@ -19,7 +19,7 @@ function display_login(){
             </div>
             
             <div class="right">
-                <div class="form-container" id="form-container">
+                <div class="form-container displace-hide animate-in" id="form-container">
                     <form action="#" method="post" id="login" onsubmit="save_data(event, 'login')">
                         <h2>SIGN IN</h2>
                         <label for="email_login">Email</label>

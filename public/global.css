@@ -570,4 +570,14 @@ footer .policy {
   100% {
     transform: rotateZ(360deg);
   }
+}
+.displace-hide {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.animate-in {
+  opacity: 0;
+  transform: translateY(20rem);
 }/*# sourceMappingURL=global.css.map */

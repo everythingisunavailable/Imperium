@@ -118,3 +118,14 @@ function close_ham_menu(event){
 window.addEventListener('click',  (event)=>{    
     close_ham_menu(event);
 });
+
+//animate the elements on scroll
+let ANIMATION_INTERVAL_ID = setInterval(animate,100);
+function animate(){
+    let elements = document.getElementsByClassName('animate-in');
+    for (let i = 0; i < elements.length; i++) {
+        if (elements[i].offsetTop < window.scrollY + window.innerHeight) {
+            elements[i].classList.remove('animate-in');
+        }
+    }
+}
