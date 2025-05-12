@@ -1,4 +1,4 @@
-// Hero section pc carousel
+// Hero section pc selection
 function scale_and_move(element, delta_x, delta_y, scale){
     element.style.transform = `scale(${scale}) translate(${delta_x / scale}px, ${delta_y / scale}px)`;
 }
@@ -28,7 +28,9 @@ function pop_into_view(index){
         else{
             reset_element(pc_array[i]);
             //reset the buttons also
-            btn_array[i].disabled = false;
+            if (btn_array[i] && btn_array[i].disabled) {
+                btn_array[i].disabled = false;
+            }
         }
     }
 }
@@ -131,34 +133,14 @@ function carousel_two(param, index){
     }
 }
 
-let CAROUSEL_THREE;
-//string and integer
-function carousel_three(param, index){
-    if (CAROUSEL_THREE == null) {
-        CAROUSEL_THREE = new Carousel('third-carousel', 'third-carousel-buttons');
-    }
-
-    if (param == 'move_to' && !isNaN(index)) {
-        CAROUSEL_THREE.move_to(index);
-    }
-    else if(param == 'left'){
-        CAROUSEL_THREE.move_left();
-    }
-    else if(param == 'right'){
-        CAROUSEL_THREE.move_right();
-    }
-}
-
 //checks to find the element with that id
 let INTERVAL_ID = setInterval(()=>{
     const el1 = document.getElementById('first-carousel');
     const el2 = document.getElementById('second-carousel');
-    const el3 = document.getElementById('third-carousel');
     
     if(el1 && el2){
         clearInterval(INTERVAL_ID);
         carousel_one('nomatter', 0);
         carousel_two('nomatter', 0);
-        carousel_three('nomatter', 0);
     }
 },500);

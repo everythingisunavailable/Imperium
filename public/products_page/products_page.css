@@ -1,0 +1,121 @@
+.main {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+.main .filter-panel {
+  width: 18rem;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding-inline: 1rem;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+}
+.main .filter-panel .price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main .filter-panel .price label {
+  width: 100%;
+  padding-block: 0rem;
+  border: 0;
+}
+.main .filter-panel .price label:hover {
+  background-color: inherit;
+}
+.main .filter-panel .price .price-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main .filter-panel .price .price-item #min, .main .filter-panel .price .price-item #max {
+  width: 80px;
+  height: 30px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  font-size: 18px;
+}
+.main .filter-panel .price .filter-button {
+  margin-top: 1rem;
+}
+.main .filter-panel fieldset {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid lightgrey;
+  border-inline: none;
+  border-bottom: none;
+}
+.main .filter-panel fieldset legend {
+  font-weight: bold;
+}
+.main .filter-panel fieldset label {
+  padding-block: 0.5rem;
+  border-radius: 10px;
+  transition: background-color 0.5s ease-out;
+  opacity: 0.9;
+  cursor: pointer;
+}
+.main .filter-panel fieldset label:hover {
+  background-color: rgb(235, 235, 235);
+}
+.main .content-panel {
+  width: 83%;
+  margin-left: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.main .content-panel .sorting-header {
+  width: 100%;
+  padding-inline: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+}
+.main .content-panel .sorting-header label {
+  opacity: 0.8;
+}
+.main .content-panel .sorting-header .right select {
+  box-sizing: border-box;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  font-size: medium;
+  cursor: pointer;
+}
+.main .content-panel .cards {
+  margin-top: 1rem;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.main .content-panel .cards .card-item {
+  width: 15rem;
+  height: 20rem;
+  background-color: var(--peach-cream-background);
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+}
+.main .content-panel .page-controls {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+.main .content-panel .page-controls .button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.main .content-panel .page-controls .button-group #page_nr {
+  font-size: 1.5rem;
+}/*# sourceMappingURL=products_page.css.map */

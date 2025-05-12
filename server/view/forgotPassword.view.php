@@ -19,7 +19,7 @@ function display_forgot(){
                             <button>Send Code</button>
                         </div>
                         <div class="link-container">
-                            <a href="#" onclick="flip(event)" class="align-link-middle">already got the code?</a>
+                            <a onclick="flip(event)" class="align-link-middle">already got the code?</a>
                         </div>
                     </form>
 
@@ -32,7 +32,7 @@ function display_forgot(){
                             <button>Verify</button>
                         </div>
                         <div class="link-container">
-                            <a href="#" onclick="flip(event)" class="align-link-middle">Input email again</a>
+                            <a onclick="flip(event)" class="align-link-middle">Input email again</a>
                         </div>
                     </form>
 
