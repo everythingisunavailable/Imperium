@@ -1,7 +1,7 @@
 <?php
 require_once "../../config/session.php";
-require_once "../model/User.php";
-require_once "./helper.control.php";
+require "../model/User.php";
+require_once "helper.control.php";
 
 function viewProfile()
 {

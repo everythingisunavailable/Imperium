@@ -2,7 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] != 'POST') die();
 
 include 'helper.control.php';
-require_once '../model/User.php';
+require '../model/User.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

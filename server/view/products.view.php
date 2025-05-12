@@ -3,7 +3,7 @@
 function display_products(){
 echo <<<HTML
         <div class="main">
-            <div class="filter-panel">
+            <div class="filter-panel displace-hide animate-in">
                 <h3>FILTER BY :</h3>
                 <!--Same for evry category-->
                 <fieldset class="price">
@@ -43,7 +43,7 @@ echo <<<HTML
 
             <div class="content-panel">
 
-                <div class="sorting-header">
+                <div class="sorting-header displace-hide animate-in">
                     <div class="left">
                         <h3>SORT :</h3>
                     </div>
@@ -63,7 +63,7 @@ echo <<<HTML
                     </div>
                 </div>
 
-                <div class="cards">
+                <div class="cards displace-hide animate-in">
                     <div class="card-item"></div>
                     <div class="card-item"></div>
                     <div class="card-item"></div>

@@ -1,6 +1,4 @@
 <?php
-require_once "../config/session.php";
-
 function showHome()
 {
     require_once 'view/home.view.php';

@@ -2,7 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] != 'POST') die();
 
 include 'helper.control.php';
-require_once '../model/User.php';
+require '../model/User.php';
 
 $raw_data = file_get_contents("php://input");
 $data = json_decode($raw_data, true);
