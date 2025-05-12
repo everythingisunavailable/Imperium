@@ -27,7 +27,7 @@ else if($query0 == 'profile' && !$query1){
         showProfile();
     }
     else{
-        showProfile();
+        showLoginForm();
     }
 }
 else if ($query0 == 'product' && !$query1) {
