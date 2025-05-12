@@ -1,6 +1,7 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
+require_once  '../vendor/autoload.php';
 require_once '../config/google.config.php';
+require_once '../model/User.php';
 
 session_start();
 

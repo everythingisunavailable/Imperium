@@ -9,6 +9,9 @@ function showHome()
 function showProfile()
 {
     require_once 'view/profile.view.php';
+    require_once './UserProfilController.php';
+    getOrderHistoryJson();
+    getSavedItemsJson();
     display_profile();
 }
 function showLoginForm()
@@ -40,6 +43,15 @@ function getLocalUserId()
 {
     startSession();
     return $_SESSION['user_id'] ?? null;
+}
+function getAuthenticatedUserId()
+{
+    $googleId = getGoogleUserId();
+    if ($googleId !== null) {
+        return $googleId;
+    }
+
+    return getLocalUserId();
 }
 function test_input($data)
 {

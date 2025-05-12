@@ -47,7 +47,8 @@ function registerUser($name, $surname, $email, $password, $password_again)
     if (empty($password)) {
         $errors['password'] = "Password is required";
     } else {
-        if (strlen($password) < 8 ||
+        if (
+            strlen($password) < 8 ||
             !preg_match('/^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/', $password)
         ) {
             $errors['password'] = "Password must be at least 8 characters long and contain at least one letter, one number, and one special character.";
@@ -62,7 +63,7 @@ function registerUser($name, $surname, $email, $password, $password_again)
             $errors['password_again'] = "Passwords do not match.";
         }
     }
-    
+
 
     // Check if user exists
     $user = new User();
@@ -88,5 +89,4 @@ function registerUser($name, $surname, $email, $password, $password_again)
     }
 
     exit;
-
 }

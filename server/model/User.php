@@ -131,8 +131,9 @@ class User
     public function updateUser($userId, $newData)
     {
         // Step 1: Get current data
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = ?");
-        $stmt->execute([$userId]);
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :userId");
+        //$stmt->execute([$userId]);
+        $stmt->bindParam(':userId', $userId);
         $currentData = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$currentData) {
@@ -166,8 +167,9 @@ class User
 
     public function changePassword($userId, $oldPass, $newPass){
     // Get user
-    $stmt = $this->conn->prepare("SELECT password FROM users WHERE id = ?");
-    $stmt->execute([$userId]);
+    $stmt = $this->conn->prepare("SELECT password FROM users WHERE id = :userId");
+    $stmt->bindParam(':userId', $userId);
+    //$stmt->execute([$userId]);
     $user = $stmt->fetch();
 
     if (!$user || !password_verify($oldPass, $user['password'])) {
@@ -179,4 +181,19 @@ class User
     $stmt = $this->conn->prepare("UPDATE users SET password = ? WHERE id = ?");
     return $stmt->execute([$newHash, $userId]);
     }
+
+    public function getOrderHistory($userId){
+        $stmt = $this->conn->prepare("SELECT order_id, product_name, delivered_date FROM orders WHERE user_id = :userId ORDER BY delivered_date DESC");
+        $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getSavedProducts($userId){
+       // $stmt = $this->conn->prepare("HERE use query which take data of products from saved products");
+        /*$stmt = $this->conn->prepare("SELECT product_id, product_name, saved_date FROM saved_products WHERE user_id = :userId ORDER BY saved_date DESC");
+        $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);*/
+    }
+    
 }

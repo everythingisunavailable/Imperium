@@ -131,3 +131,33 @@ function changePassword(){
         echo json_encode(["error" => "Failed to update password."]);
     }
 }
+
+function getOrderHistoryJson(){
+    $userId = getAuthenticatedUserId();
+
+    if (!$userId) {
+        echo json_encode(["error" => "Unauthorized"]);
+        return;
+    }
+
+    $user = new User();
+    $orders = $user->getOrderHistory($userId);
+
+    echo json_encode(["orders" => $orders]);
+}
+
+ function getSavedItemsJson(){
+
+    $userId = getAuthenticatedUserId();
+
+    if (!$userId) {
+        echo json_encode(["error" => "Unauthorized"]);
+        return;
+    }
+
+    $user = new User();
+    $savedItems = $user->getSavedProducts($userId);
+
+    echo json_encode(["savedItems" => $savedItems]);
+}
+
