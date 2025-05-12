@@ -32,7 +32,7 @@ function display_profile(){
         <li class="item-card">
           <div class="order-item">
             <div class="order-img">
-              <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="Alienware x17">
+              <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="Alienware x17">
             </div>
             <div class="order-details">
               <p><strong>Order #12345</strong></p>
@@ -41,9 +41,9 @@ function display_profile(){
               <p class="item-price">$2,499.00</p>
               <p class="item-subtext">Delivered: March 21, 2025</p>
               <div class="product-carousel">
-                <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="">
-                <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="">
-                <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="">
+                <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="">
+                <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="">
+                <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="">
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@ function display_profile(){
         <li class="item-card">
           <div class="order-item">
             <div class="order-img">
-              <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="Razer BlackWidow V4">
+              <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="Razer BlackWidow V4">
             </div>
             <div class="order-details">
               <p><strong>Order #12312</strong></p>
@@ -60,8 +60,8 @@ function display_profile(){
               <p class="item-price">$169.99</p>
               <p class="item-subtext">Delivered: February 14, 2025</p>
               <div class="product-carousel">
-                <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="">
-                <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="">
+                <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="">
+                <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="">
               </div>
             </div>
           </div>
@@ -74,27 +74,27 @@ function display_profile(){
       <div class="saved-items-grid displace-hide animate-in">
         <div class="item-card">
           <div class="saved-img">
-            <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="Razer Blade 16">
+            <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="Razer Blade 16">
           </div>
           <h4 class="item-title">Razer Blade 16 (2024)</h4>
           <p class="item-info">Intel i9 • RTX 4080 • 32GB RAM • 1TB SSD</p>
           <p class="item-price">$2,299.00</p>
           <div class="product-carousel">
-            <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="">
-            <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="">
+            <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="">
+            <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="">
           </div>
           <button class="add-to-cart">Add to Cart</button>
         </div>
         <div class="item-card">
           <div class="saved-img">
-            <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="Logitech G Pro X">
+            <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="Logitech G Pro X">
           </div>
           <h4 class="item-title">Logitech G Pro X Wireless Headset</h4>
           <p class="item-info">DTS:X • 2.4GHz Wireless • Blue VO!CE Mic</p>
           <p class="item-price">$199.99</p>
           <div class="product-carousel">
-            <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="">
-            <img src="assets/pictures/Alienware x17 Gaming Laptop" alt="">
+            <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="">
+            <img src="assets/pictures/Alienware_x17_Gaming_Laptop.jpeg" alt="">
           </div>
           <button class="add-to-cart">Add to Cart</button>
         </div>
