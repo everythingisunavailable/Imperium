@@ -3,8 +3,11 @@
 function display_products(){
 echo <<<HTML
         <div class="main">
-            <div class="filter-panel displace-hide animate-in">
-                <h3>FILTER BY :</h3>
+            <div class="filter-panel" id="filter_panel">
+                <div class="filter-header">
+                    <h3>FILTER BY :</h3>
+                    <button class="button-link small-ham-button" onclick="show_filters()"><img src="assets/icons/hamburger-menu-svgrepo-com.svg" alt="filters" width="32px" height="32px"></button>
+                </div>  
                 <!--Same for evry category-->
                 <fieldset class="price">
                     <legend>Price (ALL)</legend>
@@ -43,9 +46,10 @@ echo <<<HTML
 
             <div class="content-panel">
 
-                <div class="sorting-header displace-hide animate-in">
+                <div class="sorting-header">
                     <div class="left">
                         <h3>SORT :</h3>
+                        <button class="button-link small-ham-button" id="small_ham_button" onclick="show_filters()"><img src="assets/icons/hamburger-menu-svgrepo-com.svg" alt="filters" width="32px" height="32px"></button>
                     </div>
                     <div class="right">
                         <label for="sort">Sort by : </label>

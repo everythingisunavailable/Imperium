@@ -3,12 +3,28 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 3rem;
+    position: relative;
+    .small-ham-button{
+        border-radius: 10px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        margin: 5px;
+    }
+
     .filter-panel{
         width: 18rem;
         border-radius: 20px;
         box-sizing: border-box;
         padding-inline: 1rem;
         box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+        background-color: var(--body-background);
+        z-index: 50;
+        .filter-header{
+            display: flex;
+            justify-content: space-between;
+        }
         .price{
             display: flex;
             flex-direction: column;
@@ -60,7 +76,20 @@
                 }
             }
         }
+        @media only screen and (max-width: 900px){
+            display: none;
+            position: absolute;
+            left: 0%;
+            top: 0%;
+            &.show-filters{
+                display: block;
+            }
+            button{
+                display: flex;
+            }
+        }    
     }
+    
     .content-panel{
         width: 83%;
         margin-left: 1rem;
@@ -77,10 +106,25 @@
             justify-content: space-between;
             border-radius: 20px;
             box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
-            label{
-                opacity: 0.8;
+            .left{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+                @media only screen and (max-width: 900px){
+                    h3{
+                        display: none;
+                    }
+                    button{
+                        display: flex;
+                    }
+                }
             }
             .right{
+                label{
+                    display: inline;     
+                    opacity: 0.8;
+                }
                 select{
                     box-sizing: border-box;
                     padding: 5px;
@@ -88,6 +132,15 @@
                     border: 1px solid lightgrey;
                     font-size: medium;
                     cursor: pointer;
+                }
+
+                @media only screen and (max-width: 900px){
+                    label{
+                        display: none;
+                    }
+                    select{
+                        font-size: small;
+                    }
                 }
             }
         }
@@ -106,6 +159,10 @@
                 background-color: var(--peach-cream-background);
                 border: 1px solid lightgrey;
                 border-radius: 10px;
+                @media only screen and (max-width: 900px){
+                    width: 28vw;
+                    height: 37.33vw;
+                }
             }
         }
 
@@ -125,6 +182,11 @@
                     font-size: 1.5rem;
                 }
             }
+        }
+
+        @media only screen and (max-width: 900px){
+            width: 100%;
+            margin-left: 0;
         }
     }
 }

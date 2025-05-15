@@ -44,6 +44,23 @@ function update_value(changed_element){
             max_range.value = real_number;
             break;
     }
-
-    
 }
+
+function show_filters(){
+    let panel = document.getElementById('filter_panel');
+    if(panel && panel.classList.contains('show-filters')){
+        panel.classList.remove('show-filters');
+    }
+    else if (panel && !panel.classList.contains('show-filters')){
+        panel.classList.add('show-filters');
+    }
+}
+function hide_filters(event){
+    let panel = document.getElementById('filter_panel');
+    if(panel && panel.classList.contains('show-filters') && !panel.contains(event.target) && !document.getElementById('small_ham_button').contains(event.target)){
+        panel.classList.remove('show-filters');
+    }
+}
+window.addEventListener( 'click', (event)=>{
+    hide_filters(event);
+});
