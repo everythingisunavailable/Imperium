@@ -5,7 +5,7 @@ class User
 
     public function __construct()
     {
-        require '../../config/db.php';
+        require '../config/db.php';
         $this->conn = $conn;
     }
     // Authentication and Identify functions
@@ -82,23 +82,27 @@ class User
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public function generateRecoveryToken($email, $code) {
+    public function generateRecoveryToken($email, $code)
+    {
         $expiry = date("Y-m-d H-i-s", time() + 60 * 3); //current time plus 3 minutes
         $stmt = $this->conn->prepare("UPDATE users SET resetCode = ?, resetCodeExpiry = ?, newPasswordExpiry = ? WHERE email = ?");
         return $stmt->execute([$code, $expiry, null, $email]);
     }
-    public function approveResetCode($email) {
+    public function approveResetCode($email)
+    {
         $expiry = date("Y-m-d H-i-s", time() + 60 * 3); //current time plus 3 minutes
         $stmt = $this->conn->prepare("UPDATE users SET resetCode = ?, resetCodeExpiry = ?, newPasswordExpiry = ? WHERE email = ?");
         return $stmt->execute([null, null, $expiry, $email]);
     }
-    public function updatePasswordByEmail($email, $password) {
+    public function updatePasswordByEmail($email, $password)
+    {
         $hashed = password_hash($password, PASSWORD_BCRYPT);
         $stmt = $this->conn->prepare("UPDATE users SET password = ?, newPasswordExpiry = ? WHERE email = ?");
         return $stmt->execute([$hashed, null, $email]);
     }
 
-    public function getUserByGoogleId($googleId) {
+    public function getUserByGoogleId($googleId)
+    {
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE google_id = :google_id");
         $stmt->bindParam(':google_id', $googleId);
         $stmt->execute();
@@ -124,7 +128,7 @@ class User
         return $stmt->execute([$hashed, $userId]);
     }
 
-    
+
 
     //Profile Menagement functions
 
@@ -154,7 +158,7 @@ class User
 
         // Step 3: Add user ID to params
         if (empty($fieldsToUpdate)) {
-            return false; 
+            return false;
         }
 
         $params[] = $userId;
@@ -165,35 +169,37 @@ class User
         return $stmt->execute($params);
     }
 
-    public function changePassword($userId, $oldPass, $newPass){
-    // Get user
-    $stmt = $this->conn->prepare("SELECT password FROM users WHERE id = :userId");
-    $stmt->bindParam(':userId', $userId);
-    //$stmt->execute([$userId]);
-    $user = $stmt->fetch();
+    public function changePassword($userId, $oldPass, $newPass)
+    {
+        // Get user
+        $stmt = $this->conn->prepare("SELECT password FROM users WHERE id = :userId");
+        $stmt->bindParam(':userId', $userId);
+        //$stmt->execute([$userId]);
+        $user = $stmt->fetch();
 
-    if (!$user || !password_verify($oldPass, $user['password'])) {
-        return false; // wrong current password
+        if (!$user || !password_verify($oldPass, $user['password'])) {
+            return false; // wrong current password
+        }
+
+        // Update password
+        $newHash = password_hash($newPass, PASSWORD_DEFAULT);
+        $stmt = $this->conn->prepare("UPDATE users SET password = ? WHERE id = ?");
+        return $stmt->execute([$newHash, $userId]);
     }
 
-    // Update password
-    $newHash = password_hash($newPass, PASSWORD_DEFAULT);
-    $stmt = $this->conn->prepare("UPDATE users SET password = ? WHERE id = ?");
-    return $stmt->execute([$newHash, $userId]);
-    }
-
-    public function getOrderHistory($userId){
+    /*public function getOrderHistory($userId)
+    {
         $stmt = $this->conn->prepare("SELECT order_id, product_name, delivered_date FROM orders WHERE user_id = :userId ORDER BY delivered_date DESC");
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    public function getSavedProducts($userId){
-       // $stmt = $this->conn->prepare("HERE use query which take data of products from saved products");
+    }*/
+    public function getSavedProducts($userId)
+    {
+        // $stmt = $this->conn->prepare("HERE use query which take data of products from saved products");
         /*$stmt = $this->conn->prepare("SELECT product_id, product_name, saved_date FROM saved_products WHERE user_id = :userId ORDER BY saved_date DESC");
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);*/
     }
-    
 }

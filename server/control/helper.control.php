@@ -7,8 +7,8 @@ function showHome()
 function showProfile()
 {
     require_once 'view/profile.view.php';
-    require_once './UserProfilController.php';
-    getOrderHistoryJson();
+    require_once 'userProfilController.php';
+    //getOrderHistoryJson();
     getSavedItemsJson();
     display_profile();
 }
@@ -28,7 +28,8 @@ function showChangePassword()
     require_once 'view/changePassword.view.php';
     display_change_password();
 }
-function showProducts(){
+function showProducts()
+{
     require_once 'view/products.view.php';
     display_products();
 }

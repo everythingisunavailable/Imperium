@@ -1,6 +1,6 @@
 <?php
-require_once "../../config/session.php";
-require "../model/User.php";
+require_once "../config/session.php";
+require "./model/User.php";
 require_once "helper.control.php";
 
 function viewProfile()
@@ -103,7 +103,8 @@ function verifyCurrentPasword()
     }
 }
 
-function changePassword(){
+function changePassword()
+{
 
     startSession();
 
@@ -132,7 +133,8 @@ function changePassword(){
     }
 }
 
-function getOrderHistoryJson(){
+/*function getOrderHistoryJson()
+{
     $userId = getAuthenticatedUserId();
 
     if (!$userId) {
@@ -144,9 +146,10 @@ function getOrderHistoryJson(){
     $orders = $user->getOrderHistory($userId);
 
     echo json_encode(["orders" => $orders]);
-}
+}*/
 
- function getSavedItemsJson(){
+function getSavedItemsJson()
+{
 
     $userId = getAuthenticatedUserId();
 
@@ -160,4 +163,3 @@ function getOrderHistoryJson(){
 
     echo json_encode(["savedItems" => $savedItems]);
 }
-
