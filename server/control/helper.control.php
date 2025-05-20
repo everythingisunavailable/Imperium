@@ -32,6 +32,7 @@ function showProducts(){
 function showSpecificProduct(){
     require_once 'view/specificProduct.view.php';
     display_specific_product();
+}
 function showCart(){
     require_once 'view/cart.view.php';
     display_cart();
