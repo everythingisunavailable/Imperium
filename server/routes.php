@@ -37,6 +37,9 @@ else if ($query0 == 'product' && $query1) {
 
     echo 'one specific product to be displayed';
 }
+else if ($query0 == 'cart' && !$query1) {
+    showCart();
+}
 else if ($query0 == 'forgot-password'){
     showForgotPassword();
 }
