@@ -1,0 +1,64 @@
+.main-section {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+.main-section .product-picture-carousel {
+  width: 60%;
+  margin-bottom: 0;
+}
+.main-section .product-picture-carousel button {
+  opacity: 0.8;
+}
+.main-section .description {
+  width: 38%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.main-section .description h2 {
+  text-align: start;
+  margin-block: 0.5rem;
+}
+.main-section .description .price-section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.main-section .description .price-section .original-price {
+  font-size: 1.7rem;
+  opacity: 0.8;
+  text-decoration: line-through;
+}
+.main-section .description .price-section .price {
+  font-size: 3rem;
+}
+.main-section .description p {
+  opacity: 0.8;
+}
+.main-section .description button {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+@media only screen and (max-width: 920px) {
+  .main-section {
+    flex-direction: column;
+  }
+  .main-section .product-picture-carousel, .main-section .description {
+    width: 100%;
+  }
+  .main-section .description {
+    justify-content: center;
+    align-items: center;
+  }
+  .main-section .description h2 {
+    text-align: center;
+  }
+  .main-section .description .price-section {
+    justify-content: center;
+  }
+  .main-section .description p {
+    text-align: center;
+  }
+}/*# sourceMappingURL=product_specific.css.map */
