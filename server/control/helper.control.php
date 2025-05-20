@@ -29,6 +29,10 @@ function showProducts(){
     require_once 'view/products.view.php';
     display_products();
 }
+function showSpecificProduct(){
+    require_once 'view/specificProduct.view.php';
+    display_specific_product();
+}
 function logoutUser()
 {
     destroySession();

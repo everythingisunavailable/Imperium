@@ -134,13 +134,15 @@ function carousel_two(param, index){
 }
 
 //checks to find the element with that id
+//because of some issues with reference (i believe), the carousels are set to null
+//if they are not found (anymore)
 let INTERVAL_ID = setInterval(()=>{
-    const el1 = document.getElementById('first-carousel');
-    const el2 = document.getElementById('second-carousel');
-    
-    if(el1 && el2){
-        clearInterval(INTERVAL_ID);
+    let el1 = document.getElementById('first-carousel');
+    let el2 = document.getElementById('second-carousel');
+    if(el1){
         carousel_one('nomatter', 0);
+    }
+    if (el2) {
         carousel_two('nomatter', 0);
     }
-},500);
+},1000);

@@ -42,6 +42,10 @@ async function getData() {
         document.querySelector('.content').innerHTML = create_page_loader();
         
         const data = await response.text();
+        
+        //reseting the carousels manually :(
+        CAROUSEL_ONE = null;
+        CAROUSEL_TWO = null;
 
         //add data do main page
         document.querySelector('.content').innerHTML = data;
@@ -54,14 +58,14 @@ async function getData() {
 window.onload = async function() {
     await getData();
 };
-window.addEventListener("popstate", (event) => {getData()});
+window.addEventListener("popstate", async (event) => { await getData()});
 
-function goTo(url){
+async function goTo(url){
     history.pushState({tab: new URL(location).pathname}, "", url);
-    getData();
+    await getData();
     window.scrollTo({top: "0", behavior: "smooth"});
 }
-function eventGoTo(event, url){
+async function eventGoTo(event, url){
     event.preventDefault();
-    goTo(url);
+    await goTo(url);
 }
