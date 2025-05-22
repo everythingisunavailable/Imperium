@@ -5,7 +5,7 @@ function display_change_password(){
         <div class="container">
             
             <div class="left">
-                <img src="assets/imperium.png" alt="Imperium">
+
             </div>
             
             <div class="right">

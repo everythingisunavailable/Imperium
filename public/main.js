@@ -6,7 +6,7 @@ class Hideable {
         this.timeout_id = null;
         this.hide_direction = hide_direction;
         this.show_direction = show_direction;
-        this.hide_delay = 3000;
+        this.hide_delay = 10000;
 
         this.listen_for_activity();
     }

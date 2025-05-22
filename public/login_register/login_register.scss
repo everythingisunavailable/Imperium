@@ -1,23 +1,28 @@
 .content{
     .container{
         width: 100%;
-        height: 90vh;
+        min-height: 90vh;
+        margin-bottom: 1rem;
         display: flex;
         justify-content: center;
         align-items: center;
         color: var(--text-blue);
         perspective: 1000px;
+        .left{
+            background-image: url("../assets/imperium.png");
+            background-size: cover;
+            background-position: center;
+        }
         .left, .right{
             display: flex;
             justify-content: center;
+            align-items: center;
             width: 50%;
-            img{
-                width: 90%;
-            }
+            min-height: 90vh;
 
             .form-container{
                 width: 80%;
-
+                height: fit-content;
                 .hide{
                     display: none;
                 }
@@ -27,11 +32,11 @@
                     flex-direction: column;
                     justify-content: center;
                     box-sizing: border-box;
-                    padding: 4rem;
+                    padding: 3rem;
                     border-radius: 30px;
                     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.6);
                     background-color: rgba(255, 255, 255, 0.7);
-                    backdrop-filter: blur(15px);
+                    backdrop-filter: blur(5px);
                             
                     h2{
                         text-align: center;

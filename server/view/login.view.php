@@ -15,7 +15,6 @@ function display_login(){
         <div class="container">
             
             <div class="left">
-                <img src="assets/imperium.png" alt="Imperium">
             </div>
             
             <div class="right">

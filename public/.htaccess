@@ -2,10 +2,10 @@
   RewriteEngine On
   RewriteBase /Imperium/public/
 
-  # Exclude real files and directories from redirection
+  # Exclude real files and directories
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
 
-  # Redirect everything else to index.html
-  RewriteRule ^(.*)$ /Imperium/public/index.html [L]
-</IfModule> 
+  # Rewrite to index.html for SPA routing
+  RewriteRule ^ index.html [L]
+</IfModule>
