@@ -3,7 +3,7 @@ function display_login(){
     require_once '../config/google.config.php';
     require_once '../vendor/autoload.php';
     $client = new Google_Client();
-    $client->setClientId(clientId: GOOGLE_CLIENT_ID);
+    $client->setClientId(GOOGLE_CLIENT_ID);
     $client->setClientSecret(GOOGLE_CLIENT_SECRET);
     $client->setRedirectUri('http://localhost/imperium/server/callback.php');
     $client->addScope('email');
