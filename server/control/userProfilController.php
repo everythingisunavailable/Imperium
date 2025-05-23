@@ -1,6 +1,6 @@
 <?php
 require_once "../config/session.php";
-require "./model/User.php";
+require "model/User.php";
 require_once "helper.control.php";
 
 function viewProfile()
@@ -161,5 +161,5 @@ function getSavedItemsJson()
     $user = new User();
     $savedItems = $user->getSavedProducts($userId);
 
-    echo json_encode(["savedItems" => $savedItems]);
+    return  $savedItems;
 }

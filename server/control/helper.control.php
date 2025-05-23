@@ -9,7 +9,7 @@ function showProfile()
     require_once 'view/profile.view.php';
     require_once 'userProfilController.php';
     //getOrderHistoryJson();
-    getSavedItemsJson();
+    $userItems = getSavedItemsJson();
     display_profile();
 }
 function showLoginForm()
