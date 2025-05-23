@@ -70,7 +70,7 @@ echo <<<HTML
                 <div class="cards displace-hide animate-in">
                     
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -102,7 +102,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -134,7 +134,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -166,7 +166,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -198,7 +198,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -230,7 +230,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -262,7 +262,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -294,7 +294,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -326,7 +326,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -358,7 +358,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -390,7 +390,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -422,7 +422,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -454,7 +454,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -486,7 +486,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -518,7 +518,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -550,7 +550,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -582,7 +582,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -614,7 +614,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -646,7 +646,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>
@@ -678,7 +678,7 @@ echo <<<HTML
                         </div>
                     </div>
                     <div class="card-item">
-                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                        <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                             <div class="image">
                                 <img src="assets/pictures/pc-item.png" alt="shop item">
                             </div>

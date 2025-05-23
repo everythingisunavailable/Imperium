@@ -97,7 +97,7 @@ function display_specific_product(){
         <h2 class="displace-hide animate-in">You might also like</h2>
         <div class="cards displace-hide animate-in">
             <div class="card-item">
-                <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                     <div class="image">
                         <img src="assets/pictures/pc-item.png" alt="shop item">
                     </div>
@@ -129,7 +129,7 @@ function display_specific_product(){
                 </div>
             </div>
             <div class="card-item">
-                <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                     <div class="image">
                         <img src="assets/pictures/pc-item.png" alt="shop item">
                     </div>
@@ -161,7 +161,7 @@ function display_specific_product(){
                 </div>
             </div>
             <div class="card-item">
-                <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                     <div class="image">
                         <img src="assets/pictures/pc-item.png" alt="shop item">
                     </div>
@@ -193,7 +193,7 @@ function display_specific_product(){
                 </div>
             </div>
             <div class="card-item">
-                <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/product/productId')">
+                <a href="/imperium/public/product/productId" onclick="eventGoTo(event, '/imperium/public/prebuilts/productId')">
                     <div class="image">
                         <img src="assets/pictures/pc-item.png" alt="shop item">
                     </div>

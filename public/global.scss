@@ -313,7 +313,7 @@ nav, .hamburger{
 }
 
 .hamburger{
-    top: 10%;
+    top: 12%;
     left: 2%;
     height: fit-content;
     width: fit-content;
@@ -346,13 +346,27 @@ nav, .hamburger{
     .right-button-group{
         margin-right: 0;
         margin-bottom: 0.5rem;
-
     }
 
     &.hide-nav{
         display: none;
     }   
 }
+.categories-nav{
+    left: 115px;
+    top: 12%;
+
+    .left-button-group{
+        &::after{
+            display: none;
+        }
+    }
+
+    @media only screen and (max-width: 975px){
+        left: 215px;
+    }
+}
+
 
 .carousel-wrapper-basic{
     width: 96%;

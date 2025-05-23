@@ -78,12 +78,13 @@ const GO_TOP_BUTTON = new Hideable('go_top_button', 100, 'down', 'up');
 function hide_object(hideable, delay){
     clearTimeout(hideable.timeout_id);
     if (delay > 0) {
-        let tm_id = setTimeout(()=>{move(hideable.element, hideable.hide_direction, hideable.move_distance); hideable.update_hidden(true)}, delay);
+        let tm_id = setTimeout(()=>{move(hideable.element, hideable.hide_direction, hideable.move_distance); hideable.update_hidden(true); close_cat_menu()}, delay);
         hideable.update_timeout_id(tm_id);
     }
     else{
         move(hideable.element, hideable.hide_direction, hideable.move_distance);
         hideable.update_hidden(true);
+        close_cat_menu();
     }
 }
 function show_object(hideable){    
@@ -107,16 +108,35 @@ if (window.innerWidth > 975) {
     });
 }
 
+//to do : toggle shop category here
+function toggle_cat_menu(){
+    document.getElementById('categories_nav').classList.toggle('hide-nav');
+}
 function toggle_ham_menu(){
-    document.querySelector('.hamburger').classList.toggle('hide-nav');
+    document.getElementById('hamburger').classList.toggle('hide-nav');
+}
+function close_cat_menu(event){
+    if(!event){
+        document.getElementById('categories_nav').classList.add('hide-nav');
+        return;
+    }
+    if (!document.getElementById('categories_nav').contains(event.target) && !document.querySelector('.shop-button').contains(event.target) && !document.querySelector('.second-shop-button').contains(event.target)) {
+        console.log(document.querySelector('.shop-button'));
+        document.getElementById('categories_nav').classList.add('hide-nav');
+    }
 }
 function close_ham_menu(event){
-    if (!document.querySelector('.hamburger').contains(event.target) && !document.querySelector('.ham-button').contains(event.target)) {
-        document.querySelector('.hamburger').classList.add('hide-nav');
+    if(!event){
+        document.getElementById('hamburger').classList.add('hide-nav');
+        return;
+    }
+    if (!document.getElementById('hamburger').contains(event.target) && !document.querySelector('.ham-button').contains(event.target) && !document.getElementById('categories_nav').contains(event.target)) {
+        document.getElementById('hamburger').classList.add('hide-nav');
     }
 }
 window.addEventListener('click',  (event)=>{    
     close_ham_menu(event);
+    close_cat_menu(event);
 });
 
 //animate the elements on scroll
