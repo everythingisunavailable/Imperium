@@ -242,13 +242,14 @@
   font-size: x-large;
   font-weight: 600;
 }
-.cards .card-item .button-group {
+
+.button-group {
   height: 10%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
-.cards .card-item .button-group button {
+.button-group button {
   height: 90%;
   min-width: 40%;
   border: 1px solid var(--text-blue);
@@ -261,30 +262,30 @@
   align-items: center;
   transition: color 0.3s ease-out, background-color 0.3s ease-out;
 }
-.cards .card-item .button-group button svg {
+.button-group button svg {
   height: 80%;
   width: 30%;
   color: var(--text-blue);
   transition: color 0.3s ease-out;
 }
-.cards .card-item .button-group button:hover {
+.button-group button:hover {
   background-color: var(--text-blue);
   color: var(--blue-mist-background);
 }
-.cards .card-item .button-group button:hover svg {
+.button-group button:hover svg {
   color: var(--blue-mist-background);
 }
-.cards .card-item .button-group #save {
+.button-group #save {
   background-color: var(--text-blue);
   color: var(--blue-mist-background);
 }
-.cards .card-item .button-group #save svg {
+.button-group #save svg {
   color: var(--blue-mist-background);
 }
-.cards .card-item .button-group #save:hover {
+.button-group #save:hover {
   color: var(--text-blue);
   background-color: var(--blue-mist-background);
 }
-.cards .card-item .button-group #save:hover svg {
+.button-group #save:hover svg {
   color: var(--text-blue);
 }/*# sourceMappingURL=products_page.css.map */
