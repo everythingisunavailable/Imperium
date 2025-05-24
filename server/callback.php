@@ -27,7 +27,7 @@ if (isset($_GET['code'])) {
     ];
 
     // Example: Save user info in session
-    require '../config/databa.php';
+    require '../../config/db.php';
     $user = new User($conn);
     $userId = $user->registerGoogleUser($googleUserData);
 

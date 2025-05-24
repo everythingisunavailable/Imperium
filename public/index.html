@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="/Imperium/public/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Home</title>
@@ -9,7 +10,8 @@
     <link rel="stylesheet" href="homepage/homepage.css">
     <link rel="stylesheet" href="profileFolder/profile.css">
     <link rel="stylesheet" href="products_page/products_page.css">
-
+    <link rel="stylesheet" href="product_specific/product_specific.css">
+    <link rel="stylesheet" href="cart/cart.css">
 </head>
 <body>
     <nav id="nav">
@@ -17,7 +19,7 @@
             <li id="logo"><a href="/imperium/public/" onclick="eventGoTo(event, '/imperium/public/')"><img src="assets/imperium_logo_yellow_transparent.png" alt="home" width="70px"></a></li>
             <li><button class="button-link ham-button" onclick="toggle_ham_menu()"><img src="assets/icons/hamburger-menu-svgrepo-com.svg" alt="shop" width="40px"><span class="icon-name"></span></button></li>
             <li><span class="spacer hide-navbar-item" id="first-spacer">|</span></li>
-            <li><a class="button-link hide-navbar-item" href="/imperium/public/product" onclick="eventGoTo(event, '/imperium/public/product')"><img src="assets/icons/shop-svgrepo-com.svg" alt="shop" width="25px"><span class="icon-name">Shop</span></a></li>
+            <li><a class="button-link hide-navbar-item shop-button" onclick="toggle_cat_menu()"><img src="assets/icons/shop-svgrepo-com.svg" alt="shop" width="25px"><span class="icon-name">Shop</span></a></li>
             <li><a class="button-link hide-navbar-item" href="/imperium/public/deales" onclick="eventGoTo(event, '/imperium/public/deals')"><img src="assets/icons/dollar-svgrepo-com.svg" alt="offers" width="25px"><span class="icon-name">Deals</span></a></li>
             <li><a class="button-link hide-navbar-item" href="/imperium/public/about" onclick="eventGoTo(event, '/imperium/public/about')"><img src="assets/icons/info-circle-svgrepo-com.svg" alt="about" width="25px"><span class="icon-name">About</span></a></li>
         </ul>
@@ -30,9 +32,17 @@
         </ul>
     </nav>
 
-    <div class="hamburger hide-nav">
+    <div class="hamburger categories-nav hide-nav" id="categories_nav">
         <ul class="left-button-group">
-            <li><a class="button-link" href="/imperium/public/product" onclick="eventGoTo(event, '/imperium/public/product')"><img src="assets/icons/shop-svgrepo-com.svg" alt="shop" width="25px"><span class="icon-name">Shop</span></a></li>
+            <li><a class="button-link" href="/imperium/public/prebuilts" onclick="eventGoTo(event, '/imperium/public/prebuilts')"><img src="assets/icons/computer-tower-bold-svgrepo-com.svg" alt="shop" width="25px"><span class="icon-name">Pre built PCs</span></a></li>
+            <li><a class="button-link" href="/imperium/public/components" onclick="eventGoTo(event, '/imperium/public/components')"><img src="assets/icons/component-svgrepo-com.svg" alt="offers" width="25px"><span class="icon-name">Components</span></a></li>
+            <li><a class="button-link" href="/imperium/public/peripherals" onclick="eventGoTo(event, '/imperium/public/peripherals')"><img src="assets/icons/mouse-svgrepo-com.svg" alt="about" width="25px"><span class="icon-name">Peripherals</span></a></li>
+        </ul>
+    </div>
+
+    <div class="hamburger hide-nav" id="hamburger">
+        <ul class="left-button-group">
+            <li><a class="button-link second-shop-button" onclick="toggle_cat_menu()"><img src="assets/icons/shop-svgrepo-com.svg" alt="shop" width="25px"><span class="icon-name">Shop</span></a></li>
             <li><a class="button-link" href="/imperium/public/deales" onclick="eventGoTo(event, '/imperium/public/deals')"><img src="assets/icons/dollar-svgrepo-com.svg" alt="offers" width="25px"><span class="icon-name">Deals</span></a></li>
             <li><a class="button-link" href="/imperium/public/about" onclick="eventGoTo(event, '/imperium/public/about')"><img src="assets/icons/info-circle-svgrepo-com.svg" alt="about" width="25px"><span class="icon-name">About</span></a></li>
         </ul>
@@ -47,7 +57,7 @@
 
     <!--MAIN CONTENT GOES HERE-->
     <div class="content">
-        
+
     </div>
 
 
@@ -108,6 +118,7 @@
     <script src="/imperium/public/forgot_change/forgot_change.js"></script>
     <script src="/imperium/public/homepage/home.js"></script>
     <script src="/imperium/public/products_page/products_page.js"></script>
+    <script src="/imperium/public/cart/cart.js"></script>
     
 </body> 
-</html.
+</html>

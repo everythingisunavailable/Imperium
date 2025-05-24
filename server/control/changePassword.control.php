@@ -18,7 +18,7 @@ resetPassword($data['newPass'], $data['confirmPass']);
 
 function resetPassword($newPass, $confirmPass) {
     $email = $_SESSION['recoveryEmail'];
-    require __DIR__ .'../../config/db.php';
+    require '../../config/db.php';
     $user = new User($conn);
     $foundUser = $user->getUserByEmail($email);
     if (empty($foundUser)) {
