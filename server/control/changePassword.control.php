@@ -36,7 +36,7 @@ function resetPassword($newPass, $confirmPass) {
 
     validateNewPassword($newPass, $confirmPass);
 
-    $passChanged = $user->updatePassword($email, $newPass);
+    $passChanged = $user->updatePasswordFromRecovery($email, $newPass);
     if ($passChanged) {
         //Remove session after finishing changing password
         session_unset();

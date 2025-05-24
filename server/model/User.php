@@ -75,7 +75,8 @@ class User
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public function getUser($id){
+    public function getUser($id)
+    {
         $stmt = $this->conn->prepare("SELECT name , email, created_at FROM users WHERE id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
@@ -100,7 +101,7 @@ class User
         $stmt = $this->conn->prepare("UPDATE users SET resetCode = ?, resetCodeExpiry = ?, newPasswordExpiry = ? WHERE email = ?");
         return $stmt->execute([null, null, $expiry, $email]);
     }
-    public function updatePasswordByEmail($email, $password)
+    public function updatePasswordFromRecovery($email, $password)
     {
         $hashed = password_hash($password, PASSWORD_BCRYPT);
         $stmt = $this->conn->prepare("UPDATE users SET password = ?, newPasswordExpiry = ? WHERE email = ?");
@@ -127,7 +128,7 @@ class User
             return false;
         }
     }
-    
+
 
     //Profile Menagement functions
 
