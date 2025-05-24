@@ -75,6 +75,12 @@ class User
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public function getUser($id){
+        $stmt = $this->conn->prepare("SELECT name , email, created_at FROM users WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
     public function getUserByEmail($email)
     {
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
@@ -187,19 +193,47 @@ class User
         return $stmt->execute([$newHash, $userId]);
     }
 
-    /*public function getOrderHistory($userId)
+    public function getOrderHistory($userId)
     {
-        $stmt = $this->conn->prepare("SELECT order_id, product_name, delivered_date FROM orders WHERE user_id = :userId ORDER BY delivered_date DESC");
-        $stmt->bindParam(':userId', $userId);
+
+        $stmt = $this->conn->prepare("
+            SELECT 
+                o.id AS order_id,
+                p.name AS product_name,
+                p.image_url,
+                p.description,
+                oi.price,
+                o.status AS action,
+                o.created_at
+            FROM orders o
+            JOIN order_items oi ON o.id = oi.order_id
+            JOIN products p ON oi.product_id = p.id
+            WHERE o.user_id = :userId
+            ORDER BY o.created_at DESC");
+
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }*/
-    public function getSavedProducts($userId)
+    }
+
+    public function getSavedItems($userId)
     {
-        // $stmt = $this->conn->prepare("HERE use query which take data of products from saved products");
-        /*$stmt = $this->conn->prepare("SELECT product_id, product_name, saved_date FROM saved_products WHERE user_id = :userId ORDER BY saved_date DESC");
-        $stmt->bindParam(':userId', $userId);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);*/
+
+        $sql = "
+            SELECT 
+                p.id AS product_id,
+                p.name AS product_name,
+                p.description,
+                p.price,
+                p.image_url,
+                si.saved_at
+            FROM saved_items si
+            JOIN products p ON si.product_id = p.id
+            WHERE si.user_id = :userId
+            ORDER BY si.saved_at DESC";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['userId' => $userId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 require_once "../config/session.php";
-require "../model/User.php";
+require "./model/User.php";
 require_once "helper.control.php";
 
 function viewProfile()
@@ -8,17 +8,7 @@ function viewProfile()
     require '../../config/databa.php';
     $user = new User($conn);
 
-    if (getGoogleUserId()) {
-        $userId = getGoogleUserId();
-        $userData = $user->getUserByGoogleId($userId);
-        if (empty($userData)) {
-            http_response_code(404);
-            echo "User not found";
-            return;
-        } else {
-            echo json_encode($userData);
-        }
-    } else if (getLocalUserId()) {
+    if (getLocalUserId()) {
         $userId = getLocalUserId();
         $userData = $user->getUserById($userId);
         if (empty($userData)) {
@@ -45,21 +35,10 @@ function updateProfile($postData)
         echo "Unauthorized";
         return;
     }
-    require '../../../config/databa.php';
+    require '../../config/databa.php';
     $user = new User($conn);
 
-    if (getGoogleUserId()) {
-        $userId = getGoogleUserId();
-        $userData = $user->getUserByGoogleId($userId);
-        if (empty($userData)) {
-            http_response_code(404);
-            echo "User not found";
-            return;
-        } else {
-            $user->updateUser($userId, $_POST['name'], $_POST['surname'], $_POST['avatar_url']);
-            echo json_encode($user->getUserByGoogleId($userId));
-        }
-    } else if (getLocalUserId()) {
+    if (getLocalUserId()) {
         $userId = getLocalUserId();
         $userData = $user->getUserById($userId);
         if (empty($userData)) {
@@ -70,10 +49,6 @@ function updateProfile($postData)
             $user->updateUser($userId, $_POST['name'], $_POST['surname'], $_POST['avatar_url']);
             echo json_encode($user->getUserById($userId));
         }
-    } else {
-        http_response_code(401);
-        echo "Unauthorized";
-        return;
     }
     $conn = null;
 }
@@ -94,7 +69,7 @@ function verifyCurrentPasword()
         return;
     }
 
-     require '../../config/databa.php';
+    require '../../config/databa.php';
     $user = new User($conn);
     $userData = $user->getUserById($userId);
 
@@ -118,6 +93,7 @@ function changePassword()
         return;
     }
 
+    $oldPass = $_POST['old_password'] ?? '';
     $newPass = $_POST['new_password'] ?? '';
     $confirmPass = $_POST['confirm_password'] ?? '';
 
@@ -129,7 +105,7 @@ function changePassword()
 
     require '../../config/db.php';
     $user = new User($conn);
-    $success = $user->updatePassword($userId, $newPass);
+    $success = $user->updatePassword($userId, $oldPass, $newPass);
 
     if ($success) {
         echo json_encode(["success" => "Password changed successfully."]);
@@ -140,35 +116,35 @@ function changePassword()
     $conn = null;
 }
 
-/*function getOrderHistoryJson()
+function getCompleteUserProfile(): ?array
 {
-    $userId = getAuthenticatedUserId();
+    $userId = $_SESSION['user_id'] ?? null;
 
     if (!$userId) {
+        http_response_code(401);
         echo json_encode(["error" => "Unauthorized"]);
-        return;
+        return null;
     }
 
-    $user = new User();
-    $orders = $user->getOrderHistory($userId);
-
-    echo json_encode(["orders" => $orders]);
-}*/
-
-function getSavedItemsJson()
-{
-
-    $userId = getAuthenticatedUserId();
-
-    if (!$userId) {
-        echo json_encode(["error" => "Unauthorized"]);
-        return;
-    }
-
-    require '../../config/db.php';
+    require '../config/db.php'; // Make sure the path is correct
     $user = new User($conn);
-    $savedItems = $user->getSavedProducts($userId);
 
-    return  $savedItems;
+    $userData = $user->getUser($userId);
+    if (empty($userData)) {
+        http_response_code(404);
+        echo json_encode(["error" => "User not found"]);
+        return null;
+    }
+
+    // Get related data
+    $orderHistory = $user->getOrderHistory($userId);
+    $savedItems = $user->getSavedItems($userId);
+
+    // Combine into one structured response
+    return [
+        'user' => $userData,
+        'order_history' => $orderHistory,
+        'saved_items' => $savedItems
+    ];
     $conn = null;
 }

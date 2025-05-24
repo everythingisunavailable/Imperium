@@ -66,7 +66,7 @@ function registerUser($name, $surname, $email, $password, $password_again)
 
 
     // Check if user exists
-    $conn = require '../../config/db.php';
+    require '../../config/db.php';
     $user = new User($conn);
     $userExists = $user->checkEmail($email);
     if ($userExists && !isset($errors['email'])) {

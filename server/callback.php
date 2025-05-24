@@ -1,7 +1,7 @@
 <?php
 require_once  '../vendor/autoload.php';
 require_once '../config/google.config.php';
-require_once '../model/User.php';
+require_once './model/User.php';
 
 session_start();
 
@@ -27,7 +27,7 @@ if (isset($_GET['code'])) {
     ];
 
     // Example: Save user info in session
-    require '../../config/db.php';
+    require '../config/db.php';
     $user = new User($conn);
     $userId = $user->registerGoogleUser($googleUserData);
 
@@ -36,7 +36,7 @@ if (isset($_GET['code'])) {
     $_SESSION['user_id'] = $userId;
 
     // Redirect to a protected page
-    $conn->close();
+    $conn = null; // Close the database connection
     header('Location: ../public/profile');
     exit;
 };

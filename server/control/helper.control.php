@@ -7,10 +7,9 @@ function showHome()
 function showProfile()
 {
     require_once 'view/profile.view.php';
-
-    //getOrderHistoryJson();
-
-    display_profile();
+    require_once 'userProfilController.php';
+    $data = getCompleteUserProfile();
+    display_profile($data['user'], $data['order_history'], $data['saved_items']);
 }
 function showLoginForm()
 {
@@ -33,11 +32,13 @@ function showProducts()
     require_once 'view/products.view.php';
     display_products();
 }
-function showSpecificProduct(){
+function showSpecificProduct()
+{
     require_once 'view/specificProduct.view.php';
     display_specific_product();
 }
-function showCart(){
+function showCart()
+{
     require_once 'view/cart.view.php';
     display_cart();
 }
