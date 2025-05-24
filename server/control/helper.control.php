@@ -7,9 +7,9 @@ function showHome()
 function showProfile()
 {
     require_once 'view/profile.view.php';
-    require_once 'userProfilController.php';
+
     //getOrderHistoryJson();
-    $userItems = getSavedItemsJson();
+
     display_profile();
 }
 function showLoginForm()

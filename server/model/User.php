@@ -1,11 +1,11 @@
 <?php
+
 class User
 {
-    private $conn;
+    private PDO $conn;
 
-    public function __construct()
+    public function __construct(PDO $conn)
     {
-        require '../config/db.php';
         $this->conn = $conn;
     }
     // Authentication and Identify functions

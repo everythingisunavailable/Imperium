@@ -27,14 +27,16 @@ if (isset($_GET['code'])) {
     ];
 
     // Example: Save user info in session
-    $user = new User();
+    require '../config/databa.php';
+    $user = new User($conn);
     $userId = $user->registerGoogleUser($googleUserData);
 
     $_SESSION['email'] = $googleUserData['email'];
     $_SESSION['user_name'] = $googleUserData['name'];
-    $_SESSION['user_google_id'] = $googleUserData['id'];
+    $_SESSION['user_id'] = $userId;
 
     // Redirect to a protected page
+    $conn->close();
     header('Location: ../public/profile');
     exit;
 };

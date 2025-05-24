@@ -66,7 +66,8 @@ function registerUser($name, $surname, $email, $password, $password_again)
 
 
     // Check if user exists
-    $user = new User();
+    $conn = require '../../config/db.php';
+    $user = new User($conn);
     $userExists = $user->checkEmail($email);
     if ($userExists && !isset($errors['email'])) {
         $errors['email'] = "User with this email already exists!";
@@ -88,5 +89,6 @@ function registerUser($name, $surname, $email, $password, $password_again)
         echo json_encode(["success" => "Successfully registered!"]);
     }
 
+    $conn = null;
     exit;
 }

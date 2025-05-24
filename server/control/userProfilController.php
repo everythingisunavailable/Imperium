@@ -1,12 +1,12 @@
 <?php
 require_once "../config/session.php";
-require "model/User.php";
+require "../model/User.php";
 require_once "helper.control.php";
 
 function viewProfile()
 {
-
-    $user = new User();
+    require '../../config/databa.php';
+    $user = new User($conn);
 
     if (getGoogleUserId()) {
         $userId = getGoogleUserId();
@@ -32,6 +32,7 @@ function viewProfile()
         echo "Unauthorized";
         return;
     }
+    $conn = null;
 }
 function updateProfile($postData)
 {
@@ -44,8 +45,8 @@ function updateProfile($postData)
         echo "Unauthorized";
         return;
     }
-
-    $user = new User();
+    require '../../../config/databa.php';
+    $user = new User($conn);
 
     if (getGoogleUserId()) {
         $userId = getGoogleUserId();
@@ -74,6 +75,7 @@ function updateProfile($postData)
         echo "Unauthorized";
         return;
     }
+    $conn = null;
 }
 function verifyCurrentPasword()
 {
@@ -92,7 +94,8 @@ function verifyCurrentPasword()
         return;
     }
 
-    $user = new User();
+     require '../../config/databa.php';
+    $user = new User($conn);
     $userData = $user->getUserById($userId);
 
     if (!$userData || !password_verify($currentPassword, $userData['password'])) {
@@ -101,6 +104,7 @@ function verifyCurrentPasword()
     } else {
         echo json_encode(["success" => "Password verified."]);
     }
+    $conn = null;
 }
 
 function changePassword()
@@ -123,7 +127,8 @@ function changePassword()
         return;
     }
 
-    $user = new User();
+    require '../../config/db.php';
+    $user = new User($conn);
     $success = $user->updatePassword($userId, $newPass);
 
     if ($success) {
@@ -131,6 +136,8 @@ function changePassword()
     } else {
         echo json_encode(["error" => "Failed to update password."]);
     }
+
+    $conn = null;
 }
 
 /*function getOrderHistoryJson()
@@ -158,8 +165,10 @@ function getSavedItemsJson()
         return;
     }
 
-    $user = new User();
+    require '../../config/db.php';
+    $user = new User($conn);
     $savedItems = $user->getSavedProducts($userId);
 
     return  $savedItems;
+    $conn = null;
 }
