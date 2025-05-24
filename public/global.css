@@ -354,7 +354,7 @@ nav .right-button-group, .hamburger .right-button-group {
 
 .categories-nav {
   left: 115px;
-  top: 12%;
+  top: 80px;
 }
 .categories-nav .left-button-group::after {
   display: none;
