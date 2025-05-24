@@ -105,7 +105,7 @@ function changePassword()
 
     require '../../config/db.php';
     $user = new User($conn);
-    $success = $user->updatePassword($userId, $oldPass, $newPass);
+    $success = $user->changePassword($userId, $oldPass, $newPass);
 
     if ($success) {
         echo json_encode(["success" => "Password changed successfully."]);

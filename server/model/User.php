@@ -127,14 +127,7 @@ class User
             return false;
         }
     }
-    public function updatePassword($userId, $newPassword)
-    {
-        $hashed = password_hash($newPassword, PASSWORD_BCRYPT);
-        $stmt = $this->conn->prepare("UPDATE users SET password = ? WHERE id = ?");
-        return $stmt->execute([$hashed, $userId]);
-    }
-
-
+    
 
     //Profile Menagement functions
 
