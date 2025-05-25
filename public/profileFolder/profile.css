@@ -253,3 +253,34 @@
     width: 100%;
   }
 }
+@media (max-width: 480px) {
+  .order-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .order-img img {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .saved-items-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-carousel img {
+    width: 60px;
+    height: 45px;
+  }
+
+  .account-form .form-group input,
+  .password-redirect,
+  .account-submit {
+    width: 100%;
+  }
+
+  .item-title {
+    font-size: 1rem;
+  }
+}
