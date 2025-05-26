@@ -45,6 +45,9 @@ else if ($query0 == 'peripherals' && !$query1) {
 else if ($query0 == 'prebuilts' && $query1) { //$query1 to be checked for its value
     showSpecificProduct();
 }
+else if ($query0 == 'about' && !$query1) {
+    showAboutUs();
+}
 else if ($query0 == 'cart' && !$query1) {
     showCart();
 }

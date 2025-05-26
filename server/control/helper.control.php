@@ -37,6 +37,11 @@ function showSpecificProduct()
     require_once 'view/specificProduct.view.php';
     display_specific_product();
 }
+function showAboutUs()
+{
+    require_once 'view/about_us.view.php';
+    display_about_us();
+}
 function showCart()
 {
     require_once 'view/cart.view.php';
