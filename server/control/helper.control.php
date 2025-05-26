@@ -23,6 +23,7 @@ function showLoginForm()
     require_once 'view/login.view.php';
     display_login();
 }
+
 function showForgotPassword()
 {
     require_once 'view/forgotPassword.view.php';

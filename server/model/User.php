@@ -134,40 +134,37 @@ class User
 
     public function updateUser($userId, $newData)
     {
-        // Step 1: Get current data
+
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :userId");
-        //$stmt->execute([$userId]);
         $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
         $currentData = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$currentData) {
-            return false; // user not found
+            return false;
         }
 
-        // Step 2: Prepare update fields
+
         $fieldsToUpdate = [];
-        $params = [];
+        $params = ['userId' => $userId];
 
         foreach ($newData as $key => $value) {
-            // Only update if the field exists in current data AND has changed
             if (array_key_exists($key, $currentData) && $currentData[$key] !== $value) {
-                $fieldsToUpdate[] = "$key = ?";
-                $params[] = $value;
+                $fieldsToUpdate[] = "$key = :$key";
+                $params[$key] = $value;
             }
         }
 
-        // Step 3: Add user ID to params
         if (empty($fieldsToUpdate)) {
             return false;
         }
 
-        $params[] = $userId;
 
-        // Step 4: Build and execute SQL
-        $sql = "UPDATE users SET " . implode(', ', $fieldsToUpdate) . " WHERE id = ?";
+        $sql = "UPDATE users SET " . implode(', ', $fieldsToUpdate) . " WHERE id = :userId";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute($params);
     }
+
 
     public function changePassword($userId, $oldPass, $newPass)
     {
@@ -229,5 +226,15 @@ class User
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['userId' => $userId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function removeSavedItem($userId, $itemId)
+    {
+
+        $stmt = $this->conn->prepare("DELETE FROM saved_items WHERE user_id = :userId AND item_id = :itemId");
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
+
+        return $stmt->execute();
     }
 }
