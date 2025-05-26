@@ -30,7 +30,8 @@ async function change_data(event) {
         const json = await send_request(data, 'change', '../server/control/change_info.control.php');
 
         if ('success' in json) {
-            alert('Info changed successfully');
+            create_notification('Data updated successfully!')
+            goTo("/imperium/public/profile");
         } else {
             profile_server_errors(json, email_div.parentElement, username_div.parentElement);
         }
