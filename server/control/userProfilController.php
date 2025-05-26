@@ -5,7 +5,7 @@ require_once "helper.control.php";
 
 function viewProfile()
 {
-    require '../../config/databa.php';
+    require '../config/databa.php';
     $user = new User($conn);
 
     if (getLocalUserId()) {
@@ -24,34 +24,7 @@ function viewProfile()
     }
     $conn = null;
 }
-function updateProfile($postData)
-{
 
-    startSession();
-
-    $userId = $_SESSION['user_id'] ?? null;
-    if (!$userId) {
-        http_response_code(401);
-        echo "Unauthorized";
-        return;
-    }
-    require '../../config/databa.php';
-    $user = new User($conn);
-
-    if (getLocalUserId()) {
-        $userId = getLocalUserId();
-        $userData = $user->getUserById($userId);
-        if (empty($userData)) {
-            http_response_code(404);
-            echo "User not found";
-            return;
-        } else {
-            $user->updateUser($userId, $_POST['name'], $_POST['surname'], $_POST['avatar_url']);
-            echo json_encode($user->getUserById($userId));
-        }
-    }
-    $conn = null;
-}
 function verifyCurrentPasword()
 {
     startSession();
@@ -69,7 +42,7 @@ function verifyCurrentPasword()
         return;
     }
 
-    require '../../config/databa.php';
+    require '../config/databa.php';
     $user = new User($conn);
     $userData = $user->getUserById($userId);
 
@@ -103,7 +76,7 @@ function changePassword()
         return;
     }
 
-    require '../../config/db.php';
+    require '../config/db.php';
     $user = new User($conn);
     $success = $user->changePassword($userId, $oldPass, $newPass);
 

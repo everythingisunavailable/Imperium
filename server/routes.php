@@ -11,49 +11,38 @@ $query1 = $_GET['query1'] ?? '';
 if ($query0 == 'login' && !$query1) {
     //TO DO : do the checks inside contorl
     startSession();
-    if(isset($_SESSION['user_id'])){
-        echo '<h1>Welcome <span style ="color: blue">'. $_SESSION['user_name'].'</h1>';
-    }
-    else{
+    if (isset($_SESSION['user_id'])) {
+        echo '<h1>Welcome <span style ="color: blue">' . $_SESSION['user_name'] . '</h1>';
+    } else {
         showLoginForm();
     }
-}
-else if (!$query0 && !$query1) {
+} else if (!$query0 && !$query1) {
     showHome();
-}
-else if($query0 == 'profile' && !$query1){
+} else if ($query0 == 'profile' && !$query1) {
     //TO DO : do the checks inside contorl
     startSession();
-    if (isset($_SESSION['user_id'])){
+
+    if (isset($_SESSION['user_id'])) {
         showProfile();
-    }
-    else{
+    } else {
         showLoginForm();
     }
-}
-else if ($query0 == 'prebuilts' && !$query1) {
+} else if ($query0 == 'prebuilts' && !$query1) {
     showProducts();
-}
-else if ($query0 == 'components' && !$query1) {
+} else if ($query0 == 'components' && !$query1) {
     //placeholder
     echo 'no data yet on components';
-}
-else if ($query0 == 'peripherals' && !$query1) {
+} else if ($query0 == 'peripherals' && !$query1) {
     //placeholder
     echo 'no data yet on peripherals';
-}
-else if ($query0 == 'prebuilts' && $query1) { //$query1 to be checked for its value
+} else if ($query0 == 'prebuilts' && $query1) { //$query1 to be checked for its value
     showSpecificProduct();
-}
-else if ($query0 == 'cart' && !$query1) {
+} else if ($query0 == 'cart' && !$query1) {
     showCart();
-}
-else if ($query0 == 'forgot-password'){
+} else if ($query0 == 'forgot-password') {
     showForgotPassword();
-}
-else if ($query0 == 'change-password'){
+} else if ($query0 == 'change-password') {
     showChangePassword();
-}
-else {
+} else {
     echo 'url is invalid';
 }
