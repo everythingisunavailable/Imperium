@@ -354,7 +354,7 @@ nav .right-button-group, .hamburger .right-button-group {
 
 .categories-nav {
   left: 115px;
-  top: 12%;
+  top: 80px;
 }
 .categories-nav .left-button-group::after {
   display: none;
@@ -595,4 +595,29 @@ footer .policy {
 .animate-in {
   opacity: 0;
   transform: translateY(8rem);
+}
+
+.error {
+  margin-top: -1rem;
+  font-size: small;
+  color: rgb(209, 0, 0);
+  animation: shake 0.3s ease-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(5px);
+  }
+  20% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  70% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(-5px);
+  }
 }/*# sourceMappingURL=global.css.map */

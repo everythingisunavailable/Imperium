@@ -51,28 +51,36 @@ function display_home(){
             <div class="category-wrapper">
 
                 <div class="category-item">
-                    <div class="background" style="background-image: url(assets/pictures/pc-background.png);"></div>
-                    <div class="foreground">
-                        <span class="upper-bold">PREBUILDS</span>
-                    </div>
+                    <a href="/imperium/public/prebuilts" onclick="goToEvent(event, '/imperium/public/prebuilts')">
+                        <div class="background" style="background-image: url(assets/pictures/pc-background.png);"></div>
+                        <div class="foreground">
+                            <span class="upper-bold">PREBUILT PCs</span>
+                        </div>
+                    </a>
                 </div>
                 <div class="category-item">
-                    <div class="background" style="background-image: url(assets/pictures/components-background.png);"></div>
-                    <div class="foreground">
-                        <span class="upper-bold">COMPONENTS</span>
-                    </div>
+                    <a href="/imperium/public/components" onclick="goToEvent(event, '/imperium/public/components')">
+                        <div class="background" style="background-image: url(assets/pictures/components-background.png);"></div>
+                        <div class="foreground">
+                            <span class="upper-bold">COMPONENTS</span>
+                        </div>
+                    </a>
                 </div>
                 <div class="category-item">
-                    <div class="background" style="background-image: url(assets/pictures/peripherals-background.png);"></div>
-                    <div class="foreground">
-                        <span class="upper-bold">PERIPHERALS</span>
-                    </div>
+                    <a href="/imperium/public/peripherals" onclick="goToEvent(event, '/imperium/public/peripherals')">
+                        <div class="background" style="background-image: url(assets/pictures/peripherals-background.png);"></div>
+                        <div class="foreground">
+                            <span class="upper-bold">PERIPHERALS</span>
+                        </div>
+                    </a>
                 </div>
                 <div class="category-item">
-                    <div class="background" style="background-image: url(assets/pictures/deals-background.png);"></div>
-                    <div class="foreground">
-                        <span class="upper-bold">DEALS</span>
-                    </div>
+                    <a href="/imperium/public/deals" onclick="goToEvent(event, '/imperium/public/deals')">
+                        <div class="background" style="background-image: url(assets/pictures/deals-background.png);"></div>
+                        <div class="foreground">
+                            <span class="upper-bold">DEALS</span>
+                        </div>
+                    </a>
                 </div>
 
             </div>

@@ -121,7 +121,6 @@ function close_cat_menu(event){
         return;
     }
     if (!document.getElementById('categories_nav').contains(event.target) && !document.querySelector('.shop-button').contains(event.target) && !document.querySelector('.second-shop-button').contains(event.target)) {
-        console.log(document.querySelector('.shop-button'));
         document.getElementById('categories_nav').classList.add('hide-nav');
     }
 }

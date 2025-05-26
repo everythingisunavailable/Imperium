@@ -3,18 +3,23 @@ base url : http://127.0.0.1:5500/public/index.html/product/productId
 what we need : product/productId
 what we going to turn it into : /server/routes.php?query0=product&query1=productId
 excpected to be called on every GET
+
+update for adding filters : 
+
 */
 
 const BASE_URL = "public/";
 function extract_link(){
     let url = window.location.pathname;
+    let filter_json = window.location.search.substring(1);
+
     let sub_url = url.substring(url.indexOf(BASE_URL) + BASE_URL.length);
     let sub_url_arr = sub_url.split('/');
 
     let get_url = '/imperium/server/routes.php?';
     
     if (sub_url_arr[0] == '') {
-        return get_url
+        return get_url + filter_json;
     }
     
     for (let i = 0; i < sub_url_arr.length; i++) {
@@ -23,7 +28,8 @@ function extract_link(){
             get_url = get_url + '&';
         }
     }
-    return get_url
+    
+    return get_url + '&' + filter_json;
 }
 
 function create_page_loader(){
@@ -31,7 +37,7 @@ function create_page_loader(){
 }
 async function getData() {
     const url = extract_link();
-
+    
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -68,4 +74,31 @@ async function goTo(url){
 async function eventGoTo(event, url){
     event.preventDefault();
     await goTo(url);
+}
+let PAGE_NUMBER = 1;
+async function filterGoTo() {
+    let sort = document.getElementById('sort').value;
+    let order = document.getElementById('order').value;
+    
+    let min_price = document.getElementById('min').value;
+    let max_price = document.getElementById('max').value;
+    
+    let filters = {
+        'page': PAGE_NUMBER,
+        'sort': sort,
+        'order': order,
+        'min_price': min_price,
+        'max_price': max_price
+    };
+
+    let specific_filters = document.getElementsByClassName('radio_filter');
+    for(let i = 0; i < specific_filters.length; i++){
+        let checked_radio_input = document.querySelector('input[name="' +specific_filters[i].dataset.name +'"]:checked');
+        if (checked_radio_input) {
+            filters[specific_filters[i].dataset.name] = checked_radio_input.value;
+        }
+    }
+
+    let encoded_filters = encodeURIComponent(JSON.stringify(filters));
+    await goTo(window.location.pathname + '?filters='+ encoded_filters);
 }

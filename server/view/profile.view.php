@@ -9,7 +9,7 @@ function display_profile(array $userData, array $historyItems, array $savedItems
     <p class="profile-email">{$userData['email']}</p>
     <p class="profile-member-since">Member since: {$userData['created_at']}</p>
     <h3 class="section-title">Account Settings</h3>
-    <form class="account-form">
+    <form action="#" method="post" class="account-form"  onsubmit="change_data(event)">
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Enter new username" value="{$userData['name']}">
@@ -20,7 +20,7 @@ function display_profile(array $userData, array $historyItems, array $savedItems
       </div>
       <div class="form-group">
         <label for="change-password">Password</label>
-        <a href="/forgot-password.php" class="password-redirect">Change Password</a>
+        <a href="/imperium/public/forgot-password" onclick="goToEvent(event, '/imperium/public/forgot-password')" class="password-redirect">Change Password</a>
       </div>
       <button type="submit" class="account-submit">Update Account</button>
     </form>

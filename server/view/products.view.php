@@ -13,20 +13,20 @@ echo <<<HTML
                     <legend>Price (ALL)</legend>
                     <label for="min">Min Price</label>
                     <div class="price-item">
-                        <input type="number" id="min" value="0" onchange="update_value('number')">
-                        <input type="range" id="min-range" value="0" onchange="update_value('range')">
+                        <input type="number" id="min" value="0" onchange="update_value('number'); filterGoTo()">
+                        <input type="range" id="min-range" value="0" onchange="update_value('range'); filterGoTo()">
                     </div>
 
                     <label for="max">Max Price</label>
                     <div class="price-item">
-                        <input type="number" id="max" value="200000" onchange="update_value('number')">
-                        <input type="range" id="max-range" value="100" onchange="update_value('range')">
+                        <input type="number" id="max" value="200000" onchange="update_value('number'); filterGoTo()">
+                        <input type="range" id="max-range" value="100" onchange="update_value('range'); filterGoTo()">
                     </div>
-                    <button class="filter-button">Filter</button>
+                    <button class="filter-button" onclick="filterGoTo()">Filter</button>
                 </fieldset>
 
                 <!--Changes for different categories-->
-                <fieldset>
+                <fieldset class="radio_filter" data-name="filter-choice" onchange="filterGoTo()">
                     <legend>Filter name</legend>
                     <label><input type="radio" name="filter-choice" id="option_1" value="1"> Option 1</label>
                     <label><input type="radio" name="filter-choice" id="option_2" value="2"> Option 2</label>
@@ -35,7 +35,7 @@ echo <<<HTML
                 </fieldset>
                 
                 <!--Changes for different categories-->
-                <fieldset>
+                <fieldset class="radio_filter" data-name="filter-choice-second" onchange="filterGoTo()">
                     <legend>Filter name</legend>
                     <label><input type="radio" name="filter-choice-second" id="option_1" value="1"> Option 1</label>
                     <label><input type="radio" name="filter-choice-second" id="option_2" value="2"> Option 2</label>
@@ -53,14 +53,14 @@ echo <<<HTML
                     </div>
                     <div class="right">
                         <label for="sort">Sort by : </label>
-                        <select name="sort" id="sort">
+                        <select name="sort" id="sort" onchange="filterGoTo()">
                             <option value="popularity">Popularity 🔥</option>
                             <option value="date">Date 📅</option>
                             <option value="price">Price 🏷️</option>
                             <option value="rating">Rating ⭐</option>
                         </select>
                         <label for="order">Order : </label>
-                        <select name="order" id="order">
+                        <select name="order" id="order" onchange="filterGoTo()">
                             <option value="descending">Descending ▼</option>
                             <option value="ascending">Ascending ▲</option>
                         </select>
