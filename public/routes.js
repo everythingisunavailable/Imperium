@@ -75,6 +75,7 @@ async function eventGoTo(event, url){
     event.preventDefault();
     await goTo(url);
 }
+let PAGE_NUMBER = 1;
 async function filterGoTo() {
     let sort = document.getElementById('sort').value;
     let order = document.getElementById('order').value;
@@ -83,6 +84,7 @@ async function filterGoTo() {
     let max_price = document.getElementById('max').value;
     
     let filters = {
+        'page': PAGE_NUMBER,
         'sort': sort,
         'order': order,
         'min_price': min_price,

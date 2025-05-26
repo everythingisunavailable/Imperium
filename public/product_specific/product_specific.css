@@ -75,12 +75,11 @@
 }
 .main-section .description .button-group-wrapper .button-group {
   width: 40%;
+  height: 100%;
   justify-content: space-evenly;
 }
 .main-section .description .button-group-wrapper .button-group button {
   width: 45%;
-  height: -moz-fit-content;
-  height: fit-content;
   padding-block: 12px;
 }
 @media only screen and (max-width: 920px) {

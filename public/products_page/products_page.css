@@ -249,7 +249,7 @@
   justify-content: space-evenly;
   align-items: center;
 }
-.button-group button {
+.button-group #cart, .button-group #save {
   height: 90%;
   min-width: 40%;
   border: 1px solid var(--text-blue);
@@ -262,17 +262,17 @@
   align-items: center;
   transition: color 0.3s ease-out, background-color 0.3s ease-out;
 }
-.button-group button svg {
+.button-group #cart svg, .button-group #save svg {
   height: 80%;
   width: 30%;
   color: var(--text-blue);
   transition: color 0.3s ease-out;
 }
-.button-group button:hover {
+.button-group #cart:hover, .button-group #save:hover {
   background-color: var(--text-blue);
   color: var(--blue-mist-background);
 }
-.button-group button:hover svg {
+.button-group #cart:hover svg, .button-group #save:hover svg {
   color: var(--blue-mist-background);
 }
 .button-group #save {

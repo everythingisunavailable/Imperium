@@ -6,6 +6,13 @@ function showHome()
 }
 function showProfile()
 {
+    require '../config/session.php';
+    startSession();
+    if (!isset($_SESSION['user_id'])){
+        showLoginForm();
+        die();
+    }
+
     require_once 'view/profile.view.php';
     require_once 'userProfilController.php';
     $data = getCompleteUserProfile();
@@ -49,15 +56,18 @@ function showCart()
 }
 function logoutUser()
 {
+    require '../config/session.php';
     destroySession();
 }
 function getGoogleUserId()
 {
+    require '../config/session.php';
     startSession();
     return $_SESSION['user_google_id'] ?? null;
 }
 function getLocalUserId()
 {
+    require '../config/session.php';
     startSession();
     return $_SESSION['user_id'] ?? null;
 }
