@@ -1,5 +1,7 @@
 // Gabimet ruhen globalisht
 const profile_errors = {
+    username: null,
+    displayed_username: false,
     email: null,
     displayed_email: false
 };
@@ -13,17 +15,12 @@ async function change_data(event) {
     let changed_email = email_div.value.trim();
     let changed_username = username_div.value.trim();
 
-    if (!changed_email || !changed_username) {
-        alert("Please fill in both email and username.");
-        return;
-    }
-
-    let count = check_info_errors(changed_email, email_div);
+    let count = check_info_errors(changed_email, email_div, changed_username, username_div);
 
     if (count !== 0) {
-        display_errors(email_div);
+        display_profile_errors(email_div.parentElement, username_div.parentElement);
     } else {
-        clear_error(email_div);
+        clear_profile_error(email_div.parentElement, username_div.parentElement);
 
         let data = {
             email: changed_email,
@@ -35,75 +32,66 @@ async function change_data(event) {
         if ('success' in json) {
             alert('Info changed successfully');
         } else {
-            profile_server_errors(json, email_div);
+            profile_server_errors(json, email_div.parentElement, username_div.parentElement);
         }
     }
 }
 
-function check_info_errors(email, email_div) {
+function check_info_errors(email, email_div, username, username_div) {
     let count = 0;
-
-    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    if(!email){
+        profile_errors.email = "Email can't be empty!";
+        count++;
+    }
+    else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
         profile_errors.email = 'Invalid email!';
         count++;
     } else {
         profile_errors.email = null;
-        clear_error(email_div);
+        clear_profile_error(email_div.parentElement, username_div.parentElement);
+    }
+
+    if(!username){
+        profile_errors.username = "Username can't be empty!";
+        count ++;
+    }
+    else{
+        profile_errors.username = null;
+        clear_profile_error(username_div.parentElement, username_div.parentElement);
     }
 
     return count;
 }
 
-function display_errors(email_div) {
+function display_profile_errors(email_div, username_div) {
     if (profile_errors.email != null && !profile_errors.displayed_email) {
         create_error_message(profile_errors.email, email_div);
         profile_errors.displayed_email = true;
     }
-}
-
-function clear_error(email_div) {
-    const next = email_div.nextElementSibling;
-    if (profile_errors.displayed_email && next && next.classList.contains('error-message')) {
-        next.remove();
-        profile_errors.displayed_email = false;
+    if (profile_errors.username != null && !profile_errors.displayed_username) {
+        create_error_message(profile_errors.username, username_div);
+        profile_errors.displayed_username = true;
     }
 }
 
-function profile_server_errors(errors, email_div) {
+function clear_profile_error(email_div, username_div) {
+    if (profile_errors.displayed_email && email_div.nextElementSibling && email_div.nextElementSibling.classList.contains('error')) {
+        email_div.nextElementSibling.remove();
+        profile_errors.displayed_email = false;
+    }
+    if (profile_errors.displayed_username && username_div.nextElementSibling && username_div.nextElementSibling.classList.contains('error')) {
+        username_div.nextElementSibling.remove();
+        profile_errors.displayed_username = false;
+    }
+}
+
+function profile_server_errors(errors, email_div, username_div) {
     if ('email' in errors) {
         profile_errors.email = errors.email;
     }
-    display_errors(email_div);
-}
-
-// Funksion placeholder për krijimin e mesazhit të gabimit (mund të kesh një version më të mirë ti)
-function create_error_message(message, input) {
-    const error = document.createElement('div');
-    error.className = 'error-message';
-    error.style.color = 'red';
-    error.style.fontSize = '0.85rem';
-    error.style.marginTop = '0.25rem';
-    error.textContent = message;
-    input.parentNode.insertBefore(error, input.nextSibling);
-}
-
-async function send_request(data, request_type, url){
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Request-Type': request_type,
-            },
-            body: JSON.stringify(data),
-        });
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-
-        const json = await response.json();
-        return json;
-    } catch (error) {
-        console.error(error.message);
+    if('username' in errors){
+        profile_errors.username = errors.username;
     }
+    
+    display_profile_errors(email_div, username_div);
 }

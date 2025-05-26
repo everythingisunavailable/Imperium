@@ -385,6 +385,7 @@ async function singup_request(name, surname, email, password, password_again){
     const json = await send_request(data, 'signup', '../server/control/register.control.php');
     if ('success' in(json)) {
         alert('Account created successfully!');
+        flip();
     }
     else{
         signup_server_errors(json);
