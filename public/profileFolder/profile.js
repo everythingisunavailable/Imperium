@@ -38,12 +38,11 @@ async function change_data(event) {
       "../server/control/updateProfil.control.php"
     );
 
-        if ('success' in json) {
-            create_notification('Data updated successfully!')
-            goTo("/imperium/public/profile");
-        } else {
-            profile_server_errors(json, email_div.parentElement, username_div.parentElement);
-        }
+    if ('success' in json) {
+        create_notification('Data updated successfully!')
+        goTo("/imperium/public/profile");
+    } else {
+        profile_server_errors(json, email_div.parentElement, username_div.parentElement);
     }
   }
 }
