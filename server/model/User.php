@@ -132,28 +132,26 @@ class User
 
     //Profile Menagement functions
 
-    public function updateUser($userId, $newData){
+    public function updateUser($userId, $newData)
+    {
 
-    
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :userId");
         $stmt->bindParam(':userId', $userId);
-        $stmt->execute();  // <--- You must execute before fetching
-
+        $stmt->execute();
         $currentData = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$currentData) {
-            return false; 
+            return false;
         }
 
-        // Step 2: Prepare update fields
+
         $fieldsToUpdate = [];
-        $params = [];
+        $params = ['userId' => $userId];
 
         foreach ($newData as $key => $value) {
-
             if (array_key_exists($key, $currentData) && $currentData[$key] !== $value) {
-                $fieldsToUpdate[] = "$key = ?";
-                $params[] = $value;
+                $fieldsToUpdate[] = "$key = :$key";
+                $params[$key] = $value;
             }
         }
 
@@ -161,12 +159,12 @@ class User
             return false;
         }
 
-        $params[] = $userId;
 
-        $sql = "UPDATE users SET " . implode(', ', $fieldsToUpdate) . " WHERE id = ?";
+        $sql = "UPDATE users SET " . implode(', ', $fieldsToUpdate) . " WHERE id = :userId";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute($params);
     }
+
 
     public function changePassword($userId, $oldPass, $newPass)
     {
@@ -230,13 +228,13 @@ class User
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function removeSavedItem($userId, $itemId){
-        
-    $stmt = $this->conn->prepare("DELETE FROM saved_items WHERE user_id = :userId AND item_id = :itemId");
-    $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
-    $stmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
+    public function removeSavedItem($userId, $itemId)
+    {
 
-    return $stmt->execute();
+        $stmt = $this->conn->prepare("DELETE FROM saved_items WHERE user_id = :userId AND item_id = :itemId");
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
+
+        return $stmt->execute();
     }
-
 }

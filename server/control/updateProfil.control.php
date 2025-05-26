@@ -4,15 +4,22 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') die();
 
-
 $raw_data = file_get_contents("php://input");
 $postData = json_decode($raw_data, true);
+$headers = getallheaders();
+$requestType = $headers['Request-Type'] ?? null;
 
-if (!isset($postData['type'])) die();
+
+
+if (!$requestType) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Missing Request-Type header']);
+    exit;
+}
 
 include 'helper.control.php';
 require '../model/User.php';
-require '../config/db.php';
+require '../../config/db.php';
 
 $user = new User($conn);
 $userId = $_SESSION['user_id'] ?? null;
@@ -24,7 +31,7 @@ if (!$userId) {
     exit;
 }
 
-switch ($postData['type']) {
+switch ($requestType) {
     case 'update_profile':
         updateProfile($user, $userId, $postData);
         break;
@@ -68,7 +75,7 @@ function updateProfile($user, $userId, array $postData)
         return;
     }
 
-    
+
     $newData = [];
     if (!empty($name)) {
         $newData['name'] = $name;
@@ -85,10 +92,10 @@ function updateProfile($user, $userId, array $postData)
         http_response_code(500);
         echo json_encode(['success' => false, 'message' => 'Failed to update profile or no changes detected']);
     }
-
 }
 
-function removeItem($user, $userId, $postData){
+function removeItem($user, $userId, $postData)
+{
     $itemId = $postData['itemId'] ?? null;
     if (!$itemId) {
         http_response_code(400);
@@ -104,9 +111,5 @@ function removeItem($user, $userId, $postData){
         http_response_code(500);
         echo json_encode(['success' => false, 'message' => 'Failed to remove item']);
     }
-
-
 }
 $conn = null;
-
-?>

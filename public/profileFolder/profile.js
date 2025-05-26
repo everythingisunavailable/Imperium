@@ -1,97 +1,116 @@
 // Gabimet ruhen globalisht
 const profile_errors = {
-    username: null,
-    displayed_username: false,
-    email: null,
-    displayed_email: false
+  username: null,
+  displayed_username: false,
+  email: null,
+  displayed_email: false,
 };
 
 async function change_data(event) {
-    event.preventDefault(); // ndalon rifreskimin e faqes
+  event.preventDefault(); // ndalon rifreskimin e faqes
 
-    const email_div = document.getElementById('email');
-    const username_div = document.getElementById('username');
+  const email_div = document.getElementById("email");
+  const username_div = document.getElementById("username");
 
-    let changed_email = email_div.value.trim();
-    let changed_username = username_div.value.trim();
+  let changed_email = email_div.value.trim();
+  let changed_username = username_div.value.trim();
 
-    let count = check_info_errors(changed_email, email_div, changed_username, username_div);
+  let count = check_info_errors(
+    changed_email,
+    email_div,
+    changed_username,
+    username_div
+  );
 
-    if (count !== 0) {
-        display_profile_errors(email_div.parentElement, username_div.parentElement);
+  if (count !== 0) {
+    display_profile_errors(email_div.parentElement, username_div.parentElement);
+  } else {
+    clear_profile_error(email_div.parentElement, username_div.parentElement);
+
+    let data = {
+      email: changed_email,
+      username: changed_username,
+    };
+
+    const json = await send_request(
+      data,
+      "update_profile",
+      "../server/control/updateProfil.control.php"
+    );
+
+    if ("success" in json) {
+      alert("Info changed successfully");
     } else {
-        clear_profile_error(email_div.parentElement, username_div.parentElement);
-
-        let data = {
-            email: changed_email,
-            username: changed_username
-        };
-
-        const json = await send_request(data, 'change', '../server/control/change_info.control.php');
-
-        if ('success' in json) {
-            alert('Info changed successfully');
-        } else {
-            profile_server_errors(json, email_div.parentElement, username_div.parentElement);
-        }
+      profile_server_errors(
+        json,
+        email_div.parentElement,
+        username_div.parentElement
+      );
     }
+  }
 }
 
 function check_info_errors(email, email_div, username, username_div) {
-    let count = 0;
-    if(!email){
-        profile_errors.email = "Email can't be empty!";
-        count++;
-    }
-    else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-        profile_errors.email = 'Invalid email!';
-        count++;
-    } else {
-        profile_errors.email = null;
-        clear_profile_error(email_div.parentElement, username_div.parentElement);
-    }
+  let count = 0;
+  if (!email) {
+    profile_errors.email = "Email can't be empty!";
+    count++;
+  } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    profile_errors.email = "Invalid email!";
+    count++;
+  } else {
+    profile_errors.email = null;
+    clear_profile_error(email_div.parentElement, username_div.parentElement);
+  }
 
-    if(!username){
-        profile_errors.username = "Username can't be empty!";
-        count ++;
-    }
-    else{
-        profile_errors.username = null;
-        clear_profile_error(username_div.parentElement, username_div.parentElement);
-    }
+  if (!username) {
+    profile_errors.username = "Username can't be empty!";
+    count++;
+  } else {
+    profile_errors.username = null;
+    clear_profile_error(username_div.parentElement, username_div.parentElement);
+  }
 
-    return count;
+  return count;
 }
 
 function display_profile_errors(email_div, username_div) {
-    if (profile_errors.email != null && !profile_errors.displayed_email) {
-        create_error_message(profile_errors.email, email_div);
-        profile_errors.displayed_email = true;
-    }
-    if (profile_errors.username != null && !profile_errors.displayed_username) {
-        create_error_message(profile_errors.username, username_div);
-        profile_errors.displayed_username = true;
-    }
+  if (profile_errors.email != null && !profile_errors.displayed_email) {
+    create_error_message(profile_errors.email, email_div);
+    profile_errors.displayed_email = true;
+  }
+  if (profile_errors.username != null && !profile_errors.displayed_username) {
+    create_error_message(profile_errors.username, username_div);
+    profile_errors.displayed_username = true;
+  }
 }
 
 function clear_profile_error(email_div, username_div) {
-    if (profile_errors.displayed_email && email_div.nextElementSibling && email_div.nextElementSibling.classList.contains('error')) {
-        email_div.nextElementSibling.remove();
-        profile_errors.displayed_email = false;
-    }
-    if (profile_errors.displayed_username && username_div.nextElementSibling && username_div.nextElementSibling.classList.contains('error')) {
-        username_div.nextElementSibling.remove();
-        profile_errors.displayed_username = false;
-    }
+  if (
+    profile_errors.displayed_email &&
+    email_div.nextElementSibling &&
+    email_div.nextElementSibling.classList.contains("error")
+  ) {
+    email_div.nextElementSibling.remove();
+    profile_errors.displayed_email = false;
+  }
+  if (
+    profile_errors.displayed_username &&
+    username_div.nextElementSibling &&
+    username_div.nextElementSibling.classList.contains("error")
+  ) {
+    username_div.nextElementSibling.remove();
+    profile_errors.displayed_username = false;
+  }
 }
 
 function profile_server_errors(errors, email_div, username_div) {
-    if ('email' in errors) {
-        profile_errors.email = errors.email;
-    }
-    if('username' in errors){
-        profile_errors.username = errors.username;
-    }
-    
-    display_profile_errors(email_div, username_div);
+  if ("email" in errors) {
+    profile_errors.email = errors.email;
+  }
+  if ("username" in errors) {
+    profile_errors.username = errors.username;
+  }
+
+  display_profile_errors(email_div, username_div);
 }
