@@ -366,7 +366,7 @@ async function login_request(email, password){
     const json = await send_request(data, 'login', '../server/control/login.control.php');
 
     if ('success' in(json)) {
-        alert('login successfull');
+        create_notification('Login successful!');
         goTo('profile');
     }
     else{
@@ -384,7 +384,7 @@ async function singup_request(name, surname, email, password, password_again){
 
     const json = await send_request(data, 'signup', '../server/control/register.control.php');
     if ('success' in(json)) {
-        alert('Account created successfully!');
+        create_notification('Account created successfully!');
         flip();
     }
     else{
