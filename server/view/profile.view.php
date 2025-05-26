@@ -20,7 +20,7 @@ function display_profile(array $userData, array $historyItems, array $savedItems
       </div>
       <div class="form-group">
         <label for="change-password">Password</label>
-        <a href="/forgot-password.php" class="password-redirect">Change Password</a>
+        <a href="/imperium/public/forgot-password" onclick="goToEvent(event, '/imperium/public/forgot-password')" class="password-redirect">Change Password</a>
       </div>
       <button type="submit" class="account-submit">Update Account</button>
     </form>
