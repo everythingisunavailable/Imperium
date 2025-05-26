@@ -9,7 +9,7 @@ function display_profile(array $userData, array $historyItems, array $savedItems
     <p class="profile-email">{$userData['email']}</p>
     <p class="profile-member-since">Member since: {$userData['created_at']}</p>
     <h3 class="section-title">Account Settings</h3>
-    <form class="account-form">
+    <form action="#" method="post" class="account-form"  onsubmit="change_data(event)">
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Enter new username" value="{$userData['name']}">
