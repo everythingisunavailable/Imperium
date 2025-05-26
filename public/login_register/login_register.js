@@ -337,27 +337,6 @@ function signup_server_errors(errors){
     display_errors();
 }
 
-async function send_request(data, request_type, url){
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Request-Type': request_type,
-            },
-            body: JSON.stringify(data),
-        });
-        if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-        }
-    
-        const json = await response.json();
-        return json;
-    } catch (error) {
-        console.error(error.message);
-    }
-}
-
 async function login_request(email, password){
     let data = {
         'email': email,
