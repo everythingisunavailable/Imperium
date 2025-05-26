@@ -108,7 +108,6 @@ if (window.innerWidth > 975) {
     });
 }
 
-//to do : toggle shop category here
 function toggle_cat_menu(){
     document.getElementById('categories_nav').classList.toggle('hide-nav');
 }
@@ -147,4 +146,11 @@ function animate(){
             elements[i].classList.remove('animate-in');
         }
     }
+}
+
+function create_notification(content){
+    let div = document.createElement('div');
+    div.className = 'notification';
+    div.innerHTML = content;
+    document.body.appendChild(div);
 }

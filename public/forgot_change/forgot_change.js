@@ -196,7 +196,7 @@ async function change_password(newPass, confirmPass){
     if ('success' in(json)) {
         new_password_errors.new_password = null;
         new_password_errors.repeat_password = null;
-        alert(json['success']);
+        create_notification(json['success']);
         goTo('/imperium/public/profile');
     } else {
         change_new_pass_errors(json);
