@@ -37,7 +37,6 @@ function loginUser($email, $password)
     if (!empty($errors)) {
         echo json_encode($errors);
         exit;
-        die();
     }
 
     require_once '../../config/session.php';

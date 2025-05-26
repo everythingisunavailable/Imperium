@@ -144,7 +144,6 @@ class User
             return false;
         }
 
-
         $fieldsToUpdate = [];
         $params = ['userId' => $userId];
 
@@ -235,6 +234,12 @@ class User
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
 
+        return $stmt->execute();
+    }
+    public function deleteUser($userId){
+   
+        $stmt = $this->conn->prepare("DELETE FROM users WHERE id = :id");
+        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
         return $stmt->execute();
     }
 }
