@@ -1,18 +1,21 @@
 <?php
-require_once "../config/session.php";
+require_once "../../config/session.php";
 
 startSession();
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') die();
 
 $raw_data = file_get_contents("php://input");
+error_log("RAW INPUT: " . $raw_data);
 $postData = json_decode($raw_data, true);
+error_log("Parsed POST Data: " . print_r($postData, true));
 $headers = getallheaders();
 $requestType = $headers['Request-Type'] ?? null;
 
 
 
 if (!$requestType) {
+    error_log("TYPE not set!");
     http_response_code(400);
     echo json_encode(['success' => false, 'message' => 'Missing Request-Type header']);
     exit;
@@ -108,10 +111,10 @@ function updateProfile($user, $userId, array $postData)
     $success = $user->updateUser($userId, $newData);
 
     if ($success) {
-        echo json_encode(['success' => true, 'message' => 'Profile updated successfully']);
+        echo json_encode(['success' => 'Profile updated successfully']);
     } else {
         http_response_code(500);
-        echo json_encode(['success' => false, 'message' => 'Failed to update profile or no changes detected']);
+        echo json_encode(['success' => 'Failed to update profile or no changes detected']);
     }
 }
 
