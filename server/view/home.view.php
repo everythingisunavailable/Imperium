@@ -1,6 +1,6 @@
 <?php
-function display_home(){    
-    echo <<<HTML
+function display_home($best_selling, $new_items){    
+echo <<<HTML
         <div class="hero">
             <div class="left">
                 <div class="cto displace-hide animate-in">
@@ -91,80 +91,88 @@ function display_home(){
         <h2>BEST SELLING PRODUCTS</h2>
         <div class="carousel-wrapper-basic displace-hide animate-in">
             <div class="carousel" id="first-carousel">
-                
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-
+HTML;
+                $i = 0;
+                foreach ($best_selling as $index=>$item){
+                    //$path = urlencode("?filters={'subcategory':" . $item['subcategory']."}"); // not sure if useful :(
+                    echo <<<ITEM
+                    <a href="/imperium/public/{$item['category']}s/{$item['id']}" eventGoTo(event, '/imperium/public/{$item['category']}s/{$item['id']}')>
+                        <div class="carousel-item">
+                            <h3>{$item['name']}</h3>
+                            <img src="assets/pictures/computer-bundle-transparent.png" alt="{$item['name']}">
+                        </div>
+                    </a>
+                    ITEM;
+                    $i++;
+                }
+echo <<<HTML
             </div>
             <button class="left button-link" onclick="carousel_one('right',0)"><img src="assets/icons/left-2-svgrepo-com.svg" width="30px" alt="left"></button>
             <button class="right button-link" onclick="carousel_one('left',0)"><img src="assets/icons/right-2-svgrepo-com.svg" width="30px" alt="right"></button>
             <div class="carousel-button-group">
                 <ul id="first-carousel-buttons">
-                    <li><button onclick="carousel_one('move_to',0)" class="expand-button"><div class="fill-button"></div></button></li>
-                    <li><button onclick="carousel_one('move_to',1)"><div class="fill-button"></div></button></li>
-                    <li><button onclick="carousel_one('move_to',2)"><div class="fill-button"></div></button></li>
-                    <li><button onclick="carousel_one('move_to',3)"><div class="fill-button"></div></button></li>
-                    <li><button onclick="carousel_one('move_to',4)"><div class="fill-button"></div></button></li>
+HTML;
+                    $j = 0;
+                    foreach ($best_selling as $index=>$item){
+                        if ($j == 0){
+                            echo <<<ITEM
+                            <li><button onclick="carousel_one('move_to',{$j})" class="expand-button"><div class="fill-button"></div></button></li>
+                            ITEM;
+                        }
+                        else{
+                            echo <<<ITEM
+                            <li><button onclick="carousel_one('move_to',{$j})"><div class="fill-button"></div></button></li>
+                            ITEM;
+                        }
+                        $j++;
+                    }
+echo <<<HTML
                 </ul>
             </div>
         </div>
-
         <h2>NEW PRODUCTS</h2>
-        <div class="carousel-wrapper-basic second-carousel-wrapper-basic displace-hide animate-in">
+        <div class="carousel-wrapper-basic  second-carousel-wrapper-basic displace-hide animate-in">
             <div class="carousel" id="second-carousel">
-                
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-                <div class="carousel-item">
-                    <h3>CARBON X1 BUNDLE</h3>
-                    <img src="assets/pictures/computer-bundle-transparent.png" alt="pc">
-                </div>
-
+HTML;
+                $i = 0;
+                foreach ($new_items as $index=>$item){
+                    //$path = urlencode("?filters={'subcategory':" . $item['subcategory']."}"); // not sure if useful :(
+                    echo <<<ITEM
+                    <a href="/imperium/public/{$item['category']}s/{$item['id']}" eventGoTo(event, '/imperium/public/{$item['category']}s/{$item['id']}')>
+                        <div class="carousel-item">
+                            <h3>{$item['name']}</h3>
+                            <img src="assets/pictures/computer-bundle-transparent.png" alt="{$item['name']}">
+                        </div>
+                    </a>
+                    ITEM;
+                    $i++;
+                }
+echo <<<HTML
             </div>
             <button class="left button-link" onclick="carousel_two('right',0)"><img src="assets/icons/left-2-svgrepo-com.svg" width="30px" alt="left"></button>
             <button class="right button-link" onclick="carousel_two('left',0)"><img src="assets/icons/right-2-svgrepo-com.svg" width="30px" alt="right"></button>
             <div class="carousel-button-group">
                 <ul id="second-carousel-buttons">
-                    <li><button onclick="carousel_two('move_to',0)" class="expand-button"><div class="fill-button"></div></button></li>
-                    <li><button onclick="carousel_two('move_to',1)"><div class="fill-button"></div></button></li>
-                    <li><button onclick="carousel_two('move_to',2)"><div class="fill-button"></div></button></li>
-                    <li><button onclick="carousel_two('move_to',3)"><div class="fill-button"></div></button></li>
-                    <li><button onclick="carousel_two('move_to',4)"><div class="fill-button"></div></button></li>
+HTML;
+                    $j = 0;
+                    foreach ($new_items as $index=>$item){
+                        if ($j == 0){
+                            echo <<<ITEM
+                            <li><button onclick="carousel_two('move_to',{$j})" class="expand-button"><div class="fill-button"></div></button></li>
+                            ITEM;
+                        }
+                        else{
+                            echo <<<ITEM
+                            <li><button onclick="carousel_two('move_to',{$j})"><div class="fill-button"></div></button></li>
+                            ITEM;
+                        }
+                        $j++;
+                    }
+echo <<<HTML
                 </ul>
             </div>
-        </div>
+        </div>        
+
 
         <div class="selling-points-section displace-hide animate-in">
             <div class="left">
@@ -240,5 +248,5 @@ function display_home(){
                 </div>
             </div>
         </div>
-    HTML;
+HTML;
 }

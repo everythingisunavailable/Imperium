@@ -1,6 +1,5 @@
 <?php
-include 'helper.control.php';
-require '../model/Product.php';
+require 'model/Product.php';
 
 function getSpecificProduct($id) {
     $queryResult = $pro->getProductById($filters['productId']);
@@ -8,18 +7,18 @@ function getSpecificProduct($id) {
 }
 
 function getHomeProducts($filters) {
-    require '../../config/db.php';
+    require '../config/db.php';
     $pro = new Product($conn);
 
     //Best selling products
     $sellingCount = 5;
-    if (array_key_exists('bestSelling', $filters)) $sellingCount = $filters['bestSelling'];
+    if ($filters && array_key_exists('bestSelling', $filters)) $sellingCount = $filters['bestSelling'];
     $filtersQuery = " ORDER BY orders DESC LIMIT ".$sellingCount;
     $queryResultSelling = $pro->getProductsByFilters($filtersQuery);
 
     //New products
     $newCount = 5;
-    if (array_key_exists('newProducts', $filters)) $newCount = $filters['newProducts'];
+    if ($filters && array_key_exists('newProducts', $filters)) $newCount = $filters['newProducts'];
     $filtersQuery = " ORDER BY created_at DESC LIMIT ".$newCount;
     $queryResultNew = $pro->getProductsByFilters($filtersQuery);
 
@@ -30,38 +29,51 @@ function getHomeProducts($filters) {
 }
 
 function getProducts($filters) {
-    require '../../config/db.php';
+    require '../config/db.php';
     $pro = new Product($conn);
 
     $filtersQuery = "";
 
     //Category filter
-    if (array_key_exists('category', $filters)) $filtersQuery = addFilter($filtersQuery, "category = ".$filters['category']);
+    if ($filters && array_key_exists('category', $filters)) $filtersQuery = addFilter($filtersQuery, "category = " . "'".$filters['category']."'");
 
     //Price filter
-    if (array_key_exists('minPrice', $filters)) $filtersQuery = addFilter($filtersQuery, "price >= ".$filters['minPrice']);
-    if (array_key_exists('maxPrice', $filters)) $filtersQuery = addFilter($filtersQuery, "price <= ".$filters['maxPrice']);
+    if ($filters && array_key_exists('minPrice', $filters)) $filtersQuery = addFilter($filtersQuery, "price >= ".$filters['minPrice']);
+    if ($filters && array_key_exists('maxPrice', $filters)) $filtersQuery = addFilter($filtersQuery, "price <= ".$filters['maxPrice']);
 
     //Sorting and ordering
-    if (array_key_exists('sort', $filters)) {
+    if ($filters && array_key_exists('sort', $filters)) {
+        $sort = 'created_at';
+        switch ($filters['sort']) {
+            case 'date':
+                $sort = 'created_at';
+                break;
+            case 'price':
+                $sort = 'price';
+                break;
+            case 'popularity':
+                $sort = 'orders';
+                break;
+            case 'rating':
+                $sort = 'rating';
+        }
         $order = " DESC";
         if (array_key_exists('order', $filters) && $filters['order'] == "Ascending") $order = " ASC";
-        $filtersQuery = $filtersQuery . " ORDER BY " .$filters['sort'] .$order;
+        $filtersQuery = $filtersQuery . " ORDER BY " .$sort .$order;
     }
 
     //Page product limit
     $limit = 50;
     $offset = 0;
-    if (array_key_exists('page', $filters)) $offset = 50 * ($filters['page'] - 1);
+    if ($filters && array_key_exists('page', $filters)) $offset = 50 * ($filters['page'] - 1);
     $filtersQuery = $filtersQuery . " LIMIT " .$limit. " OFFSET " .$offset;
     
     //Running query
     $queryResult = $pro->getProductsByFilters($filtersQuery);
-    if (!$result) {
-        echo json_encode(['products' => 'No results found.']);
+    if (!$queryResult) {
         return null;
     } else {
-        return $result;
+        return $queryResult;
     }
     
     $conn = null;

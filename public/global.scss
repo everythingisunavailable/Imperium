@@ -391,17 +391,20 @@ nav, .hamburger{
 
         transform: translateX(0);
         transition: transform 0.5s ease-out;
-
-        .carousel-item{
+        a{
             width: 20%;
             height: fit-content;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            img{
-                width: 60vw;
+            .carousel-item{
+                width: 100%;
+                height: fit-content;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+    
+                img{
+                    width: 60vw;
+                }
             }
         }
     }
