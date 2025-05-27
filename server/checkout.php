@@ -25,8 +25,8 @@ $checkout_session = \Stripe\Checkout\Session::create([
     'quantity' => 1,
   ]],
   'mode' => 'payment',
-  'success_url' => $YOUR_DOMAIN . '/server/webhook.php',
-  'cancel_url' => $YOUR_DOMAIN . '/server/webhook.php',
+  'success_url' => $YOUR_DOMAIN . '/public/',
+  'cancel_url' => $YOUR_DOMAIN . '/public/',
     'metadata' => [
       'product_id' => 123, //ids from database  
       'user_id' => 456,

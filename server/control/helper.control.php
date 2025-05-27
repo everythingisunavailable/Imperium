@@ -1,8 +1,10 @@
 <?php
-function showHome()
+function showHome($filters)
 {
     require_once 'view/home.view.php';
-    display_home();
+    require_once 'products.control.php';
+    $data = getHomeProducts($filters);
+    display_home($data['bestSelling'], $data['newProducts']);
 }
 function showProfile()
 {
@@ -35,10 +37,12 @@ function showChangePassword()
     require_once 'view/changePassword.view.php';
     display_change_password();
 }
-function showProducts()
+function showProducts($filters)
 {
     require_once 'view/products.view.php';
-    display_products();
+    require_once 'products.control.php';
+    $data = getProducts($filters);
+    display_products($data);
 }
 function showSpecificProduct()
 {
@@ -58,10 +62,21 @@ function showCart()
         showLoginForm();
         die();
     }
+<<<<<<< HEAD
     require_once 'view/cart.view.php';
     require_once 'control/shoppingCart.control.php';
     $cartItems = showCartItems();
     display_cart($cartItems);
+=======
+    
+    require 'model/Cart.php';
+    require '../config/db.php';
+    $cart = new Cart($conn, $_SESSION['user_id']);
+    $cart_items = $cart->getUserItems();
+
+    require_once 'view/cart.view.php';
+    display_cart($cart_items);
+>>>>>>> main
 }
 function logoutUser()
 {

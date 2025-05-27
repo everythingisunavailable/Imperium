@@ -96,9 +96,8 @@ function updateProfile($user, $userId, array $postData)
     }
 
     $userExists = $user->checkEmail($email);
-    $userEmail = $user->getEmailByid($userId);
 
-    if ($userExists && !isset($errors['email']) && $userEmail !== $email) {
+    if ($userExists && $userExists['id'] != $_SESSION['user_id'] && !isset($errors['email'])) {
         $errors['email'] = "User with this email already exists!";
     }
 
