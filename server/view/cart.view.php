@@ -10,8 +10,8 @@ function display_cart(array $cartItems)
 HTML;
 
   foreach ($cartItems as $index => $item) {
-    $id = $item['id'];
-    $name = htmlspecialchars($item['name']);
+    $id = $item['product_id'];
+    $name = htmlspecialchars($item['product_  name']);
     $desc = htmlspecialchars($item['description']);
     $price = number_format($item['price'], 2);
     $qty = (int)$item['quantity'];
