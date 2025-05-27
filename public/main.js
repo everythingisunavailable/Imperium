@@ -154,3 +154,35 @@ function create_notification(content){
     div.innerHTML = content;
     document.body.appendChild(div);
 }
+
+async function send_request(data, request_type, url){
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Request-Type': request_type,
+            },
+            body: JSON.stringify(data),
+        });
+        if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+        }
+    
+        const json = await response.json();
+        return json;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+async function buy_item(itemId){
+    data = {'item_id': itemId};
+    const json = await send_request(data, 'single_item', 'localhost/imperium/server/checkout.php');
+    if('success' in json){
+        create_notification('Thank You for your purchase!');
+    }
+    else{
+        create_notification('Something went potentially wrong!');//todo : change this based on backed error
+    }
+}

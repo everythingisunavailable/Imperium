@@ -62,7 +62,7 @@ function showCart()
     require 'model/Cart.php';
     require '../config/db.php';
     $cart = new Cart($conn, $_SESSION['user_id']);
-    $cart_items = $cart->getItems();
+    $cart_items = $cart->getUserItems();
 
     require_once 'view/cart.view.php';
     display_cart($cart_items);
