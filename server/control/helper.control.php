@@ -52,6 +52,13 @@ function showAboutUs()
 }
 function showCart()
 {
+    require '../config/session.php';
+    startSession();
+    if (!isset($_SESSION['user_id'])){
+        showLoginForm();
+        die();
+    }
+    
     require_once 'view/cart.view.php';
     display_cart();
 }

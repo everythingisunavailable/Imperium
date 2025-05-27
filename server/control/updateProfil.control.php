@@ -1,18 +1,21 @@
 <?php
-require_once "../config/session.php";
+require_once "../../config/session.php";
 
 startSession();
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') die();
 
 $raw_data = file_get_contents("php://input");
+error_log("RAW INPUT: " . $raw_data);
 $postData = json_decode($raw_data, true);
+error_log("Parsed POST Data: " . print_r($postData, true));
 $headers = getallheaders();
 $requestType = $headers['Request-Type'] ?? null;
 
 
 
 if (!$requestType) {
+    error_log("TYPE not set!");
     http_response_code(400);
     echo json_encode(['success' => false, 'message' => 'Missing Request-Type header']);
     exit;
@@ -42,7 +45,6 @@ switch ($requestType) {
         break;
 
     case 'logout':
-        destroySession();
         echo json_encode(['success' => 'Logged out successfully']);
         break;
     case 'delete_account':
@@ -142,6 +144,7 @@ function removeItem($user, $userId, $postData)
 }
 function deleteAccount($user, $userId)
 {
+    destroySession();
     $success = $user->deleteUser($userId);
 
     if (!$success) {
