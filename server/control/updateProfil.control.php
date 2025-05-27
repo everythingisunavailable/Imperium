@@ -31,7 +31,6 @@ switch ($requestType) {
     case 'update_profile':
         updateProfile($user, $userId, $postData);
         break;
-
     case 'remove_item':
         removeItem($user, $userId, $postData);
         break;
@@ -135,16 +134,18 @@ function removeItem($user, $userId, $postData)
     $success = $user->removeSavedItem($userId, $itemId);
 
     if (!$success) {
+        http_response_code(500);
         echo json_encode(['error' => 'Failed to remove item']);
     } else {
-        http_response_code(500);
+        http_response_code(200);
         echo json_encode(['success' => 'Item removed successfully']);
     }
 }
 function deleteAccount($user, $userId)
 {
+    error_log("Deleting user with ID: $userId");
     $success = $user->deleteUser($userId);
-
+    error_log("Delete result: " . ($success ? "Success" : "Failure"));
     if (!$success) {
         http_response_code(500);
         echo json_encode(['error' => 'Failed to delete account']);

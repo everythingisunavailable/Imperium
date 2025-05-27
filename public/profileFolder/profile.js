@@ -140,50 +140,31 @@ function confirm_delete() {
   }
 }
 
-function delete_account() {
-  fetch("../server/control/deleteAccount.control.php", {
-    method: "POST",
-    credentials: "include",
-  })
-    .then((response) => response.json())
-    .then((json) => {
-      if (json.success) {
-        create_notification("Account deleted.");
-        goTo("/imperium/public/register");
-      } else {
-        create_notification("Failed to delete account.");
-      }
-    })
-    .catch((error) => {
-      console.error("Delete error:", error);
-      create_notification("An error occurred while deleting the account.");
-    });
-}
-function remove_saved_item(itemId) {
-  if (!confirm("Remove this item from your saved items?")) return;
+async function delete_account() {
+  const json = await send_request(
+    {},
+    "delete_account",
+    "../server/control/updateProfil.control.php"
+  );
 
-  fetch("../server/control/removeSavedItem.control.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ item_id: itemId }),
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      if (json.success) {
-        create_notification("Item removed from saved items.");
-        // Optionally, remove from DOM
-        document
-          .querySelector(`.remove-saved[data-id="${itemId}"]`)
-          ?.closest(".item-card")
-          ?.remove();
-      } else {
-        create_notification("Failed to remove item.");
-      }
-    })
-    .catch((err) => {
-      console.error("Remove saved item error:", err);
-      create_notification("An error occurred.");
-    });
+  if (json?.success) {
+    create_notification("Account deleted successfully!");
+    goTo("/imperium/public/profile");
+  } else {
+    create_notification(json?.error || "Failed to delete.");
+  }
+}
+async function remove_saved_item(itemId) {
+  const json = await send_request(
+    { itemId },
+    "remove_item",
+    "../server/control/updateProfil.control.php"
+  );
+
+  if (json?.success) {
+    create_notification("Removed successfully!");
+    goTo("/imperium/public/profile");
+  } else {
+    create_notification(json?.error || "Failed to remove.");
+  }
 }
