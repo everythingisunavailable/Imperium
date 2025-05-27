@@ -1,8 +1,10 @@
 <?php
-function showHome()
+function showHome($filters)
 {
     require_once 'view/home.view.php';
-    display_home();
+    require_once 'products.control.php';
+    $data = getHomeProducts($filters);
+    display_home($data['bestSelling'], $data['newProducts']);
 }
 function showProfile()
 {
@@ -35,10 +37,12 @@ function showChangePassword()
     require_once 'view/changePassword.view.php';
     display_change_password();
 }
-function showProducts()
+function showProducts($filters)
 {
     require_once 'view/products.view.php';
-    display_products();
+    require_once 'products.control.php';
+    $data = getProducts($filters);
+    display_products($data);
 }
 function showSpecificProduct()
 {

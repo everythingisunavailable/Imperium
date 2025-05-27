@@ -1,9 +1,9 @@
 <?php
 class Product
 {
-    private $conn;
+    private PDO $conn;
 
-    public function __construct()
+    public function __construct(PDO $conn)
     {
         $this->conn = $conn;
     }
@@ -14,5 +14,12 @@ class Product
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getProductsByFilters($filterQuery)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM products". $filterQuery);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
