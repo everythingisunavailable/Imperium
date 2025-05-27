@@ -1,6 +1,7 @@
 <?php
+require_once "../config/session.php";
 
-session_start();
+startSession();
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') die();
 
@@ -40,15 +41,24 @@ switch ($requestType) {
         removeItem($user, $userId, $postData);
         break;
 
+    case 'logout':
+        destroySession();
+        echo json_encode(['success' => 'Logged out successfully']);
+        break;
+    case 'delete_account':
+        deleteAccount($user, $userId);
+        destroySession();
+        break;
     default:
         http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'Unknown request type']);
+        echo json_encode(['success' => 'Unknown request type']);
         break;
 }
 
 
 function updateProfile($user, $userId, array $postData)
 {
+    $errors = [];
 
     $name = trim($postData['username'] ?? '');
     $email = trim($postData['email'] ?? '');
@@ -56,14 +66,14 @@ function updateProfile($user, $userId, array $postData)
 
     if (empty($name) && empty($email)) {
         http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'At least one of name or email is required']);
+        $error['error'] = 'At least one of name or email is required';
         return;
     }
 
 
     if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'Invalid email format']);
+        $errors['email'] = 'Invalid email format';
         return;
     }
 
@@ -71,7 +81,7 @@ function updateProfile($user, $userId, array $postData)
     $userData = $user->getUserById($userId);
     if (!$userData) {
         http_response_code(404);
-        echo json_encode(['success' => false, 'message' => 'User not found']);
+        $errors['error'] = 'User not found';
         return;
     }
 
@@ -82,6 +92,17 @@ function updateProfile($user, $userId, array $postData)
     }
     if (!empty($email)) {
         $newData['email'] = $email;
+    }
+
+    $userExists = $user->checkEmail($email);
+
+    if ($userExists && !isset($errors['email'])) {
+        $errors['email'] = "User with this email already exists!";
+    }
+
+    if (!empty($errors)) {
+        echo json_encode($errors);
+        exit;
     }
 
     $success = $user->updateUser($userId, $newData);
@@ -96,20 +117,41 @@ function updateProfile($user, $userId, array $postData)
 
 function removeItem($user, $userId, $postData)
 {
+    $error = '';
+
     $itemId = $postData['itemId'] ?? null;
     if (!$itemId) {
         http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'Item ID is required']);
+
+        $error = 'Item ID is required';
         return;
+    }
+
+    if (!empty($error)) {
+        echo json_encode($error);
+        exit;
     }
 
     $success = $user->removeSavedItem($userId, $itemId);
 
-    if ($success) {
-        echo json_encode(['success' => true, 'message' => 'Item removed successfully']);
+    if (!$success) {
+        echo json_encode(['error' => 'Failed to remove item']);
     } else {
         http_response_code(500);
-        echo json_encode(['success' => false, 'message' => 'Failed to remove item']);
+        echo json_encode(['success' => 'Item removed successfully']);
     }
 }
+function deleteAccount($user, $userId)
+{
+    $success = $user->deleteUser($userId);
+
+    if (!$success) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Failed to delete account']);
+    } else {
+        destroySession();
+        echo json_encode(['success' => 'Account deleted successfully']);
+    }
+}
+
 $conn = null;
