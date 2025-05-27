@@ -1,7 +1,7 @@
 <?php
 function display_cart(array $cartItems)
 {
-  $total = 0; 
+  $total = 0;
 
   echo <<<HTML
 <div class="cart-page">
@@ -9,19 +9,12 @@ function display_cart(array $cartItems)
   <div class="cart-container">
 HTML;
 
-<<<<<<< HEAD
-  foreach ($cartItems as $item) {
-    $id = (int) $item['cart_item_id'];
-    $name = htmlspecialchars((string)($item['product_name'] ?? ''));
-    $desc = htmlspecialchars((string)($item['description'] ?? ''));
-    $price = number_format((float)$item['price'], 2);
-=======
+
   foreach ($cartItems as $index => $item) {
     $id = $item['product_id'];
-    $name = htmlspecialchars($item['product_  name']);
+    $name = htmlspecialchars($item['product_name']);
     $desc = htmlspecialchars($item['description']);
     $price = number_format($item['price'], 2);
->>>>>>> main
     $qty = (int)$item['quantity'];
     $image = htmlspecialchars((string)($item['image_url'] ?? ''));
     $total += $item['price'] * $qty;
