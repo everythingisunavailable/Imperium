@@ -23,6 +23,8 @@ function display_profile(array $userData, array $historyItems, array $savedItems
         <a href="/imperium/public/forgot-password" onclick="goToEvent(event, '/imperium/public/forgot-password')" class="password-redirect">Change Password</a>
       </div>
       <button type="submit" class="account-submit">Update Account</button>
+      <button type="button" class="logout-button" onclick="logout_user()">Log Out</button>
+      <button type="button" class="delete-button" onclick="confirm_delete()">Delete Account</button>
     </form>
   </aside>
 
@@ -78,6 +80,7 @@ HTML;
             <img src="{$item['image_url']}" alt="">
           </div>
           <button class="add-to-cart">Add to Cart</button>
+          <button class="remove-saved" onclick="remove_saved_item({$item['id']})">Remove</button>
         </div>
 SAVED;
   }
