@@ -50,6 +50,7 @@ switch ($requestType) {
         break;
     case 'delete_account':
         deleteAccount($user, $userId);
+        destroySession();
         break;
     default:
         http_response_code(400);
@@ -145,7 +146,6 @@ function removeItem($user, $userId, $postData)
 }
 function deleteAccount($user, $userId)
 {
-    destroySession();
     $success = $user->deleteUser($userId);
 
     if (!$success) {
