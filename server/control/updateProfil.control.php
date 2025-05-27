@@ -15,9 +15,7 @@ $requestType = $headers['Request-Type'] ?? null;
 
 
 if (!$requestType) {
-    error_log("TYPE not set!");
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Missing Request-Type header']);
     exit;
 }
 
@@ -29,12 +27,6 @@ $user = new User($conn);
 $userId = $_SESSION['user_id'] ?? null;
 
 
-if (!$userId) {
-    http_response_code(401);
-    echo json_encode(['success' => false, 'message' => 'Unauthorized']);
-    exit;
-}
-
 switch ($requestType) {
     case 'update_profile':
         updateProfile($user, $userId, $postData);
@@ -43,10 +35,10 @@ switch ($requestType) {
     case 'remove_item':
         removeItem($user, $userId, $postData);
         break;
-
     case 'logout':
         destroySession();
-        echo json_encode(['success' => 'Logged out successfully']);
+        echo json_encode(['success' => true]);
+        exit();
         break;
     case 'delete_account':
         deleteAccount($user, $userId);
@@ -58,6 +50,11 @@ switch ($requestType) {
         break;
 }
 
+if (!$userId) {
+    http_response_code(401);
+    echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+    exit;
+}
 
 function updateProfile($user, $userId, array $postData)
 {

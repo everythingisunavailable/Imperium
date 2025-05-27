@@ -10,7 +10,7 @@ function showProfile()
 {
     require '../config/session.php';
     startSession();
-    if (!isset($_SESSION['user_id'])){
+    if (!isset($_SESSION['user_id'])) {
         showLoginForm();
         die();
     }
@@ -58,18 +58,31 @@ function showCart()
 {
     require '../config/session.php';
     startSession();
-    if (!isset($_SESSION['user_id'])){
+    if (!isset($_SESSION['user_id'])) {
         showLoginForm();
         die();
     }
-    
+
     require 'model/Cart.php';
     require '../config/db.php';
-    $cart = new Cart($conn, $_SESSION['user_id']);
-    $cart_items = $cart->getUserItems();
+    require_once "../config/session.php";
+    $userId = $_SESSION['user_id'] ?? null;
 
+    if (!$userId) {
+        http_response_code(401);
+        exit;
+    }
+
+    $cart = new Cart($conn, $userId);
+    $cart_items = $cart->getUserItems();
+    if (empty($cart_items)) {
+        http_response_code(404);
+        echo 'No items found in cart';
+        return [];
+    }
     require_once 'view/cart.view.php';
     display_cart($cart_items);
+    $conn = null;
 }
 function logoutUser()
 {
