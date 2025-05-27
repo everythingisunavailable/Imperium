@@ -111,3 +111,75 @@ function profile_server_errors(errors, email_div, username_div) {
 
   display_profile_errors(email_div, username_div);
 }
+function logout_user() {
+  // You can replace this with a real API call or redirect
+  fetch('../server/control/logout.control.php', {
+    method: 'POST',
+    credentials: 'include',
+  })
+    .then(response => response.json())
+    .then(json => {
+      if (json.success) {
+        create_notification("Logged out successfully!");
+        goTo("/imperium/public/login");
+      } else {
+        create_notification("Failed to log out.");
+      }
+    })
+    .catch(error => {
+      console.error("Logout error:", error);
+      create_notification("An error occurred during logout.");
+    });
+}
+
+function confirm_delete() {
+  const confirmed = confirm("Are you sure you want to delete your account? This action cannot be undone.");
+  if (confirmed) {
+    delete_account();
+  }
+}
+
+function delete_account() {
+  fetch('../server/control/deleteAccount.control.php', {
+    method: 'POST',
+    credentials: 'include',
+  })
+    .then(response => response.json())
+    .then(json => {
+      if (json.success) {
+        create_notification("Account deleted.");
+        goTo("/imperium/public/register");
+      } else {
+        create_notification("Failed to delete account.");
+      }
+    })
+    .catch(error => {
+      console.error("Delete error:", error);
+      create_notification("An error occurred while deleting the account.");
+    });
+}
+function remove_saved_item(itemId) {
+  if (!confirm("Remove this item from your saved items?")) return;
+
+  fetch('../server/control/removeSavedItem.control.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ item_id: itemId }),
+  })
+    .then(res => res.json())
+    .then(json => {
+      if (json.success) {
+        create_notification("Item removed from saved items.");
+        // Optionally, remove from DOM
+        document.querySelector(`.remove-saved[data-id="${itemId}"]`)?.closest(".item-card")?.remove();
+      } else {
+        create_notification("Failed to remove item.");
+      }
+    })
+    .catch(err => {
+      console.error("Remove saved item error:", err);
+      create_notification("An error occurred.");
+    });
+}
