@@ -16,6 +16,14 @@ class User
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function getEmailByid($id){
+        $stmt = $this->conn->prepare("SELECT email FROM users WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+    
     public function registerGoogleUser($googleUserData)
     {
 

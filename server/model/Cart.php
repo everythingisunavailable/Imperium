@@ -1,6 +1,6 @@
 <?php
 
-class User
+class Cart
 {
     private $conn;
     private $userId;
@@ -12,32 +12,7 @@ class User
         $this->userId = $userId;
     }
 
-    public function getItems()
-    {
-
-        if (!$this->userId) return [];
-
-        $stmt = $this->conn->prepare("SELECT id FROM shopping_cart WHERE user_id = ?");
-        $stmt->execute([$this->userId]);
-        $cart = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if (!$cart) return [];
-
-        $cartId = $cart['id'];
-
-
-        $stmt = $this->conn->prepare("
-            SELECT ci.id AS cart_item_id, ci.product_id, ci.quantity
-            FROM cart_items ci
-            WHERE ci.cart_id = ?
-        ");
-        $stmt->execute([$cartId]);
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function getUserItems()
-    {
+    public function getUserItems(){
 
         if (!$this->userId) return [];
 
@@ -68,4 +43,38 @@ class User
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function clearCartItems($userId){
+    
+        $stmt = $this->conn->prepare("SELECT id FROM shopping_cart WHERE user_id = ?");
+        $stmt->execute([$userId]);
+        $cart = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$cart) {
+            return false; 
+        }
+
+        $cartId = $cart['id'];
+
+        
+        $stmt = $this->conn->prepare("DELETE FROM cart_items WHERE cart_id = ?");
+        return $stmt->execute([$cartId]);
+    }
+
+    public function getOrCreateCart($userId){
+        $stmt = $this->conn->prepare("SELECT id FROM shopping_cart WHERE user_id = ?");
+        $stmt->execute([$userId]);
+        $cart = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($cart) {
+            return $cart['id']; 
+        }
+
+        $stmt = $this->conn->prepare("INSERT INTO shopping_cart (user_id, created_at) VALUES (?, NOW())");
+        $stmt->execute([$userId]);
+
+        return $this->conn->lastInsertId(); 
+    }
+
+
 }

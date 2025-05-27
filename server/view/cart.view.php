@@ -1,4 +1,4 @@
-<?php 
+<?php
 function display_cart(array $cartItems)
 {
   $total = 0;
@@ -9,13 +9,13 @@ function display_cart(array $cartItems)
   <div class="cart-container">
 HTML;
 
-  foreach ($cartItems as $index => $item) {
-    $id = $item['id'];
-    $name = htmlspecialchars($item['name']);
-    $desc = htmlspecialchars($item['description']);
-    $price = number_format($item['price'], 2);
+  foreach ($cartItems as $item) {
+    $id = (int) $item['cart_item_id'];
+    $name = htmlspecialchars((string)($item['product_name'] ?? ''));
+    $desc = htmlspecialchars((string)($item['description'] ?? ''));
+    $price = number_format((float)$item['price'], 2);
     $qty = (int)$item['quantity'];
-    $image = htmlspecialchars($item['image_url']);
+    $image = htmlspecialchars((string)($item['image_url'] ?? ''));
     $total += $item['price'] * $qty;
 
     echo <<<ITEM

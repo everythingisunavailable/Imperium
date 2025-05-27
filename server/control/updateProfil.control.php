@@ -15,9 +15,7 @@ $requestType = $headers['Request-Type'] ?? null;
 
 
 if (!$requestType) {
-    error_log("TYPE not set!");
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Missing Request-Type header']);
     exit;
 }
 
@@ -98,8 +96,9 @@ function updateProfile($user, $userId, array $postData)
     }
 
     $userExists = $user->checkEmail($email);
+    $userEmail = $user->getEmailByid($userId);
 
-    if ($userExists && !isset($errors['email'])) {
+    if ($userExists && !isset($errors['email']) && $userEmail !== $email) {
         $errors['email'] = "User with this email already exists!";
     }
 

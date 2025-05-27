@@ -8,7 +8,7 @@ function showProfile()
 {
     require '../config/session.php';
     startSession();
-    if (!isset($_SESSION['user_id'])){
+    if (!isset($_SESSION['user_id'])) {
         showLoginForm();
         die();
     }
@@ -54,13 +54,14 @@ function showCart()
 {
     require '../config/session.php';
     startSession();
-    if (!isset($_SESSION['user_id'])){
+    if (!isset($_SESSION['user_id'])) {
         showLoginForm();
         die();
     }
-    
     require_once 'view/cart.view.php';
-    display_cart();
+    require_once 'control/shoppingCart.control.php';
+    $cartItems = showCartItems();
+    display_cart($cartItems);
 }
 function logoutUser()
 {
