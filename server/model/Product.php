@@ -18,15 +18,7 @@ class Product
 
     public function getProductsByFilters($filterQuery)
     {
-        $stmt = $this->conn->prepare(
-            "SELECT 
-            p.*, 
-            c.name AS category_name, 
-            c.group AS category_group 
-            FROM products p 
-            JOIN categories c ON p.category_id = c.id" 
-            . $filterQuery
-        );
+        $stmt = $this->conn->prepare("SELECT * FROM products". $filterQuery);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
