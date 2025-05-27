@@ -88,7 +88,6 @@ function registerUser($name, $surname, $email, $password, $password_again)
     } else {
         echo json_encode(["success" => "Successfully registered!"]);
     }
-
     $conn = null;
     exit;
 }
