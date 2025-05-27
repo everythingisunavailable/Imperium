@@ -45,6 +45,7 @@ switch ($requestType) {
         break;
 
     case 'logout':
+        destroySession();
         echo json_encode(['success' => 'Logged out successfully']);
         break;
     case 'delete_account':
@@ -109,10 +110,10 @@ function updateProfile($user, $userId, array $postData)
     $success = $user->updateUser($userId, $newData);
 
     if ($success) {
-        echo json_encode(['success' => true, 'message' => 'Profile updated successfully']);
+        echo json_encode(['success' => 'Profile updated successfully']);
     } else {
         http_response_code(500);
-        echo json_encode(['success' => false, 'message' => 'Failed to update profile or no changes detected']);
+        echo json_encode(['success' => 'Failed to update profile or no changes detected']);
     }
 }
 
