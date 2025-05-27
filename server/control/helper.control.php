@@ -59,8 +59,13 @@ function showCart()
         die();
     }
     
+    require 'model/Cart.php';
+    require '../config/db.php';
+    $cart = new Cart($conn, $_SESSION['user_id']);
+    $cart_items = $cart->getItems();
+
     require_once 'view/cart.view.php';
-    display_cart();
+    display_cart($cart_items);
 }
 function logoutUser()
 {

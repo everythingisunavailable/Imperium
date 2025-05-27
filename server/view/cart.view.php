@@ -1,7 +1,7 @@
 <?php 
 function display_cart(array $cartItems)
 {
-  $total = 0;
+  $total = 0; 
 
   echo <<<HTML
 <div class="cart-page">

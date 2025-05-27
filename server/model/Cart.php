@@ -1,6 +1,6 @@
 <?php
 
-class User
+class Cart
 {
     private $conn;
     private $userId;
