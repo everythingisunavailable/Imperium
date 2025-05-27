@@ -47,6 +47,7 @@ switch ($requestType) {
         break;
     case 'delete_account':
         deleteAccount($user, $userId);
+        destroySession();
         break;
     default:
         http_response_code(400);
