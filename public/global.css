@@ -390,8 +390,13 @@ nav .right-button-group, .hamburger .right-button-group {
   transform: translateX(0);
   transition: transform 0.5s ease-out;
 }
-.carousel-wrapper-basic .carousel .carousel-item {
+.carousel-wrapper-basic .carousel a {
   width: 20%;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.carousel-wrapper-basic .carousel a .carousel-item {
+  width: 100%;
   height: -moz-fit-content;
   height: fit-content;
   display: flex;
@@ -399,7 +404,7 @@ nav .right-button-group, .hamburger .right-button-group {
   justify-content: center;
   align-items: center;
 }
-.carousel-wrapper-basic .carousel .carousel-item img {
+.carousel-wrapper-basic .carousel a .carousel-item img {
   width: 60vw;
 }
 .carousel-wrapper-basic .left, .carousel-wrapper-basic .right {
