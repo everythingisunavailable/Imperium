@@ -17,13 +17,14 @@ class User
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getEmailByid($id){
+    public function getEmailByid($id)
+    {
         $stmt = $this->conn->prepare("SELECT email FROM users WHERE id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetchColumn();
     }
-    
+
     public function registerGoogleUser($googleUserData)
     {
 
@@ -238,14 +239,15 @@ class User
     public function removeSavedItem($userId, $itemId)
     {
 
-        $stmt = $this->conn->prepare("DELETE FROM saved_items WHERE user_id = :userId AND item_id = :itemId");
+        $stmt = $this->conn->prepare("DELETE FROM saved_items WHERE user_id = :userId AND product_id = :itemId");
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
 
         return $stmt->execute();
     }
-    public function deleteUser($userId){
-   
+    public function deleteUser($userId)
+    {
+
         $stmt = $this->conn->prepare("DELETE FROM users WHERE id = :id");
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
         return $stmt->execute();
