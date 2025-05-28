@@ -118,7 +118,7 @@ function removeItem($user, $userId, $postData)
 {
     $error = '';
 
-    $itemId = $postData['itemId'] ?? null;
+    $itemId = $postData['productId'] ?? null;
     if (!$itemId) {
         http_response_code(400);
 

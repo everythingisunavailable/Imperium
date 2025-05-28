@@ -11,7 +11,7 @@ HTML;
 
 
   foreach ($cartItems as $index => $item) {
-    $id = $item['product_id'];
+    $id = $item['cart_item_id'];
     $name = htmlspecialchars($item['product_name']);
     $desc = htmlspecialchars($item['description']);
     $price = number_format($item['price'], 2);
@@ -29,7 +29,7 @@ HTML;
         <div class="item-actions">
           <label>Qty:</label>
           <span class="qty-display">{$qty}</span>
-          <button class="remove-item">Remove</button>
+          <button class="remove-item" onclick="removeFromCart({$item['cart_item_id']})">Remove</button>
         </div>
       </div>
     </div>
