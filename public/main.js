@@ -176,10 +176,10 @@ async function send_request(data, request_type, url){
     }
 }
 
-async function buy_item(itemId, quantity){
+async function buy_item(itemId){
     data = {
         'product_id': itemId,
-        'quantity': quantity
+        'quantity': parseInt(document.getElementById('quantity').value)
     };
     const json = await send_request(data, 'single_item', '../server/checkout.php');
     if('error' in json){
@@ -205,4 +205,11 @@ async function buy_cart(){
     else if('url' in json){
         window.location.href = json.url;
     }
+}
+
+async function addToCart(){
+
+};
+async function addToWishlist(){
+
 }
