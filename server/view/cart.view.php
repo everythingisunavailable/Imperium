@@ -16,7 +16,8 @@ HTML;
     $desc = htmlspecialchars($item['description']);
     $price = number_format($item['price'], 2);
     $qty = (int)$item['quantity'];
-    $image = htmlspecialchars((string)($item['image_url'] ?? ''));
+    $url = substr($item['image_url'], 16);//imperium/public/
+    $image = htmlspecialchars((string)($url ?? ''));
     $total += $item['price'] * $qty;
 
     echo <<<ITEM

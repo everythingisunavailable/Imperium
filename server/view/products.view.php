@@ -71,14 +71,17 @@ echo <<<HTML
 HTML;           
             if($items){
                 foreach($items as $index=>$item){
+                    $url = substr($item['image_url'], 16);//imperium/public/
+                    $name = $item['name'];
+                    if(strlen($item['name']) > 47) $name = substr($item['name'],0 , 47 - strlen($item['name'])) . "...";
                     echo <<<ITEM
                     <div class="card-item">
                         <a href="/imperium/public/{$item['category']}s/{$item['id']}" onclick="eventGoTo(event, '/imperium/public/{$item['category']}s/{$item['id']}')">
                             <div class="image">
-                                <img src="assets/pictures/pc-item.png" alt="{$item['name']}">
+                                <img src="{$url}" alt="{$name}">
                             </div>
                             <div class="description">
-                                <div class="title">{$item['name']}</div>
+                                <div class="title">{$name}</div>
                                 <span class="rating">
                     ITEM;
                                 for($i = 0; $i < round($item['rating']); $i++){
