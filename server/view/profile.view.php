@@ -4,7 +4,7 @@ function display_profile(array $userData, array $historyItems, array $savedItems
   echo <<<HTML
 <div class="profile-page">
   <aside class="profile-sidebar displace-hide animate-in">
-    <img src="assets/pictures/profilepic.png" alt="Profile Picture" class="profile-picture" />
+    <img src="assets/pictures/profile_pic.png" alt="Profile Picture" class="profile-picture" />
     <h2 class="profile-name">{$userData['name']}</h2>
     <p class="profile-email">{$userData['email']}</p>
     <p class="profile-member-since">Member since: {$userData['created_at']}</p>

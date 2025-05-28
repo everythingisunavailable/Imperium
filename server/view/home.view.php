@@ -93,13 +93,15 @@ echo <<<HTML
             <div class="carousel" id="first-carousel">
 HTML;
                 $i = 0;
+                
                 foreach ($best_selling as $index=>$item){
+                    $url = substr($item['image_url'], 16);//imperium/public/
                     //$path = urlencode("?filters={'subcategory':" . $item['subcategory']."}"); // not sure if useful :(
                     echo <<<ITEM
                     <a href="/imperium/public/{$item['category']}s/{$item['id']}" eventGoTo(event, '/imperium/public/{$item['category']}s/{$item['id']}')>
                         <div class="carousel-item">
                             <h3>{$item['name']}</h3>
-                            <img src="assets/pictures/computer-bundle-transparent.png" alt="{$item['name']}">
+                            <img src="{$url}" alt="{$item['name']}">
                         </div>
                     </a>
                     ITEM;
@@ -136,12 +138,13 @@ echo <<<HTML
 HTML;
                 $i = 0;
                 foreach ($new_items as $index=>$item){
+                    $url = substr($item['image_url'], 16);//imperium/public/
                     //$path = urlencode("?filters={'subcategory':" . $item['subcategory']."}"); // not sure if useful :(
                     echo <<<ITEM
                     <a href="/imperium/public/{$item['category']}s/{$item['id']}" eventGoTo(event, '/imperium/public/{$item['category']}s/{$item['id']}')>
                         <div class="carousel-item">
                             <h3>{$item['name']}</h3>
-                            <img src="assets/pictures/computer-bundle-transparent.png" alt="{$item['name']}">
+                            <img src="{$url}" alt="{$item['name']}">
                         </div>
                     </a>
                     ITEM;

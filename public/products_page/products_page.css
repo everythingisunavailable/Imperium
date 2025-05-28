@@ -221,6 +221,8 @@
 }
 .cards .card-item a .description .title {
   font-weight: normal;
+  text-align: center;
+  font-size: normal;
 }
 .cards .card-item a .description .rating {
   display: flex;
