@@ -91,7 +91,7 @@ function getProducts($filters) {
         ];
     } else {
         $newFilters = getNewFilters($filters);
-        return [$queryResult, $newFilters];
+        return ['products' =>$queryResult, 'newFilters' => $newFilters];
     }
     
     $conn = null;
