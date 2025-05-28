@@ -17,6 +17,14 @@ class Product
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+   
+    public function getProductById($id){
+        $stmt = $this->conn->prepare("SELECT * FROM products WHERE id = :id;");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function getProductsByFilters($joinQuery, $filterQuery)
     {
         $stmt = $this->conn->prepare("SELECT * FROM products". $joinQuery . $filterQuery);
