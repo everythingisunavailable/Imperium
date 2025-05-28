@@ -42,7 +42,7 @@ function getProducts($filters) {
         foreach ($filters as $key => $value) {
             if (
                 $key != 'category' && $key != 'subcategory' &&
-                $key != 'minPrice' && $key != 'maxPrice' &&
+                $key != 'min_price' && $key != 'max_price' &&
                 $key != 'sort' && $key != 'order' &&
                 $key != 'page'
             ) {
@@ -52,8 +52,8 @@ function getProducts($filters) {
     }
 
     //Price filter
-    if ($filters && array_key_exists('minPrice', $filters)) $filtersQuery = addFilter($filtersQuery, "price >= ".$filters['minPrice']);
-    if ($filters && array_key_exists('maxPrice', $filters)) $filtersQuery = addFilter($filtersQuery, "price <= ".$filters['maxPrice']);
+    if ($filters && array_key_exists('min_price', $filters)) $filtersQuery = addFilter($filtersQuery, "price >= ".$filters['min_price']);
+    if ($filters && array_key_exists('max_price', $filters)) $filtersQuery = addFilter($filtersQuery, "price <= ".$filters['max_price']);
 
     //Sorting and ordering
     if ($filters && array_key_exists('sort', $filters)) {
@@ -72,7 +72,7 @@ function getProducts($filters) {
                 $sort = 'rating';
         }
         $order = " DESC";
-        if (array_key_exists('order', $filters) && $filters['order'] == "Ascending") $order = " ASC";
+        if (array_key_exists('order', $filters) && $filters['order'] == "ascending") $order = " ASC";
         $filtersQuery = $filtersQuery . " ORDER BY " .$sort .$order;
     }
 

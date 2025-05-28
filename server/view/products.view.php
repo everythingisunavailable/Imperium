@@ -29,13 +29,13 @@ HTML;
                 if($newfilters){
                     foreach($newfilters as $filterName=>$filterOptions){
                         echo <<<FILTER
-                        <fieldset class="radio_filter" data-name="filter-choice" onchange="filterGoTo()">
+                        <fieldset class="radio_filter" data-name="$filterName" onchange="filterGoTo()">
                         <legend>$filterName</legend>
                         FILTER;
 
                         foreach($filterOptions as $index=>$option){
                             echo <<<FILTER
-                            <label><input type="radio" name="$option" id="$option" value="$option"> $option</label>
+                            <label><input type="radio" name="$filterName" id="option_1" value="$option"> $option</label>
                             FILTER;
                         }
                         echo <<<FILTER
