@@ -405,7 +405,7 @@ nav .right-button-group, .hamburger .right-button-group {
   align-items: center;
 }
 .carousel-wrapper-basic .carousel a .carousel-item img {
-  width: 60vw;
+  width: 40vw;
 }
 .carousel-wrapper-basic .left, .carousel-wrapper-basic .right {
   position: absolute;
