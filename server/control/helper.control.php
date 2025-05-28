@@ -84,7 +84,7 @@ function showCart()
     $cart_items = $cart->getUserItems();
     if (empty($cart_items)) {
         http_response_code(404);
-        echo 'No items found in cart';
+        echo json_decode('No items found in cart');
         return [];
     }
     require_once 'view/cart.view.php';
