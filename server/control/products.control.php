@@ -1,8 +1,8 @@
 <?php
-require '../model/Product.php';
+require 'model/Product.php';
 
 function getHomeProducts($filters) {
-    require '../../config/db.php';
+    require '../config/db.php';
     $pro = new Product($conn);
 
     //Best selling products
@@ -24,7 +24,7 @@ function getHomeProducts($filters) {
 }
 
 function getProducts($filters) {
-    require '../../config/db.php';
+    require '../config/db.php';
     $pro = new Product($conn);
 
     $filtersQuery = "";
@@ -83,11 +83,7 @@ function getProducts($filters) {
     $filtersQuery = $filtersQuery . " LIMIT " .$limit. " OFFSET " .$offset;
     
     //Running query
-    echo $filtersQuery . "<br>";
     $queryResult = $pro->getProductsByFilters($joinQuery, $filtersQuery);
-    $newFilters = getNewFilters($filters);
-    echo json_encode($newFilters) . "<br>";
-    echo json_encode($queryResult);
     if (!$queryResult) {
         return [
             'products' => null,
@@ -95,10 +91,7 @@ function getProducts($filters) {
         ];
     } else {
         $newFilters = getNewFilters($filters);
-        return [
-            'products' => $queryResult,
-            'newFilters' => $newFilters
-        ];
+        return [$queryResult, $newFilters];
     }
     
     $conn = null;
