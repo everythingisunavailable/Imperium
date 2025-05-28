@@ -207,9 +207,9 @@ async function buy_cart(){
     }
 }
 
-async function addToCart(){
-
+async function addToCart(id){
+    const json = await send_request({'product_id': id}, 'add_product', '../server/control/updateCart.control.php');
+    if('success' in json){
+        create_notification(json.success);
+    }
 };
-async function addToWishlist(){
-
-}
