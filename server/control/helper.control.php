@@ -37,10 +37,17 @@ function showChangePassword()
     require_once 'view/changePassword.view.php';
     display_change_password();
 }
-function showProducts($filters)
+function showProducts($filters, $category)
 {
     require_once 'view/products.view.php';
     require_once 'products.control.php';
+    /*   'page': PAGE_NUMBER,
+        'sort': sort,
+        'order': order,
+        'min_price': min_price,
+        'max_price': max_price */
+    if($filters) $filters = json_decode($filters, true);
+    else $filters = ['category' => $category, 'page' => 1, 'sort' => 'popularity', 'order' => 'descending', 'min_price' => 0, 'max_price' => 200000];
     $data = getProducts($filters);
     display_products($data);
 }

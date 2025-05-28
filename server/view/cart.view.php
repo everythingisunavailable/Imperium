@@ -16,7 +16,8 @@ HTML;
     $desc = htmlspecialchars($item['description']);
     $price = number_format($item['price'], 2);
     $qty = (int)$item['quantity'];
-    $image = htmlspecialchars((string)($item['image_url'] ?? ''));
+    $url = substr($item['image_url'], 16);//imperium/public/
+    $image = htmlspecialchars((string)($url ?? ''));
     $total += $item['price'] * $qty;
 
     echo <<<ITEM
@@ -41,7 +42,7 @@ ITEM;
   echo <<<SUMMARY
     <div class="cart-summary">
       <h3>Cart Total: <span class="total-price">€{$totalFormatted}</span></h3>
-      <button class="checkout-button">Proceed to Checkout</button>
+      <button class="checkout-button" onclick="buy_cart()">Proceed to Checkout</button>
     </div>
   </div>
 </div>

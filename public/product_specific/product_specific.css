@@ -8,6 +8,15 @@
   width: 60%;
   margin-bottom: 0;
 }
+.main-section .product-picture-carousel .carousel {
+  width: 500%;
+}
+.main-section .product-picture-carousel .carousel .carousel-item {
+  width: 20%;
+}
+.main-section .product-picture-carousel .carousel .carousel-item img {
+  width: 100%;
+}
 .main-section .product-picture-carousel button {
   opacity: 0.8;
 }
@@ -133,7 +142,7 @@
   border-bottom: 2px solid grey;
 }
 
-.cards {
+.cards-wrapper .cards {
   min-height: auto;
   margin-bottom: 3rem;
 }/*# sourceMappingURL=product_specific.css.map */

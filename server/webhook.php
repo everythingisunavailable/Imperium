@@ -48,5 +48,11 @@ switch ($event->type) {
 http_response_code(200);
 
 function handleCheckoutCompleted($session){
-    error_log(json_encode($session));
+    require '../config/db.php'; // assumes $conn is a PDO instance
+    
+    $jsonSession = json_encode($session);
+
+    $stmt = $conn->prepare('INSERT INTO test(test_text) VALUES (:session)');
+    $stmt->bindParam(':session', $jsonSession, PDO::PARAM_STR);
+    $stmt->execute();
 }

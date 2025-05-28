@@ -35,6 +35,7 @@ async function loadCart() {
     } catch (error) {
         console.error('Failed to load cart:', error);
     }
+    
 }
 
 function renderCart(cartItems) {

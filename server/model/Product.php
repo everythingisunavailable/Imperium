@@ -8,10 +8,11 @@ class Product
         $this->conn = $conn;
     }
     
-    public function getProductById($id)
+    public function getProductByIdAndStock($id, $quantity)
     {
-        $stmt = $this->conn->prepare("SELECT * FROM products WHERE id = :id");
+        $stmt = $this->conn->prepare("SELECT id AS product_id, name AS product_name, stock, price  FROM products WHERE id = :id AND stock >= :quantity;");
         $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':quantity', $quantity);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
