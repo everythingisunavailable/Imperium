@@ -212,4 +212,18 @@ async function addToCart(id){
     if('success' in json){
         create_notification(json.success);
     }
+    if('login' in json){
+        create_notification('Must be logged in!');
+        goTo('/imperium/public/profile');
+    }
+};
+async function addToWishlist(id){
+    const json = await send_request({'product_id': id}, 'add_saved_item', '../server/control/updateProfil.control.php');
+    if('success' in json){
+        create_notification(json.success);
+    }
+    else if('login' in json){
+        create_notification('Must be logged in!');
+        goTo('/imperium/public/profile');
+    }
 };

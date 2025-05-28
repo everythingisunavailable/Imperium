@@ -1,8 +1,8 @@
 <?php
-require '../model/Product.php';
+require 'model/Product.php';
 
 function getHomeProducts($filters) {
-    require '../../config/db.php';
+    require '../config/db.php';
     $pro = new Product($conn);
 
     //Best selling products
@@ -24,7 +24,7 @@ function getHomeProducts($filters) {
 }
 
 function getProducts($filters) {
-    require '../../config/db.php';
+    require '../config/db.php';
     $pro = new Product($conn);
 
     $filtersQuery = "";
