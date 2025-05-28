@@ -176,13 +176,33 @@ async function send_request(data, request_type, url){
     }
 }
 
-async function buy_item(itemId){
-    data = {'item_id': itemId};
-    const json = await send_request(data, 'single_item', 'localhost/imperium/server/checkout.php');
-    if('success' in json){
-        create_notification('Thank You for your purchase!');
+async function buy_item(itemId, quantity){
+    data = {
+        'product_id': itemId,
+        'quantity': quantity
+    };
+    const json = await send_request(data, 'single_item', '../server/checkout.php');
+    if('error' in json){
+        create_notification(json.error);
     }
-    else{
-        create_notification('Something went potentially wrong!');//todo : change this based on backed error
+    else if('login' in json){
+        create_notification('You must login before making a purchase!');
+        goTo('/imperium/public/profile');
+    }
+    else if('url' in json){
+        window.location.href = json.url;
+    }
+}
+async function buy_cart(){
+    const json = await send_request({}, 'cart_item', '../server/checkout.php');
+    if('error' in json){
+        create_notification(json.error);
+    }
+    else if('login' in json){
+        create_notification('You must login before making a purchase!');
+        goTo('/imperium/public/profile');
+    }
+    else if('url' in json){
+        window.location.href = json.url;
     }
 }
