@@ -401,7 +401,10 @@ nav, .hamburger{
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-    
+                
+                h3{
+                    text-align: center;
+                }
                 img{
                     width: 40vw;
                 }

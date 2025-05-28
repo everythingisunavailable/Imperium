@@ -404,6 +404,9 @@ nav .right-button-group, .hamburger .right-button-group {
   justify-content: center;
   align-items: center;
 }
+.carousel-wrapper-basic .carousel a .carousel-item h3 {
+  text-align: center;
+}
 .carousel-wrapper-basic .carousel a .carousel-item img {
   width: 40vw;
 }
