@@ -133,7 +133,7 @@ function getNewFilters($filters) {
                 $newFilters['memory'] = ['8GB GDDR6', '12GB GDDR6', '16GB GDDR6', '24GB GDDR6X'];
                 break;
             case 'psu':
-                $newFilters['efficency_rating'] = ['80 PLUS Bronze', '80 PLUS Gold', '80 PLUS Platinum'];
+                $newFilters['efficiency_rating'] = ['80 PLUS Bronze', '80 PLUS Gold', '80 PLUS Platinum'];
                 $newFilters['modular'] = ['Yes', 'Semi'];
                 break;
             case 'motherboard':
