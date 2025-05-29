@@ -87,11 +87,12 @@ function getProducts($filters) {
     if (!$queryResult) {
         return [
             'products' => null,
-            'newFilters' => null
+            'newFilters' => null,
+            'oldFilters' => $filters,
         ];
     } else {
         $newFilters = getNewFilters($filters);
-        return ['products' =>$queryResult, 'newFilters' => $newFilters];
+        return ['products' =>$queryResult, 'newFilters' => $newFilters, 'oldFilters'=>$filters];
     }
     
     $conn = null;
