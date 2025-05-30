@@ -7,7 +7,9 @@
 
 ---
 ## 📽️ Project Preview
-![](readme/imperium_demo.gif)
+<p align='center'>
+  <img src="readme/imperium_demo.gif" alt="demo gif">
+</p>
 
 [Full Demo Video Here](https://youtu.be/-MIUjzko_6A)
 ## 📸 Screenshots (mobile)
