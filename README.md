@@ -2,7 +2,7 @@
   <img src = "public/assets/imperium.png" placeholder="logo" width='50%'>
 </p>
 
-## Imperium
+# Imperium
 
 **Imperium** is a full-stack e-commerce Single Page Application (SPA) built using **JavaScript**, **HTML**, **CSS**, and **PHP**. Developed as a university project, it delivers a modern and dynamic shopping experience with a custom routing system, secure login via Google, and integrated Stripe payments.
 
